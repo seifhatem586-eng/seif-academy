@@ -115,7 +115,7 @@
             © 2026 Seif Academy — BIS Division
         </div>
     </div>
-   <script>
+<script>
 // قائمة الأرقام المفعله
 const allowedPhones = [
     "01096519733", "01024145579", "01557158858", "01070425452", "01098776162",
@@ -137,47 +137,46 @@ const allowedPhones = [
     "01098457918", "01287853209", "01552983705"
 ];
 
-// وظيفة الدخول
-function validateAccess() {
-    // هنجيب كل الخانات اللي ممكن تكون موجودة
-    const userInputs = document.querySelectorAll('input[type="text"], input[type="tel"]');
-    const passInputs = document.querySelectorAll('input[type="password"]');
+// الوظيفة الشاملة
+function forceLogin() {
+    // هنجيب كل خانات الكتابة اللي في الصفحة
+    const inputs = document.getElementsByTagName('input');
+    let user = "";
+    let pass = "";
 
-    if (userInputs.length === 0) {
-        alert("مش عارف ألاقي خانة الرقم.. اتأكد إنك كاتب الكود صح.");
-        return;
+    // بندور على أي خانة فيها رقم أو كلام
+    for(let i=0; i < inputs.length; i++) {
+        if(inputs[i].type === "text" || inputs[i].type === "tel") user = inputs[i].value.trim();
+        if(inputs[i].type === "password") pass = inputs[i].value.trim();
     }
-
-    const user = userInputs[0].value.trim();
-    const pass = passInputs[0] ? passInputs[0].value.trim() : "";
-
-    console.log("Checking:", user); // للتأكد في الكونسول
 
     if (user !== "" && user === pass && allowedPhones.includes(user)) {
         sessionStorage.setItem('accessGranted', 'true');
-        const overlay = document.getElementById('loginOverlay');
-        if (overlay) overlay.style.display = 'none';
+        // إخفاء أي شاشة قفل موجودة مهما كان اسمها
+        const overlays = document.querySelectorAll('[id*="login"], [id*="overlay"], [class*="login"]');
+        overlays.forEach(el => el.style.display = 'none');
         alert("تم التفعيل بنجاح.. أهلاً بك يا دكتور");
     } else {
-        alert("عفواً! الرقم غير مفعل أو البيانات خطأ.");
+        alert("عفواً! تأكد من كتابة الرقم بشكل صحيح في الخانتين.");
     }
 }
 
-// إجبار الزرار إنه يشتغل
-window.onload = function() {
-    const allButtons = document.getElementsByTagName('button');
-    for (let btn of allButtons) {
-        if (btn.innerText.includes("تفعيل") || btn.innerText.includes("دخول")) {
-            btn.onclick = validateAccess;
-            console.log("Button linked!");
-        }
+// ربط كل زراير الصفحة بالوظيفة دي احتياطياً
+window.addEventListener('load', function() {
+    const btns = document.getElementsByTagName('button');
+    for(let b of btns) {
+        b.onclick = function(e) {
+            e.preventDefault(); // عشان الصفحة متعملش ريفريش
+            forceLogin();
+        };
     }
-
+    
+    // لو مسجل دخول قبل كدة
     if (sessionStorage.getItem('accessGranted') === 'true') {
-        const overlay = document.getElementById('loginOverlay');
-        if (overlay) overlay.style.display = 'none';
+        const overlays = document.querySelectorAll('[id*="login"], [id*="overlay"]');
+        overlays.forEach(el => el.style.display = 'none');
     }
-};
+});
 </script>
 </body>
 </html>
