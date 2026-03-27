@@ -6,74 +6,73 @@
     <title>أكاديمية د. سيف حاتم</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #0b0f1a; color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .login-container { background: #1c2230; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #2c3444; color: white; text-align: center; }
+        .login-box { background: #1c2230; padding: 40px; border-radius: 15px; text-align: center; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #2c3444; color: white; text-align: center; box-sizing: border-box; }
         button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; }
         
-        /* تنسيق منطقة المحتوى بعد الدخول */
-        #mainContent { display: none; width: 100%; max-width: 900px; text-align: center; padding: 20px; }
-        .section-box { background: #1c2230; padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #28a745; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .card { background: #2c3444; padding: 20px; border-radius: 10px; cursor: pointer; transition: 0.3s; text-decoration: none; color: white; display: block; }
-        .card:hover { background: #28a745; transform: translateY(-5px); }
+        /* تصميم المنصة القديم اللي كان في صورتك */
+        #myPlatform { display: none; width: 100%; max-width: 900px; text-align: center; padding: 20px; }
+        .hero-section { background: rgba(28, 34, 48, 0.9); padding: 30px; border-radius: 20px; border: 1px solid #444; }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .class-card { padding: 40px 20px; border-radius: 15px; text-decoration: none; color: white; transition: 0.3s; font-weight: bold; }
+        .first-year { background: #4CAF50; } /* اللون الأخضر للفرقة الأولى */
+        .second-year { background: #3b4b6b; } /* اللون الأزرق للفرقة الثانية */
+        .class-card:hover { transform: scale(1.05); opacity: 0.9; }
+        footer { margin-top: 40px; color: #777; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div id="loginArea" class="login-container">
-        <h2>أكاديمية د. سيف حاتم</h2>
-        <p>سجل دخولك لمشاهدة محاضراتك</p>
-        <input type="tel" id="p1" placeholder="رقم الموبايل">
-        <input type="password" id="p2" placeholder="تأكيد الرقم">
-        <button onclick="checkAccess()">دخول المنصة</button>
+    <div id="loginGate" class="login-box">
+        <h2 style="color: #28a745;">أكاديمية د. سيف حاتم</h2>
+        <p>برجاء إدخال الرقم الموحد للدخول</p>
+        <input type="tel" id="userIn" placeholder="رقم الموبايل">
+        <input type="password" id="passIn" placeholder="تأكيد الرقم">
+        <button onclick="unlock()">دخول المنصة</button>
     </div>
 
-    <div id="mainContent">
-        <div class="section-box">
-            <h1>مرحباً بك يا دكتور سيف</h1>
-            <p>اختر الفرقة الدراسية لاستعراض المحتوى</p>
+    <div id="myPlatform">
+        <div class="hero-section">
+            <h1 style="font-size: 32px;">مرحباً بك يا دكتور سيف</h1>
+            <p style="color: #ccc;">اختر الفرقة الدراسية لاستعراض المحتوى</p>
             
-            <div class="grid">
-                <a href="#" class="card">
-                    <h3>الفرقة الأولى</h3>
-                    <p>اضغط لاستعراض المواد</p>
+            <div class="grid-layout">
+                <a href="first-year.html" class="class-card first-year">
+                    <h2 style="margin:0;">الفرقة الأولى</h2>
+                    <p style="margin-top:10px; font-weight: normal;">اضغط لاستعراض المواد</p>
                 </a>
                 
-                <a href="#" class="card">
-                    <h3>الفرقة الثانية</h3>
-                    <p>اضغط لاستعراض المواد</p>
+                <a href="second-year.html" class="class-card second-year">
+                    <h2 style="margin:0;">الفرقة الثانية</h2>
+                    <p style="margin-top:10px; font-weight: normal;">اضغط لاستعراض المواد</p>
                 </a>
             </div>
         </div>
-
-        <div style="margin-top: 50px; color: #777; font-size: 12px;">
-            <p>© 2026 Seif Academy – BIS Division</p>
-        </div>
+        <footer>Seif Academy – BIS Division 2026 ©</footer>
     </div>
 
 <script>
-// قائمة الأرقام المعتمدة (نفس القائمة السابقة)
-const allowedPhones = ["01096519733", "01024145579", "01557158858", "01070425452", "01098776162", "01095053073", "01063030940", "01020301679", "01063413116", "01279154986", "01115106965", "01022398761", "01004532748", "01097169300", "01211396484", "01125096828", "01012365405", "01098588382", "01099007524", "01019264166", "01011060533", "01556057243", "01062103454", "01154082093", "01033432364", "01008365306", "01119373447", "01278588055", "01019575716", "01098709208", "01006826049", "01096561506", "01020323198", "01015172286", "01080543325", "01270625932", "01096343776", "01128044301", "01024839332", "01021081359", "01220857026", "01556774673", "01276586756", "01551866777", "01110650473", "01060360234", "01027212037", "01119874632", "01142365707", "01010491890", "01501553104", "01090941321", "01067230360", "01080797172", "01270743989", "01021269155", "01096628829", "01029196074", "01273500413", "01203092834", "01002496711", "01123503877", "01009670748", "01003730269", "01552983676", "01270331961", "01029195750", "01004587268", "01012140245", "01023378861", "01278528994", "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918", "01287853209", "01552983705", "01012084505", "01015524734", "01010933038", "01552247079", "01025431723", "01097067165", "01099517891", "01067984698", "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725", "01017678227", "01016054679"];
+const allowed = ["01096519733", "01024145579", "01557158858", "01070425452", "01098776162", "01095053073", "01063030940", "01020301679", "01063413116", "01279154986", "01115106965", "01022398761", "01004532748", "01097169300", "01211396484", "01125096828", "01012365405", "01098588382", "01099007524", "01019264166", "01011060533", "01556057243", "01062103454", "01154082093", "01033432364", "01008365306", "01119373447", "01278588055", "01019575716", "01098709208", "01006826049", "01096561506", "01020323198", "01015172286", "01080543325", "01270625932", "01096343776", "01128044301", "01024839332", "01021081359", "01220857026", "01556774673", "01276586756", "01551866777", "01110650473", "01060360234", "01027212037", "01119874632", "01142365707", "01010491890", "01501553104", "01090941321", "01067230360", "01080797172", "01270743989", "01021269155", "01096628829", "01029196074", "01273500413", "01203092834", "01002496711", "01123503877", "01009670748", "01003730269", "01552983676", "01270331961", "01029195750", "01004587268", "01012140245", "01023378861", "01278528994", "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918", "01287853209", "01552983705", "01012084505", "01015524734", "01010933038", "01552247079", "01025431723", "01097067165", "01099517891", "01067984698", "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725", "01017678227", "01016054679"];
 
-function checkAccess() {
-    const v1 = document.getElementById('p1').value.trim();
-    const v2 = document.getElementById('p2').value.trim();
-    if (v1 !== "" && v1 === v2 && allowedPhones.includes(v1)) {
-        sessionStorage.setItem('isLogged', 'true');
-        showMain();
+function unlock() {
+    const u = document.getElementById('userIn').value.trim();
+    const p = document.getElementById('passIn').value.trim();
+    if (u !== "" && u === p && allowed.includes(u)) {
+        sessionStorage.setItem('done', 'true');
+        showMe();
     } else {
-        alert("بيانات خاطئة!");
+        alert("الرقم خطأ!");
     }
 }
 
-function showMain() {
-    document.getElementById('loginArea').style.display = 'none';
+function showMe() {
+    document.getElementById('loginGate').style.display = 'none';
     document.body.style.alignItems = 'flex-start';
-    document.getElementById('mainContent').style.display = 'block';
+    document.getElementById('myPlatform').style.display = 'block';
 }
 
 window.onload = function() {
-    if (sessionStorage.getItem('isLogged') === 'true') showMain();
+    if (sessionStorage.getItem('done') === 'true') showMe();
 };
 </script>
 </body>
