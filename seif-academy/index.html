@@ -206,6 +206,43 @@ window.addEventListener('load', function() {
         overlays.forEach(el => el.style.display = 'none');
     }
 });
+
+<script>
+// عداد محاولات التصوير
+let screenshotAttempts = 0;
+
+document.addEventListener('keyup', (e) => {
+    // التحقق من زرار الـ Print Screen
+    if (e.key === 'PrintScreen' || e.keyCode === 44) {
+        screenshotAttempts++;
+        
+        // مسح الحافظة عشان الصورة متتسجلش
+        navigator.clipboard.writeText('محتوى محمي - أكاديمية سيف حاتم');
+
+        if (screenshotAttempts === 1) {
+            // التحذير الأول
+            alert("⚠️ تحذير: تصوير الشاشة ممنوع! إذا حاولت مرة أخرى سيتم إغلاق حسابك فوراً.");
+        } else if (screenshotAttempts >= 2) {
+            // العقاب في المحاولة الثانية
+            alert("❌ تم اكتشاف محاولة تصوير متكررة. سيتم تسجيل خروجك وحظرك مؤقتاً.");
+            
+            // مسح بيانات الدخول
+            sessionStorage.removeItem('accessGranted');
+            
+            // إعادة تحميل الصفحة ليرجع لشاشة القفل
+            location.reload();
+        }
+    }
+});
+
+// منع تصوير الشاشة ببرامج الويندوز (Win + Shift + S) أو (Ctrl + P)
+window.addEventListener('keydown', function(e) {
+    if ((e.key === 's' && e.shiftKey && (e.metaKey || e.ctrlKey)) || (e.ctrlKey && e.key === 'p')) {
+        e.preventDefault();
+        alert("⚠️ تصوير الشاشة أو الطباعة غير مسموح به في المنصة.");
+    }
+});
+    
 </script>
 </body>
 </html>
