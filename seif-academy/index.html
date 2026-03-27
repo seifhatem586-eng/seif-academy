@@ -2,31 +2,46 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية د. سيف حاتم</title>
     <style>
-        body { font-family: sans-serif; background: #1a1a1a; color: white; text-align: center; margin: 0; padding-top: 100px; }
-        .box { background: #2c2c2c; padding: 40px; border-radius: 15px; display: inline-block; box-shadow: 0 0 20px black; }
-        input { display: block; margin: 15px auto; padding: 12px; width: 250px; border-radius: 8px; border: none; text-align: center; font-size: 16px; }
-        button { padding: 12px 40px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        /* ستايل الصفحة */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: white; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #1e1e1e; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; width: 90%; max-width: 400px; }
+        h2 { color: #28a745; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #2c2c2c; color: white; font-size: 16px; box-sizing: border-box; text-align: center; }
+        button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #218838; }
+        #mainContent { display: none; width: 100%; max-width: 800px; text-align: center; padding: 20px; }
+        .video-container { margin-top: 20px; background: #1e1e1e; padding: 20px; border-radius: 15px; }
     </style>
 </head>
 <body>
 
-    <div id="loginArea" class="box">
-        <h2>تسجيل دخول الطلاب</h2>
-        <input type="tel" id="p1" placeholder="أدخل رقم الموبايل">
-        <input type="password" id="p2" placeholder="تأكيد الرقم">
-        <button onclick="validate()">تفعيل الدخول</button>
+    <div id="loginArea" class="container">
+        <h2>أكاديمية د. سيف حاتم</h2>
+        <p>يرجى إدخال رقم الموبايل المفعّل</p>
+        <input type="tel" id="phone1" placeholder="رقم الموبايل">
+        <input type="password" id="phone2" placeholder="تأكيد الرقم">
+        <button onclick="checkAccess()">دخول المنصة</button>
     </div>
 
-    <div id="content" style="display:none;">
-        <h1>أهلاً بك يا دكتور</h1>
-        <p>المحتوى محمي الآن ضد التصوير.</p>
+    <div id="mainContent">
+        <div class="video-container">
+            <h1>مرحباً بك يا دكتور</h1>
+            <p>تم تسجيل دخولك بنجاح. يمكنك الآن مشاهدة المحتوى.</p>
+            <hr style="border: 0.5px solid #333;">
+            
+            <div style="padding: 20px; background: #2c2c2c; border-radius: 10px; margin-top: 20px;">
+                <h3>محاضرات اليوم</h3>
+                <p>سيتم رفع المحتوى هنا قريباً...</p>
+            </div>
+        </div>
     </div>
 
 <script>
-// قائمة الأرقام المحدثة والمنظمة
-const phones = [
+// قائمة الأرقام المعتمدة
+const allowedPhones = [
     "01096519733", "01024145579", "01557158858", "01070425452", "01098776162",
     "01095053073", "01063030940", "01020301679", "01063413116", "01279154986",
     "01115106965", "01022398761", "01004532748", "01097169300", "01211396484",
@@ -52,36 +67,31 @@ const phones = [
     "01017678227", "01016054679"
 ];
 
-function validate() {
-    const val1 = document.getElementById('p1').value.trim();
-    const val2 = document.getElementById('p2').value.trim();
-    
-    if (val1 !== "" && val1 === val2 && phones.includes(val1)) {
-        sessionStorage.setItem('access', 'true');
-        showContent();
-        alert("تم التفعيل!");
+function checkAccess() {
+    const p1 = document.getElementById('phone1').value.trim();
+    const p2 = document.getElementById('phone2').value.trim();
+
+    if (p1 !== "" && p1 === p2 && allowedPhones.includes(p1)) {
+        sessionStorage.setItem('isLogged', 'true');
+        showMain();
     } else {
-        alert("بيانات خاطئة أو رقم غير مفعل!");
+        alert("خطأ: الرقم غير مسجل أو البيانات غير متطابقة.");
     }
 }
 
-function showContent() {
+function showMain() {
     document.getElementById('loginArea').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
+    document.body.style.alignItems = 'flex-start'; // لضبط شكل المحتوى
+    document.getElementById('mainContent').style.display = 'block';
 }
 
+// فحص إذا كان مسجل دخول مسبقاً
 window.onload = function() {
-    if (sessionStorage.getItem('access') === 'true') showContent();
-    
-    // حماية سكرين شوت
-    document.addEventListener('keyup', (e) => {
-        if (e.key === 'PrintScreen' || e.keyCode === 44) {
-            alert("⚠️ التصوير ممنوع!");
-            sessionStorage.clear();
-            location.reload();
-        }
-    });
+    if (sessionStorage.getItem('isLogged') === 'true') {
+        showMain();
+    }
 };
 </script>
+
 </body>
 </html>
