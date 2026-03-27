@@ -2,71 +2,65 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية د. سيف حاتم</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; }
-        #loginOverlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #1a1a1a; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 10000; color: white;
-        }
-        .login-box { background: #2c2c2c; padding: 30px; border-radius: 10px; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        input { display: block; width: 250px; padding: 12px; margin: 15px 0; border-radius: 5px; border: none; font-size: 16px; text-align: center; }
-        button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        button:hover { background: #218838; }
-        #mainContent { padding: 20px; text-align: center; }
+        body { font-family: sans-serif; background: #121212; color: white; text-align: center; margin: 0; }
+        #lock { position: fixed; inset: 0; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
+        input { display: block; margin: 10px; padding: 12px; width: 260px; border-radius: 8px; border: none; text-align: center; }
+        button { padding: 12px 50px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; }
     </style>
 </head>
 <body>
 
-    <div id="loginOverlay">
-        <div class="login-box">
-            <h2>منصة د. سيف حاتم</h2>
-            <p>أدخل رقم الموبايل للتفعيل</p>
-            <input type="tel" id="userPhone" placeholder="رقم الموبايل">
-            <input type="password" id="confirmPhone" placeholder="تأكيد الرقم">
-            <button id="entryBtn">تفعيل الآن</button>
-        </div>
+    <div id="lock">
+        <h2>منصة د. سيف حاتم</h2>
+        <p>أدخل الرقم الموحد في الخانتين</p>
+        <input type="tel" placeholder="رقم الموبايل">
+        <input type="password" placeholder="تأكيد الرقم">
+        <button id="mainBtn">تفعيل الدخول</button>
     </div>
 
-    <div id="mainContent">
-        <h1>أهلاً بك في المحتوى التعليمي</h1>
-        <p>هذا المحتوى محمي بحقوق الطبع والنشر</p>
+    <div id="content" style="display:none; padding: 50px;">
+        <h1>مرحباً بك دكتور سيف</h1>
+        <p>المحتوى التعليمي متاح الآن ومحمي ضد التصوير.</p>
     </div>
 
 <script>
-const allowed = ["01096519733", "01024145579", "01557158858", "01070425452", "01098776162", "01095053073", "01063030940", "01020301679", "01063413116", "01279154986", "01115106965", "01022398761", "01004532748", "01097169300", "01211396484", "01125096828", "01012365405", "01098588382", "01099007524", "01019264166", "01011060533", "01556057243", "01062103454", "01154082093", "01033432364", "01008365306", "01119373447", "01278588055", "01019575716", "01098709208", "01006826049", "01096561506", "01020323198", "01015172286", "01080543325", "01270625932", "01096343776", "01128044301", "01024839332", "01021081359", "01220857026", "01556774673", "01276586756", "01551866777", "01110650473", "01060360234", "01027212037", "01119874632", "01142365707", "01010491890", "01501553104", "01090941321", "01067230360", "01080797172", "01270743989", "01021269155", "01096628829", "01029196074", "01273500413", "01203092834", "01002496711", "01123503877", "01009670748", "01003730269", "01552983676", "01270331961", "01029195750", "01004587268", "01012140245", "01023378861", "01278528994", "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918", "01287853209", "01552983705" ",];
-
-let scCount = 0;
+const allowed = ["01096519733", "01024145579", "01557158858", "01070425452", "01098776162", "01095053073", "01063030940", "01020301679", "01063413116", "01279154986", "01115106965", "01022398761", "01004532748", "01097169300", "01211396484", "01125096828", "01012365405", "01098588382", "01099007524", "01019264166", "01011060533", "01556057243", "01062103454", "01154082093", "01033432364", "01008365306", "01119373447", "01278588055", "01019575716", "01098709208", "01006826049", "01096561506", "01020323198", "01015172286", "01080543325", "01270625932", "01096343776", "01128044301", "01024839332", "01021081359", "01220857026", "01556774673", "01276586756", "01551866777", "01110650473", "01060360234", "01027212037", "01119874632", "01142365707", "01010491890", "01501553104", "01090941321", "01067230360", "01080797172", "01270743989", "01021269155", "01096628829", "01029196074", "01273500413", "01203092834", "01002496711", "01123503877", "01009670748", "01003730269", "01552983676", "01270331961", "01029195750", "01004587268", "01012140245", "01023378861", "01278528994", "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918", "01287853209", "01552983705"];
 
 window.onload = function() {
-    // ربط الزرار
-    document.getElementById('entryBtn').onclick = function() {
-        const u = document.getElementById('userPhone').value.trim();
-        const p = document.getElementById('confirmPhone').value.trim();
+    // ربط الزرار بأي طريقة
+    const btn = document.querySelector('button');
+    const inputs = document.querySelectorAll('input');
+    const lock = document.getElementById('lock');
+    const content = document.getElementById('content');
+
+    btn.onclick = function() {
+        const u = inputs[0].value.trim();
+        const p = inputs[1].value.trim();
         
         if (u !== "" && u === p && allowed.includes(u)) {
-            sessionStorage.setItem('access', 'true');
-            document.getElementById('loginOverlay').style.display = 'none';
+            sessionStorage.setItem('unlocked', 'true');
+            lock.style.display = 'none';
+            content.style.display = 'block';
             alert("تم التفعيل!");
         } else {
-            alert("خطأ في البيانات!");
+            alert("خطأ! تأكد من الرقم.");
         }
     };
 
-    // فحص الدخول
-    if (sessionStorage.getItem('access') === 'true') {
-        document.getElementById('loginOverlay').style.display = 'none';
+    if (sessionStorage.getItem('unlocked') === 'true') {
+        lock.style.display = 'none';
+        content.style.display = 'block';
     }
 
-    // حماية سكرين شوت
+    // منع تصوير الشاشة
     document.addEventListener('keyup', (e) => {
         if (e.key === 'PrintScreen' || e.keyCode === 44) {
-            scCount++;
             navigator.clipboard.writeText('محمي');
-            if (scCount === 1) alert("⚠️ ممنوع التصوير!");
-            else { alert("❌ خروج!"); sessionStorage.clear(); location.reload(); }
+            alert("⚠️ تصوير الشاشة ممنوع!");
+            sessionStorage.clear();
+            location.reload();
         }
     });
 };
