@@ -7,6 +7,42 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* تنسيق القائمة الجانبية */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #161d2b; /* نفس لون موقعك */
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.sidebar a {
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-align: right;
+}
+
+.sidebar a:hover {
+  color: #57ccff;
+  background: rgba(87, 204, 255, 0.1);
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+}
         .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -61,7 +97,13 @@
     </style>
 </head>
 <body>
-
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
+  <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
+  <a href="#"><i class="fas fa-book"></i> المناهج</a>
+  <a href="https://wa.me/201016054679"><i class="fab fa-whatsapp"></i> تواصل مع سيف</a>
+</div>
     <div id="gate">
         <h2 style="color: #57ccff;"> اكادميه دكتور سيف التعليميه</h2>
         <input type="tel" id="u" placeholder="رقم الهاتف">
@@ -72,7 +114,7 @@
     <div id="content">
         <div class="top-bar">
             <div class="logo-tag">S.A.B</div>
-            <i class="fas fa-bars" style="font-size: 24px;"></i>
+           <i class="fas fa-bars" onclick="openNav()" style="font-size: 24px; cursor: pointer;"></i>
         </div>
 
         <div class="hero">
@@ -142,6 +184,15 @@ function render() {
 
 window.onload = function() {
     if (sessionStorage.getItem('access') === 'done') render();
+}
+// دالة فتح القائمة الجانبية
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+}
+
+// دالة قفل القائمة الجانبية
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
 }
 </script>
 <a href="https://wa.me/201016054679" class="whatsapp-btn" target="_blank">
