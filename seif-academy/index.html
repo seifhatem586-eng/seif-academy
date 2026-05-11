@@ -8,6 +8,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* تنسيق القائمة الجانبية */
+        .sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1001; /* عشان تظهر فوق أي عنصر تاني */
+  top: 0;
+  left: 0;
+  background-color: #161d2b; 
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.sidebar a {
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-align: right;
+}
+
+.sidebar a:hover {
+  color: #57ccff; /* اللون السماوي بتاعك */
+  background: rgba(87, 204, 255, 0.1);
+  border-right: 4px solid #57ccff; /* حركة صايعة بتبين اللينك المختار */
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+  color: white;
+}
 .sidebar {
   height: 100%;
   width: 0;
@@ -102,7 +139,8 @@
   <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
   <a href="#"><i class="fas fa-book"></i> المناهج</a>
-  <a href="https://wa.me/201016054679"><i class="fab fa-whatsapp"></i> تواصل مع سيف</a>
+  <a href="https://wa.me/201016054679"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
+   <a href="https://www.facebook.com/share/1EKmE1jn7j/?mibextid=wwXIfr"><i class="fas fa-book"></i>seniors 2027</a>
 </div>
     <div id="gate">
         <h2 style="color: #57ccff;"> اكادميه دكتور سيف التعليميه</h2>
