@@ -47,6 +47,7 @@
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
+  <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
   <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
   <a href="#"><i class="fas fa-book"></i> المناهج</a>
   <a href="https://wa.me/201016054679"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
@@ -116,7 +117,13 @@ function login() {
         alert("الرقم غير مسجل أو غير متطابق، يرجى التواصل مع دكتور سيف للتفعيل!");
     }
 }
-
+function recordAttendance() {
+    const userPhone = document.getElementById('u').value || "طالب";
+    const date = new Date().toLocaleString('ar-EG');
+    alert("تم تسجيل حضورك بنجاح");
+    // بيبعت لك رسالة على الواتساب بتاعك بالرقم والوقت
+    window.open(`https://wa.me/201016054679?text=تسجيل حضور: ${userPhone} في وقت: ${date}`);
+}
 function render() {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('content').style.display = 'block';
