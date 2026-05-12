@@ -166,5 +166,30 @@ function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
     <i class="fab fa-whatsapp"></i>
     <span>تفعيل الحساب</span>
 </a>
+<!-- في نهاية الملف قبل </body> -->
+<script>
+async function recordAttendance() {
+    const userPhone = document.getElementById('u').value || "طالب";
+    const date = new Date().toLocaleString('ar-EG');
+    
+    // بيانات البوت والـ ID الخاص بـ Seif Hatem
+    const telegramToken = '8679920763:AAF2dkz1LavrVUL6TEpzACysIJh9CVe6DjE'; 
+    const chatId = '1418125920'; 
+    
+    const message = `📍 تسجيل حضور جديد في أكاديمية سيف:\n📱 رقم الطالب: ${userPhone}\n⏰ الوقت: ${date}\n👨‍💻 المسؤول: سيف حاتم`;
+
+    try {
+        await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
+        
+        sessionStorage.setItem('attended', 'true');
+        alert("✅ تم تسجيل حضورك بنجاح!");
+        closeNav(); // تأكد أن هذه الدالة موجودة عندك لإغلاق القائمة
+    } catch (error) {
+        sessionStorage.setItem('attended', 'true');
+        alert("تم تسجيل الحضور.");
+        closeNav();
+    }
+}
+</script>
 </body>
 </html>
