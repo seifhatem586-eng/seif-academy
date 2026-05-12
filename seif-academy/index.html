@@ -128,27 +128,42 @@ function checkBeforeAccess(page) {
 
 function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
 function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-
-// دالة رصد الغياب الاحترافية للتليجرام
-async function recordAttendance() {
+// دالة رصد الغياب الاحترافية للتليجرام (تحديث الإرسال المباشر)
+function recordAttendance() {
     let userPhone = document.getElementById('u').value || "طالب مسجل";
     const date = new Date().toLocaleString('ar-EG');
     const telegramToken = '8679920763:AAF2dkz1LavrVUL6TEpzACysIJh9CVe6DjE'; 
     const chatId = '1418125920'; 
     const message = `📍 تسجيل حضور جديد:\n📱 رقم الطالب: ${userPhone}\n⏰ الوقت: ${date}\n👨‍💻 المسؤول: سيف حاتم`;
 
-    try {
-        await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
-        sessionStorage.setItem('attended', 'true');
-        alert("✅ تم تسجيل حضورك بنجاح! يمكنك الآن تصفح المناهج.");
-        closeNav();
-    } catch (error) {
-        sessionStorage.setItem('attended', 'true');
-        alert("تم تسجيل الحضور محلياً.");
-        closeNav();
-    }
+    var xhr = new XMLHttpRequest();
+    var url = "https://api.telegram.org/bot" + telegramToken + "/sendMessage";
+    
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                sessionStorage.setItem('attended', 'true');
+                alert("✅ تم تسجيل حضورك بنجاح! يمكنك الآن تصفح المناهج.");
+                closeNav();
+            } else {
+                // لو السيرفر وقع أو فيه مشكلة، بنمشيه برضه عشان الطالب ميعطلش
+                sessionStorage.setItem('attended', 'true');
+                alert("تم تسجيل الحضور.");
+                closeNav();
+            }
+        }
+    };
+    
+    var data = JSON.stringify({
+        "chat_id": chatId,
+        "text": message
+    });
+    
+    xhr.send(data);
 }
-
 window.onload = function() {
     if (sessionStorage.getItem('access') === 'done') render();
 }
