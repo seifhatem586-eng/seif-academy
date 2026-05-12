@@ -8,37 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #0b111e; color: white; margin: 0; display: flex; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
-        
         .sidebar { height: 100%; width: 0; position: fixed; z-index: 1001; top: 0; left: 0; background-color: #161d2b; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); }
         .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #818181; display: block; transition: 0.3s; text-align: right; }
         .sidebar a:hover { color: #57ccff; background: rgba(87, 204, 255, 0.1); border-right: 4px solid #57ccff; }
         .sidebar .closebtn { position: absolute; top: 10px; right: 25px; font-size: 36px; color: white; }
-
         #gate { background: #161d2b; padding: 30px; border-radius: 20px; text-align: center; width: 100%; max-width: 400px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 10px 40px rgba(0,0,0,0.6); z-index: 1000; }
         input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 12px; border: 1px solid #2a3547; background: #0b111e; color: white; text-align: center; font-size: 16px; }
         .btn-go { width: 100%; padding: 14px; background: #2e66ff; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; margin-top: 10px; }
-
         #content { display: none; width: 100%; max-width: 500px; animation: fadeIn 0.5s; }
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         .logo-tag { background: #1e2638; padding: 8px 15px; border-radius: 10px; font-weight: bold; font-size: 20px; }
-        
         .hero { text-align: center; margin-bottom: 30px; }
         .hero h1 { color: #57ccff; font-size: 26px; margin-bottom: 5px; }
         .hero h2 { font-size: 34px; margin: 0; }
         .hero p { color: #8a96a3; font-size: 14px; line-height: 1.6; }
-
         .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
         .stat-box { background: #161d2b; padding: 20px 10px; border-radius: 18px; text-align: center; border: 1px solid #1e2638; }
         .stat-box h3 { font-size: 28px; margin: 0; color: #57ccff; }
         .stat-box span { font-size: 12px; color: #636e7b; display: block; margin-top: 5px; }
-
         .class-list h3 { font-size: 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .class-item { background: #161d2b; padding: 18px; border-radius: 18px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: white; transition: 0.3s; border: 1px solid transparent; cursor: pointer; }
         .class-item:hover { transform: scale(1.02); border-color: #2e66ff; }
         .active-blue { background: linear-gradient(90deg, #2e66ff, #6c5ce7); }
-
         .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; text-decoration: none; padding: 10px 18px; border-radius: 30px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; transition: 0.3s; }
-        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -49,7 +41,6 @@
   <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
   <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
-  <!-- إضافة دالة التحقق للمناهج في السايد بار -->
   <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
   <a href="https://wa.me/201016054679"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
   <a href="https://www.facebook.com/share/1EKmE1jn7j/"><i class="fas fa-graduation-cap"></i> Seniors 2027</a>
@@ -82,7 +73,6 @@
 
     <div class="class-list">
         <h3><i class="fas fa-graduation-cap" style="color:#57ccff"></i> اختار فرقتك الدراسية</h3>
-        <!-- تعديل الروابط لاستخدام دالة التحقق checkBeforeAccess -->
         <a onclick="checkBeforeAccess('level1.html')" class="class-item active-blue"><span>الفرقة الأولى</span></a>
         <a onclick="checkBeforeAccess('level2.html')" class="class-item"><span>الفرقة الثانية</span></a>
         <a onclick="checkBeforeAccess('level3.html')" class="class-item"><span>الفرقة الثالثة</span></a>
@@ -91,7 +81,7 @@
 </div>
 
 <script>
-// مصفوفة أرقام الطلاب المسجلين (كاملة كما هي)
+// مصفوفة أرقام الطلاب المسجلين
 const users = [
     "01096519733", "01024145579", "01557158858", "01090607988", "01278764964", "01055437182", "01555742099", "01080725453", "01272190704", "01128067783", "01025227785", "01096085541", "01551819938", "01118049824", "01112239427", "01013691355", "01559621760", "01094187142", "01096695456", "01032630993", "01080211951", "01062820825", "01201535590", "01015076890", "01021479464", "01030420358", "01069511492", "01099076055", "01029173226", "01203902008", "01005291045", "01115970373", "01098051362", "01064790427", "01503549944", 
     "01019010551", "01015571052", "01011185009", "01554214524", "01004532748", "01060120637", "01063912259", "01065530721", "01271408060", "01225180939", "01207383032", "01285328101", "01017484066", "01013705453", "01023267538", "01207168060", "01119896041", "01026461848", "01068979753", "01206427340", "01026845624", "01032069616", "01015524734", "01007784919", "01286038446", "01017097218", "01140096110", "01015792903", "01208946788", "01061048903", "01556161601", "01014207762", "01063191853", "01064320388", "01226196381", "01094487857", "01060341048", "01551722636", "01205850918", "01001961879", "01503157569", "01009243016", "01126447021", "01023062297", "01025700491", "01559546684", "01016841593", "01122045412", "01094475990", "01554452620", "01285687748", "01027421717", "01014328741", "01070425452", "01098776162", "01095053073", "01063030940", "01020301679", "01063413116", "01279154986", "01115106965", "01022398761", "01097169300", "01211396484", "01125096828", 
@@ -116,26 +106,9 @@ function login() {
     }
 }
 
-// تعديل دالة رصد الغياب لتسمح بدخول المنصة
-function recordAttendance() {
-    const userPhone = document.getElementById('u').value || "طالب";
-    const date = new Date().toLocaleString('ar-EG');
-    
-    // تسجيل إن الطالب حضر في الجلسة الحالية
-    sessionStorage.setItem('attended', 'true');
-    
-    alert("تم تسجيل حضورك بنجاح! المحتوى متاح الآن.");
-    
-    // إرسال الرسالة لك
-    window.open(`https://wa.me/201016054679?text=تسجيل حضور طالب: ${userPhone} في وقت: ${date}`, '_blank');
-    closeNav();
-}
-
 function render() {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('content').style.display = 'block';
-    
-    // إذا لم يسجل غياب، نبهه فور الدخول
     if (sessionStorage.getItem('attended') !== 'true') {
         setTimeout(() => {
             alert("أهلاً بك! يرجى الضغط على 'رصد غياب' من القائمة الجانبية لتفعيل الدخول للمناهج.");
@@ -144,7 +117,6 @@ function render() {
     }
 }
 
-// دالة جديدة لحماية الروابط
 function checkBeforeAccess(page) {
     if (sessionStorage.getItem('attended') === 'true') {
         window.location.href = page;
@@ -154,41 +126,34 @@ function checkBeforeAccess(page) {
     }
 }
 
-window.onload = function() {
-    if (sessionStorage.getItem('access') === 'done') render();
-}
-function openNav() { 
-    document.getElementById("mySidebar").style.width = "250px"; 
-}
+function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
 
-function closeNav() { 
-    document.getElementById("mySidebar").style.width = "0"; 
-}
-
-// دالة رصد الغياب الخاصة بأكاديمية سيف
+// دالة رصد الغياب الاحترافية للتليجرام
 async function recordAttendance() {
-    let userPhone = document.getElementById('u') ? document.getElementById('u').value : "طالب مسجل";
+    let userPhone = document.getElementById('u').value || "طالب مسجل";
     const date = new Date().toLocaleString('ar-EG');
-    
     const telegramToken = '8679920763:AAF2dkz1LavrVUL6TEpzACysIJh9CVe6DjE'; 
     const chatId = '1418125920'; 
-    
     const message = `📍 تسجيل حضور جديد:\n📱 رقم الطالب: ${userPhone}\n⏰ الوقت: ${date}\n👨‍💻 المسؤول: سيف حاتم`;
 
     try {
         await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
         sessionStorage.setItem('attended', 'true');
-        alert("✅ تم تسجيل حضورك بنجاح!");
+        alert("✅ تم تسجيل حضورك بنجاح! يمكنك الآن تصفح المناهج.");
         closeNav();
     } catch (error) {
         sessionStorage.setItem('attended', 'true');
-        alert("تم تسجيل الحضور.");
+        alert("تم تسجيل الحضور محلياً.");
         closeNav();
     }
 }
+
+window.onload = function() {
+    if (sessionStorage.getItem('access') === 'done') render();
+}
 </script>
 
-<!-- زرار الواتساب للتواصل -->
 <a href="https://wa.me/201016054679" class="whatsapp-btn" target="_blank">
    <i class="fab fa-whatsapp"></i>
    <span>تفعيل الحساب</span>
