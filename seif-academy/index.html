@@ -141,6 +141,8 @@ function login() {
     if (valU === valP && users.includes(valU)) {
         sessionStorage.setItem('access', 'done');
         sessionStorage.setItem('userPhone', valU);
+        document.getElementById('watermark-container')?.remove();
+makeWatermark();
         render();
     } else {
         alert("الرقم غير مسجل أو غير متطابق، يرجى التواصل مع دكتور سيف للتفعيل!");
