@@ -7,29 +7,34 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @media print {
+            body {
+                display: none !important;
+            }
+        }
         /* طبقة العلامة المائية الشفافة */
-#watermark-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; 
-    z-index: 9999; 
-    opacity: 0.06; 
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
-}
-.watermark-text {
-    font-size: 22px;
-    color: #fff; /* خليتها أبيض عشان تليق مع ثيم موقعك الغامق */
-    transform: rotate(-30deg); 
-    padding: 50px;
-    user-select: none; 
-}
+        #watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            z-index: 9999; 
+            opacity: 0.06; 
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+        .watermark-text {
+            font-size: 22px;
+            color: #fff; /* خليتها أبيض عشان تليق مع ثيم موقعك الغامق */
+            transform: rotate(-30deg); 
+            padding: 50px;
+            user-select: none; 
+        }
         body { font-family: 'Segoe UI', sans-serif; background-color: #0b111e; color: white; margin: 0; display: flex; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
         .sidebar { height: 100%; width: 0; position: fixed; z-index: 1001; top: 0; left: 0; background-color: #161d2b; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); }
         .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #818181; display: block; transition: 0.3s; text-align: right; }
@@ -111,11 +116,11 @@ const users = ["01096519733", "01024145579", "01557158858", "01090607988", "0127
 , "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918","01208947376","01064968860","01012140245","01066268060","01069825229","01281733305","01090614614","01551725561","01503774747","01554595356","01029309674","01097028857","01090784003","01008060659","01010327469",
 , "01287853209", "01552983705", "01012084505", "01010933038", "01099676016","01030135429","01288067256","01080458820","01060331073","01026537838","01020970766","01050636601","01050636601","01080068276","01050604270","01008060659","01066745219","01020543283","01289135760","01551725561","01030501880","01009781985","01065081560","01552247079",
 , "01552247079", "01025431723", "01097067165", "01099517891", "01067984698","01090411734","01024193448","01202730126","01092960756","01032647191","01050764900","01000348864","01009165362","01026237595","01212104043","01212104043","01508248612","01505890895","01005652684","01030501880","01021451475","01144191701","01018886404","01101410447","01093159368",
-, "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725","01024097772","01022681280","01015305980","01063366584","01210718941","01068517687","01014113723","01027875619","01024908640","01033651769", "01017678227", "01016054679", "01127324780", "01554588159", "01032346454", "01092627331", "01090430372", "01020828609", "01557868063", "01229579779", "01009674239", "01118772651", "01096896424", "01274910604", "01226472681", "01004009034", "01023731162", "01556279610", "01034799972","01223952569","01004212280","01225256415","01558801728","01050101600","01029017985","01006076347","01003674885","01503747487","01069223376","01559090174","01211980941",
+, "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "1149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725","01024097772","01022681280","01015305980","01063366584","01210718941","01068517687","01014113723","01027875619","01024908640","01033651769", "01017678227", "01016054679", "01127324780", "01554588159", "01032346454", "01092627331", "01090430372", "01020828609", "01557868063", "01229579779", "01009674239", "01118772651", "01096896424", "01274910604", "01226472681", "01004009034", "01023731162", "01556279610", "01034799972","01223952569","01004212280","01225256415","01558801728","01050101600","01029017985","01006076347","01003674885","01503747487","01069223376","01559090174","01211980941",
 ,"01031372272"];
+
 // دالة إنشاء العلامة المائية برقم الطالب
 function makeWatermark() {
-    // بتجيب الرقم المتخزن، ولو الطالب لسه مأسجلش بتكتب اسم الأكاديمية
     const studentPhone = sessionStorage.getItem('userPhone') || "أكاديمية سيف"; 
     const container = document.createElement('div');
     container.id = 'watermark-container';
@@ -129,8 +134,30 @@ function makeWatermark() {
     document.body.appendChild(container);
 }
 
+// 1. منع كليك يمين تماماً عشان محدش يعمل Inspect أو يحفظ الصور
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// 2. منع اختصارات تصوير الشاشة وأدوات المطورين وحفظ الصفحة
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'))) {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
+        e.preventDefault();
+    }
+});
+
+// 3. منع زرار الـ Print Screen ومسح الكليب بورد فوراً لو داسه
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'PrintScreen') {
+        navigator.clipboard.writeText(''); 
+        alert('غير مسموح بأخذ لقطة شاشة للمنصة لحماية المحتوى!');
+    }
+});
+
 // تشغيل العلامة المائية أول ما الصفحة تفتح
 document.addEventListener("DOMContentLoaded", makeWatermark);
+
 function login() {
     const valU = document.getElementById('u').value.trim();
     const valP = document.getElementById('p').value.trim();
@@ -142,7 +169,7 @@ function login() {
         sessionStorage.setItem('access', 'done');
         sessionStorage.setItem('userPhone', valU);
         document.getElementById('watermark-container')?.remove();
-makeWatermark();
+        makeWatermark();
         render();
     } else {
         alert("الرقم غير مسجل أو غير متطابق، يرجى التواصل مع دكتور سيف للتفعيل!");
@@ -160,6 +187,7 @@ function render() {
     }
 }
 
+// التحقق من الغياب قبل فتح المناهج
 function checkBeforeAccess(page) {
     if (sessionStorage.getItem('attended') === 'true') {
         window.location.href = page;
@@ -174,10 +202,10 @@ function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
 
 // دالة رصد الغياب الجديدة للربط مع جوجل شيت
 function recordAttendance() {
-    let userPhone = document.getElementById('u').value || "طالب مسجل";
+    // تعديل: القراءة مباشرة من الـ sessionStorage لضمان إرسال الرقم الحقيقي حتى لو عمل ريفريش
+    let userPhone = sessionStorage.getItem('userPhone') || "طالب مسجل";
     const date = new Date().toLocaleString('ar-EG');
     
-    // حط اللينك بتاعك اللي آخره exec هنا
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzRjAbjcmYQJlWTFfC6lXFIJc2Qfb3FWcqKow1mtecbX302JXn7xqaVM2GOTX_Smfh7jQ/exec'; 
 
     const data = {
