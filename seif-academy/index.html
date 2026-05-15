@@ -7,6 +7,29 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* طبقة العلامة المائية الشفافة */
+#watermark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 9999; 
+    opacity: 0.06; 
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+.watermark-text {
+    font-size: 22px;
+    color: #fff; /* خليتها أبيض عشان تليق مع ثيم موقعك الغامق */
+    transform: rotate(-30deg); 
+    padding: 50px;
+    user-select: none; 
+}
         body { font-family: 'Segoe UI', sans-serif; background-color: #0b111e; color: white; margin: 0; display: flex; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; }
         .sidebar { height: 100%; width: 0; position: fixed; z-index: 1001; top: 0; left: 0; background-color: #161d2b; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); }
         .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #818181; display: block; transition: 0.3s; text-align: right; }
@@ -90,7 +113,24 @@ const users = ["01096519733", "01024145579", "01557158858", "01090607988", "0127
 , "01552247079", "01025431723", "01097067165", "01099517891", "01067984698","01090411734","01024193448","01202730126","01092960756","01032647191","01050764900","01000348864","01009165362","01026237595","01212104043","01212104043","01508248612","01505890895","01005652684","01030501880","01021451475","01144191701","01018886404","01101410447","01093159368",
 , "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725","01024097772","01022681280","01015305980","01063366584","01210718941","01068517687","01014113723","01027875619","01024908640","01033651769", "01017678227", "01016054679", "01127324780", "01554588159", "01032346454", "01092627331", "01090430372", "01020828609", "01557868063", "01229579779", "01009674239", "01118772651", "01096896424", "01274910604", "01226472681", "01004009034", "01023731162", "01556279610", "01034799972","01223952569","01004212280","01225256415","01558801728","01050101600","01029017985","01006076347","01003674885","01503747487","01069223376","01559090174","01211980941",
 ,"01031372272"];
+// دالة إنشاء العلامة المائية برقم الطالب
+function makeWatermark() {
+    // بتجيب الرقم المتخزن، ولو الطالب لسه مأسجلش بتكتب اسم الأكاديمية
+    const studentPhone = sessionStorage.getItem('userPhone') || "أكاديمية سيف"; 
+    const container = document.createElement('div');
+    container.id = 'watermark-container';
 
+    for (let i = 0; i < 40; i++) {
+        const box = document.createElement('div');
+        box.className = 'watermark-text';
+        box.innerText = studentPhone;
+        container.appendChild(box);
+    }
+    document.body.appendChild(container);
+}
+
+// تشغيل العلامة المائية أول ما الصفحة تفتح
+document.addEventListener("DOMContentLoaded", makeWatermark);
 function login() {
     const valU = document.getElementById('u').value.trim();
     const valP = document.getElementById('p').value.trim();
@@ -100,6 +140,7 @@ function login() {
     }
     if (valU === valP && users.includes(valU)) {
         sessionStorage.setItem('access', 'done');
+        sessionStorage.setItem('userPhone', valU);
         render();
     } else {
         alert("الرقم غير مسجل أو غير متطابق، يرجى التواصل مع دكتور سيف للتفعيل!");
