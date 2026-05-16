@@ -82,7 +82,7 @@
                     if(!studentId) continue;
                     totalLogs++;
 
-                    if (action && action.includes("محاولة تصوير")) {
+                   if (action && (action.includes("تصوير") || action.includes("شاشة") || action.includes("مخالفة"))) {
                         totalViolations++;
                         suspectList[studentId] = (suspectList[studentId] || 0) + 1;
                         tableHtml += `<tr><td><b>${studentId}</b></td><td style="direction: ltr; text-align: right;">${dateTime}</td><td><span class="badge-danger">${action}</span></td></tr>`;
