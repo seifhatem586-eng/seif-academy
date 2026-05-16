@@ -74,18 +74,19 @@
                 const rows = data.split("\n").map(row => row.split(","));
                 let totalLogs = 0, totalViolations = 0, suspectList = {}, tableHtml = "";
 
-                for (let i = rows.length - 1; i >= 1; i--) {
-                    if (rows[i].length < 3) continue;
-                    let studentId = rows[i][0]?.replace(/"/g, '').trim();
-                    let dateTime = rows[i][1]?.replace(/"/g, '').trim();
-                    let action = rows[i][2]?.replace(/"/g, '').trim();
-                    if(!studentId) continue;
+             for (let i = rows.length - 1; i >= 1; i--) {
+                    let rowText = rows[i].join(" "); 
+                    if (!rowText.trim()) continue;
                     totalLogs++;
 
-                  if (action && (action.includes("تصوير") || action.includes("خروج") || action.includes("المنصة"))) {
+                    let studentId = rows[i][0]?.replace(/"/g, '').trim() || "غير معروف";
+                    let dateTime = rows[i][1]?.replace(/"/g, '').trim() || "";
+                    let action = rows[i][2]?.replace(/"/g, '').trim() || rowText;
+
+                    if (rowText.includes("تصوير") || rowText.includes("خروج") || rowText.includes("المنصة")) {
                         totalViolations++;
                         suspectList[studentId] = (suspectList[studentId] || 0) + 1;
-                        tableHtml += `<tr><td><b>${studentId}</b></td><td style="direction: ltr; text-align: right;">${dateTime}</td><td><span class="badge-danger">${action}</span></td></tr>`;
+                        tableHtml += `<tr><td><b>${studentId}</b></td><td style="direction: ltr; text-align: right;">${dateTime}</td><td><span class="badge-danger">⚠️ محاولة تصوير أو خروج</span></td></tr>`;
                     }
                 }
 
