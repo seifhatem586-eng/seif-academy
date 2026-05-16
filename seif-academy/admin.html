@@ -6,76 +6,82 @@
     <title>لوحة تحكم الأدمن | سيف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: sans-serif; padding: 20px; margin: 0; }
-        .header { text-align: center; margin-bottom: 30px; color: #58a6ff; }
-        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .card { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .card h3 { margin: 0 0 10px 0; color: #8b949e; }
-        .card .value { font-size: 24px; font-weight: bold; color: #ff7b72; }
-        .card .value.safe { color: #56d364; }
-        table { width: 100%; border-collapse: collapse; background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
-        th, td { padding: 12px 15px; text-align: right; border-bottom: 1px solid #30363d; }
-        th { background-color: #21262d; color: #58a6ff; }
-        tr:hover { background-color: #21262d; }
-        .badge-danger { background-color: #f85149; color: white; padding: 3px 8px; border-radius: 5px; font-size: 12px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; color: #fff; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h2 { text-align: center; color: #00adb5; margin-bottom: 30px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background-color: #222831; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #393e46; }
+        .stat-card h3 { margin: 0 0 10px 0; color: #eeeeee; font-size: 16px; }
+        .stat-card .p-number { font-size: 28px; font-weight: bold; margin: 0; color: #00adb5; }
+        .stat-card .p-number.danger { color: #ff2e63; }
+        .table-container { background-color: #222831; border-radius: 8px; padding: 20px; border: 1px solid #393e46; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: right; }
+        th, td { padding: 12px; border-bottom: 1px solid #393e46; }
+        th { color: #00adb5; font-size: 14px; }
+        .badge-danger { background-color: #ff2e63; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
     </style>
 </head>
 <body>
+    <script>
+        const password = prompt("أدخل الرقم السري لمدير الإدارة:");
+        if (password !== "Seif@2026") {
+            alert("رقم سري خاطئ!");
+            window.location.href = "index.html";
+        }
+    </script>
 
-    <div class="header">
+    <div class="container">
         <h2><i class="fas fa-user-shield"></i> لوحة تحكم الأكاديمية السرية</h2>
-        <p>تحليل البيانات والرقابة الفورية</p>
-    </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> إجمالي المخالفات رُصدت</h3>
+                <p class="p-number danger" id="total-violations">0</p>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-user-slash"></i> الطالب الأكثر مخالفة</h3>
+                <p class="p-number" id="top-offender" style="color: #ff2e63; font-size: 18px;">لا يوجد</p>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-users"></i> إجمالي حركات النشاط</h3>
+                <p class="p-number" id="total-logs">0</p>
+            </div>
+        </div>
 
-    <div class="stats-container">
-        <div class="card">
-            <h3><i class="fas fa-exclamation-triangle" style="color:#ff7b72;"></i> إجمالي المخالفات رُصدت</h3>
-            <div class="value" id="total-violations">جاري التحميل...</div>
+        <div class="table-container">
+            <h3><i class="fas fa-history"></i> آخر محاولات الاختراق والتصوير</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم الطالب (الموبايل)</th>
+                        <th>التاريخ والوقت</th>
+                        <th>الحالة / الحركة</th>
+                    </tr>
+                </thead>
+                <tbody id="log-table-body">
+                    <tr>
+                        <td colspan="3" style="text-align: center;">جاري تحميل البيانات لايف...</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="card">
-            <h3><i class="fas fa-user-slash" style="color:#ff7b72;"></i> الطالب الأكثر مخالفة</h3>
-            <div class="value" id="top-offender" style="font-size:18px;">جاري التحميل...</div>
-        </div>
-        <div class="card">
-            <h3><i class="fas fa-users" style="color:#56d364;"></i> إجمالي حركات النشاط</h3>
-            <div class="value safe" id="total-logs">جاري التحميل...</div>
-        </div>
-    </div>
-
-    <h3><i class="fas fa-history"></i> آخر محاولات الاختراق والتصوير</h3>
-    <div style="overflow-x:auto;">
-        <table>
-            <thead>
-                <tr>
-                    <th>رقم الطالب (الموبايل)</th>
-                    <th>التاريخ والوقت</th>
-                    <th>الحالة / الحركة</th>
-                </tr>
-            </thead>
-            <tbody id="log-table-body"></tbody>
-        </table>
     </div>
 
     <script>
-        // حماية الصفحة برقم سري أول ما تفتح
-        const password = prompt("أدخل الرقم السري لمدير الإدارة:");
-        if (password !== "Seif@2026") { 
-            alert("عذراً، ليس لديك صلاحية لدخول هذه الصفحة!");
-            window.location.href = "index.html"; 
-        }
-
-        // رابط الجوجل شيت اللي نسخته بصيغة CSV
-        const sheetCsvUrl = "حط_رابط_الجوجل_شيت_بتاعك_هنا";
+        const sheetUrl = "https://docs.google.com/spreadsheets/d/12SvEgNPsMIEye8eGGQ63CHolgD0p4xjcDIBgoF7YI8A/export?format=csv";
 
         async function fetchAndAnalyzeData() {
             try {
-                const response = await fetch(sheetCsvUrl);
+                const response = await fetch(sheetUrl);
                 const data = await response.text();
                 const rows = data.split("\n").map(row => row.split(","));
+                
                 let totalLogs = 0, totalViolations = 0, suspectList = {}, tableHtml = "";
 
-             for (let i = rows.length - 1; i >= 1; i--) {
-                    let rowText = rows[i].join(" "); 
+                for (let i = rows.length - 1; i >= 1; i--) {
+                    if (!rows[i] || rows[i].length < 2) continue;
+                    
+                    let rowText = rows[i].join(" ");
                     if (!rowText.trim()) continue;
                     totalLogs++;
 
@@ -83,6 +89,7 @@
                     let dateTime = rows[i][1]?.replace(/"/g, '').trim() || "";
                     let action = rows[i][2]?.replace(/"/g, '').trim() || rowText;
 
+                    // هنا بنفحص السطر بالكامل وبنحول الحروف لتجنب أي مشاكل
                     if (rowText.includes("تصوير") || rowText.includes("خروج") || rowText.includes("المنصة")) {
                         totalViolations++;
                         suspectList[studentId] = (suspectList[studentId] || 0) + 1;
@@ -101,12 +108,15 @@
                 document.getElementById("total-logs").innerText = totalLogs;
                 document.getElementById("total-violations").innerText = totalViolations;
                 document.getElementById("top-offender").innerText = topOffender;
-                document.getElementById("log-table-body").innerHTML = tableHtml || "<tr><td colspan='3' style='text-align:center;'>لا توجد مخالفات مسجلة!</td></tr>";
+                document.getElementById("log-table-body").innerHTML = tableHtml || "<tr><td colspan='3' style='text-align: center;'>لا توجد مخالفات مسجلة!</td></tr>";
+
             } catch (error) {
                 console.error(error);
             }
         }
+
         fetchAndAnalyzeData();
+        // التحديث السريع كل ثانيتين تلقائياً
         setInterval(fetchAndAnalyzeData, 2000);
     </script>
 </body>
