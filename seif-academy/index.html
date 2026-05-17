@@ -300,23 +300,64 @@ document.addEventListener("DOMContentLoaded", () => {
 function login() {
     const valU = document.getElementById('u').value.trim();
     const valP = document.getElementById('p').value.trim();
+    
+    // 1. التأكد إن الحقول مش فاضية
     if (valU === "" || valP === "") {
         alert("من فضلك أدخل البيانات المطلوبة أولاً!");
         return;
     }
-   if (valU === valP && users.includes(valU)) {
-            sessionStorage.setItem('access', 'done');
-            sessionStorage.setItem('userPhone', valU);
-            document.getElementById('watermark-container')?.remove();
-            makeWatermark();
-            render();
-            if (valU === "01016054679") {
-    document.getElementById("admin-link").style.display = "block";
-}
+    
+    // 2. التأكد إن الرقمين متطابقين وموجودين في كشف المشتركين
+    if (valU === valP && users.includes(valU)) {
+        
+        // 🔒 الـكـمـيـن: نظام قفل الجهاز على أول رقم يدخل بيه
+        let savedNumber = localStorage.getItem("registered_student_phone");
+        
+        if (!savedNumber) {
+            // أول مرة يدخل من الجهاز ده؟ نربط الجهاز برقم تليفونه فوراً
+            localStorage.setItem("registered_student_phone", valU);
+        } else if (savedNumber !== valU) {
+            // قفشة! كاتب رقم مختلف عن الرقم الأصلي بتاع الجهاز ده
+            localStorage.setItem("is_banned", "true");
             
-          
-        } else {
-        alert("الرقم غير مسجل أو غير متطابق، يرجى التواصل مع دكتور سيف للتفعيل!");
+            // نبعت البلاغ فوراً للجوجل شيت
+            let date = new Date().toLocaleString('ar-EG');
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'p': valU,
+                    'd': date,
+                    'a': `🚨 محاولة اختراق: دخول برقم طالب آخر! (الرقم الأصلي للجهاز: ${savedNumber})`
+                })
+            });
+            
+            // نقفل الشاشة باللون الأحمر
+            triggerBlockScreen();
+            return; // نوقف الكود هنا وما نخليهوش يدخل
+        }
+
+        // لو الجهاز سليم والرقم مظبوط، يكمل دخول عادي
+        sessionStorage.setItem('access', 'done');
+        sessionStorage.setItem('userPhone', valU);
+        
+        document.getElementById('watermark-container')?.remove();
+        makeWatermark();
+        render();
+        
+        // لو الأدمن (أنت) اللي داخل يظهر زرار لوحة التحكم
+        if (valU === "01016054679") {
+            document.getElementById("admin-link").style.display = "block";
+        }
+        
+        // نفتح محتوى المنصة ونخفي البوابة
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("content").style.display = "block";
+
+    } else {
+        // لو الرقمين مش متطابقين أو مش في السيستم
+        alert("البيانات غير متطابقة، يرجى التواصل مع دكتور سيف للتفعيل!");
     }
 }
 
