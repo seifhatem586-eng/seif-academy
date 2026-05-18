@@ -7,6 +7,61 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ستايل زرار المظهر العائم */
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* عكس زرار الواتساب عشان ما يغطوش على بعض */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2e66ff;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* 🌟 الألوان الفاتحة لما الـ Light Mode يشتغل 🌟 */
+body.light-mode {
+    background-color: #f4f6f9 !important;
+    color: #1a1a1a !important;
+}
+
+body.light-mode #gate, 
+body.light-mode .sidebar {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+body.light-mode .sidebar a {
+    color: #333333 !important;
+}
+
+body.light-mode .sidebar a:hover {
+    background-color: #f0f2f5 !important;
+    color: #2e66ff !important;
+}
+
+body.light-mode input[type="tel"] {
+    background-color: #eef1f6 !important;
+    color: #1a1a1a !important;
+    border: 1px solid #ccd4e0 !important;
+}
+
+body.light-mode h2, body.light-mode h1 {
+    color: #2e66ff !important; /* يقلب أزرق شيك في الوضع الفاتح */
+}
         /* ستايل الشاشة الترحيبية */
 #splash-screen {
     position: fixed;
@@ -118,6 +173,9 @@
     </style>
 </head>
 <body>
+    <button id="theme-toggle" onclick="toggleTheme()">
+    <i id="theme-icon" class="fas fa-sun"></i>
+</button>
     <div id="splash-screen">
     <div class="splash-content">
         <i class="fas fa-graduation-cap splash-logo"></i>
@@ -491,6 +549,32 @@ window.addEventListener("DOMContentLoaded", () => {
             }, 500); // وقت الأنيميشن أثناء الاختفاء
         }
     }, 2500); // 2500 مللي ثانية يعني ثانيتين ونص (تقدر تغيرها براحتك)
+});
+// دالة تبديل المظهر بين الفاتح والغامق
+function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById("theme-icon");
+    
+    // بنقلب الكلاس جوة الـ body
+    body.classList.toggle("light-mode");
+    
+    // بنغير شكل الأيقونة (شمس أو قمر) بناءً على الوضع
+    if (body.classList.contains("light-mode")) {
+        icon.className = "fas fa-moon"; // يظهر قمر عشان لو عايز يرجع للغامق
+        localStorage.setItem("theme", "light"); // بنحفظ اختيار الطالب في الجهاز
+    } else {
+        icon.className = "fas fa-sun"; // يظهر شمس عشان لو عايز يقلب فاتح
+        localStorage.setItem("theme", "dark");
+    }
+}
+
+// كود إضافي عشان لو الطالب قفل الموقع وفتحه يفتكر هو كان مختار أنهي وضع
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        document.getElementById("theme-icon").className = "fas fa-moon";
+    }
 });
 </script>
 
