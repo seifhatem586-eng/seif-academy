@@ -9,11 +9,10 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ستايل زرار المظهر العائم */
 #theme-toggle {
     position: fixed;
     bottom: 20px;
-    left: 20px; /* عكس زرار الواتساب عشان ما يغطوش على بعض */
+    left: 20px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -33,8 +32,6 @@
 #theme-toggle:hover {
     transform: scale(1.1);
 }
-
-/* 🌟 الألوان الفاتحة لما الـ Light Mode يشتغل 🌟 */
 body.light-mode {
     background-color: #f4f6f9 !important;
     color: #1a1a1a !important;
@@ -62,23 +59,21 @@ body.light-mode input[type="tel"] {
 }
 
 body.light-mode h2, body.light-mode h1 {
-    color: #2e66ff !important; /* يقلب أزرق شيك في الوضع الفاتح */
+    color: #2e66ff !important;
 }
-        /* ستايل الشاشة الترحيبية */
 #splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0b0f19; /* نفس لون خلفية منصتك الغامق */
+    background-color: #0b0f19; 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999; /* عشان تغطي الشاشة كلها فوق أي عنصر */
+    z-index: 99999;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 .splash-content {
     text-align: center;
     animation: fadeIn 1.2s ease-in-out;
@@ -86,7 +81,7 @@ body.light-mode h2, body.light-mode h1 {
 
 .splash-logo {
     font-size: 4rem;
-    color: #2e66ff; /* اللون الأزرق المميز بتاعك */
+    color: #2e66ff;
     margin-bottom: 20px;
     animation: pulse 1.5s infinite alternate;
 }
@@ -97,14 +92,10 @@ body.light-mode h2, body.light-mode h1 {
     margin-bottom: 25px;
     font-family: sans-serif;
 }
-
-/* الأنميشن الخاص باللوجو */
 @keyframes pulse {
     0% { transform: scale(1); opacity: 0.8; }
     100% { transform: scale(1.1); opacity: 1; }
 }
-
-/* لودر التحميل الدائري النيون */
 .splash-loader {
     width: 40px;
     height: 40px;
@@ -124,7 +115,6 @@ body.light-mode h2, body.light-mode h1 {
                 display: none !important;
             }
         }
-        /* طبقة العلامة المائية الشفافة */
         #watermark-container {
             position: fixed;
             top: 0;
@@ -236,18 +226,16 @@ const users = [,"01016054679" ,"01096519733", "01024145579", "01557158858", "010
 , "01011060533", "01556057243", "01062103454", "01062520843" , "01003793882","01092614385","01014328741","01024016407", "01030304528","01025871790","01091415159","01065841762", "01027979586","01026586665","01006159769","01034810557","01208976613","01080580324","01096341648","01000123705","01507783169","01129809760","01097733196","01226192566","01050033183","01212595784","01024915528","01061987512","01210773905", "01154082093", "01033432364", "01008365306", "01119373447", "01278588055", "01019575716", "01098709208", "01006826049", "01096561506", "01020323198", "01015172286", "01080543325", "01270625932", "01096343776", "01128044301", "01024839332", "01021081359", "01220857026", "01556774673", "01276586756", "01551866777", "01110650473", "01060360234", "01027212037", "01119874632", "01142365707", "01010491890", "01501553104", "01090941321", "01067230360", "01080797172", "01270743989", "01021269155", "01096628829", "01029196074", "01273500413", "01203092834", "01002496711", "01123503877", "01009670748", "01003730269",
 , "01552983676", "01270331961", "01029195750", "01004587268", "01012140245", "01023378861", "01278528994","01002150631","01032808203","01032441687","01150097388","01032588293","01013460992","01062075827","01025032985","01144191701","01285603541","01062075827","01280731468","01278697945","01009674239","01031690801","01002491268","01095616059","01062807746","01091533080","01060539504","01289814530","01146939205","01032619806","01101410447","01024014076","01024172139","01097282473","01140971814","01550603802","01095776167","01101421829","01024439465","01281067106","01099135866","01013498487",
 , "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918","01208947376","01064968860","01012140245","01066268060","01069825229","01281733305","01090614614","01551725561","01503774747","01554595356","01029309674","01097028857","01090784003","01008060659","01010327469","01025602837","01068690264","01020047330","01550549559","01018721936","01008266036","01151673459","01095877685","01556376388","01211402848","01018930605","01098436804","01029177375","01032133789",
-, "01287853209", "01552983705", "01012084505", "01010933038", "01099676016","01030135429","01288067256","01080458820","01060331073","01026537838","01020970766","01050636601","01050636601","01080068276","01050604270","01008060659","01066745219","01020543283","01289135760","01551725561","01030501880","01009781985","01065081560","01552247079","01006923178","01551722636","010108228217","01036446933","01033307212","01509096966","01097282473","01007836838","01033045707","01021297540","01098176544","01032098375","01025508147","01097286415","01140558014",
-, "01552247079", "01025431723", "01097067165", "01099517891", "01067984698","01090411734","01024193448","01202730126","01092960756","01032647191","01050764900","01000348864","01009165362","01026237595","01212104043","01212104043","01508248612","01505890895","01005652684","01030501880","01021451475","01144191701","01018886404","01101410447","01093159368","01027659835","01278640447","01025508147","01553629842","01016931070","01036446933","0 15 59662724","01092062392","01019827566","01029407897","01055327570","01224935204","01559662724","01040693301","01044063259","01019721000","01551889588","01032760168","01060278431","01038410356","01060159041","01013467928","01129021087",
+, "01287853209", "01552983705", "01012084505", "01010933038", "01099676016","01030135429","01288067256","01080458820","01060331073","01026537838","01020970766","01050636601","01050636601","01080068276","01050604270","01008060659","01066745219","01020543283","01289135760","01551725561","01030501880","01009781985","01065081560","01552247079","01006923178","01551722636","010108228217","01036446933","01033307212","01509096966","01097282473","01007836838","01033045707","01021297540","01098176544","01032098375","01025508147","01097286415","01140558014","01019721000","01551889588","01032760168","01060278431",
+, "01552247079", "01025431723", "01097067165", "01099517891", "01067984698","01090411734","01024193448","01202730126","01092960756","01032647191","01050764900","01000348864","01009165362","01026237595","01212104043","01212104043","01508248612","01505890895","01005652684","01030501880","01021451475","01144191701","01018886404","01101410447","01093159368","01027659835","01278640447","01025508147","01553629842","01016931070","01036446933","0 15 59662724","01092062392","01019827566","01029407897","01055327570","01224935204","01559662724","01040693301","01044063259","01038410356","01060159041","01013467928","01129021087",
 , "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725","01024097772","01022681280","01015305980","01063366584","01210718941","01068517687","01014113723","01027875619","01024908640","01033651769", "01017678227", "01016054679", "01127324780", "01554588159", "01032346454", "01092627331", "01090430372", "01020828609", "01557868063", "01229579779", "01009674239", "01118772651", "01096896424", "01274910604", "01226472681", "01004009034", "01023731162", "01556279610", "01034799972","01223952569","01004212280","01225256415","01558801728","01050101600","01029017985","01006076347","01003674885","01503747487","01069223376","01559090174","01211980941",
 ,"01031372272",
 "01031372272"];
-// 1. فحص فوري أول ما الصفحة تفتح: لو الجهاز ممسوك قبل كده ومحظور، اقفل في وشه علطول
 if (localStorage.getItem("is_banned") === "true") {
     triggerBlockScreen();
 }
 
 function login() {
-    // جلب الأرقام المدخلة من الحقول اللي عندك في الفورم
     let inputPhoneNumber = document.getElementById("u").value.trim();
     let confirmPhoneNumber = document.getElementById("p").value.trim();
 
@@ -259,33 +247,21 @@ function login() {
         alert("رقم الهاتف غير متطابق!");
         return;
     }
-
-    // التأكد أولاً إن الرقم اللي كاتبه موجود أصلاً في مصفوفة الـ users المسموح ليها
     if (!users.includes(inputPhoneNumber)) {
         alert("هذا الرقم غير مسجل بالأكاديمية!");
         return;
     }
-
-    // 2. كمين الأجهزة: بنشوف الرقم اللي متسجل للجهاز ده من أول مرة
     let savedNumber = localStorage.getItem("registered_student_phone");
 
     if (!savedNumber) {
-        // لو أول مرة يفتح من الموبايل ده، بنربط الموبايل بالرقم ده للأبد
         localStorage.setItem("registered_student_phone", inputPhoneNumber);
         console.log("تم ربط جهازك برقمك بنجاح.");
-        
-        // احفظ الرقم في الـ sessionStorage عشان دالة التقرير اللي عندك (السطر 140) تقرأه
         sessionStorage.setItem('userPhone', inputPhoneNumber);
         
         enterPlatform(); 
     } 
-   
-
         else if (savedNumber !== inputPhoneNumber) {
-        // 🚨 قفشة! الطالب كاتب رقم مختلف عن الرقم اللي دخل بيه أول مرة من جهازه
         localStorage.setItem("is_banned", "true");
-
-        // بنبعت التقرير لايف للجوجل شيت بتاعك عن طريق دالة الـ fetch
         let date = new Date().toLocaleString('ar-EG');
         fetch(scriptURL, {
             method: 'POST',
@@ -297,18 +273,13 @@ function login() {
                 'a': `🚨 محاولة اختراق: دخول برقم طالب آخر! (الرقم الأصلي للجهاز: ${savedNumber})`
             })
         });
-
-        // شغل شاشة الحظر الحمراء فوراً
         triggerBlockScreen();
     } 
     else {
-        // الرقم مظبوط وبتاع نفس الجهاز، كمل دخول عادي
         sessionStorage.setItem('userPhone', inputPhoneNumber);
         enterPlatform();
     }
-} // القوس ده بيقفل دالة الـ login بالكامل بنجاح
-
-// دالة تقفيل الشاشة بالحظر
+} 
 function triggerBlockScreen() {
     document.body.innerHTML = `
         <div style="background-color: #1a1a1a; color: #ff2e63; text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; direction: rtl;">
@@ -319,14 +290,10 @@ function triggerBlockScreen() {
         </div>
     `;
 }
-
-// دالة تخطي البوابة وفتح المحتوى
 function enterPlatform() {
     document.getElementById("gate").style.display = "none";
     document.getElementById("content").style.display = "block";
 }
-
-// دالة تقفيل الشاشة بالحظر
 function triggerBlockScreen() {
     document.body.innerHTML = `
         <div style="background-color: #1a1a1a; color: #ff2e63; text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; direction: rtl;">
@@ -337,27 +304,18 @@ function triggerBlockScreen() {
         </div>
     `;
 }
-
-// دالة تخطي البوابة وفتح المحتوى (S.A.B)
 function enterPlatform() {
     document.getElementById("gate").style.display = "none";
     document.getElementById("content").style.display = "block";
 }
-// الـ URL الموحد الجديد الخاص بك
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzE3gS54YXMfmPNpYXYsQOECjYmb_q1xzMRTzTyGYOHhHnu1Vby1vNxFQcC6QVk2zYOAg/exec';
-
-// أول ما الطالب يخرج بره التركيز (يسحب شريط الإشعارات، يصور، أو يفتح تابة تانية)
 window.addEventListener('blur', () => {
-    document.body.style.filter = 'blur(25px)'; // تغمية الشاشة فوراً لحماية المحتوى
-    reportMobileViolation(); // إرسال التقرير فوراً لجوجل شيت
+    document.body.style.filter = 'blur(25px)';
+    reportMobileViolation();
 });
-
-// ترجع الشاشة طبيعية لما يرجع يركز في الصفحة
 window.addEventListener('focus', () => {
     document.body.style.filter = 'none'; 
 });
-
-// دالة إرسال تقرير بمحاولة التصوير أو الخروج من المتصفح لجوجل شيت
 function reportMobileViolation() {
     let userPhone = sessionStorage.getItem('userPhone') || "طالب غير مسجل";
     const date = new Date().toLocaleString('ar-EG');
@@ -373,8 +331,6 @@ function reportMobileViolation() {
         body: JSON.stringify(data)
     });
 }
-
-// دالة إنشاء العلامة المائية برقم الطالب
 function makeWatermark() {
     const studentPhone = sessionStorage.getItem('userPhone') || "أكاديمية سيف"; 
     const container = document.createElement('div');
@@ -388,11 +344,7 @@ function makeWatermark() {
     }
     document.body.appendChild(container);
 }
-
-// 1. منع كليك يمين تماماً عشان محدش يعمل Inspect أو يحفظ الصور
 document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-// 2. منع اختصارات تصوير الشاشة وأدوات المطورين وحفظ الصفحة
 document.addEventListener('keydown', (e) => {
     if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'))) {
         e.preventDefault();
@@ -401,16 +353,12 @@ document.addEventListener('keydown', (e) => {
         e.preventDefault();
     }
 });
-
-// 3. منع زرار الـ Print Screen ومسح الكليب بورد فوراً لو داسه
 document.addEventListener('keyup', (e) => {
     if (e.key === 'PrintScreen') {
         navigator.clipboard.writeText(''); 
         alert('غير مسموح بأخذ لقطة شاشة للمنصة لحماية المحتوى!');
     }
 });
-
-// تشغيل العلامة المائية أول ما الصفحة تفتح
 document.addEventListener("DOMContentLoaded", makeWatermark);
 document.addEventListener("DOMContentLoaded", () => {
     let savedPhone = sessionStorage.getItem('userPhone');
@@ -421,27 +369,17 @@ document.addEventListener("DOMContentLoaded", () => {
 function login() {
     const valU = document.getElementById('u').value.trim();
     const valP = document.getElementById('p').value.trim();
-    
-    // 1. التأكد إن الحقول مش فاضية
     if (valU === "" || valP === "") {
         alert("من فضلك أدخل البيانات المطلوبة أولاً!");
         return;
     }
-    
-    // 2. التأكد إن الرقمين متطابقين وموجودين في كشف المشتركين
     if (valU === valP && users.includes(valU)) {
-        
-        // 🔒 الـكـمـيـن: نظام قفل الجهاز على أول رقم يدخل بيه
         let savedNumber = localStorage.getItem("registered_student_phone");
         
         if (!savedNumber) {
-            // أول مرة يدخل من الجهاز ده؟ نربط الجهاز برقم تليفونه فوراً
             localStorage.setItem("registered_student_phone", valU);
         } else if (savedNumber !== valU) {
-            // قفشة! كاتب رقم مختلف عن الرقم الأصلي بتاع الجهاز ده
             localStorage.setItem("is_banned", "true");
-            
-            // نبعت البلاغ فوراً للجوجل شيت
             let date = new Date().toLocaleString('ar-EG');
             fetch(scriptURL, {
                 method: 'POST',
@@ -453,31 +391,22 @@ function login() {
                     'a': `🚨 محاولة اختراق: دخول برقم طالب آخر! (الرقم الأصلي للجهاز: ${savedNumber})`
                 })
             });
-            
-            // نقفل الشاشة باللون الأحمر
             triggerBlockScreen();
-            return; // نوقف الكود هنا وما نخليهوش يدخل
+            return; 
         }
-
-        // لو الجهاز سليم والرقم مظبوط، يكمل دخول عادي
         sessionStorage.setItem('access', 'done');
         sessionStorage.setItem('userPhone', valU);
         
         document.getElementById('watermark-container')?.remove();
         makeWatermark();
         render();
-        
-        // لو الأدمن (أنت) اللي داخل يظهر زرار لوحة التحكم
         if (valU === "01016054679") {
             document.getElementById("admin-link").style.display = "block";
         }
-        
-        // نفتح محتوى المنصة ونخفي البوابة
         document.getElementById("gate").style.display = "none";
         document.getElementById("content").style.display = "block";
 
     } else {
-        // لو الرقمين مش متطابقين أو مش في السيستم
         alert("البيانات غير متطابقة، يرجى التواصل مع دكتور سيف للتفعيل!");
     }
 }
@@ -492,8 +421,6 @@ function render() {
         }, 500);
     }
 }
-
-// التحقق من الغياب قبل فتح المناهج
 function checkBeforeAccess(page) {
     if (sessionStorage.getItem('attended') === 'true') {
         window.location.href = page;
@@ -505,8 +432,6 @@ function checkBeforeAccess(page) {
 
 function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
 function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-
-// دالة رصد الغياب الجديدة للربط مع جوجل شيت بنفس اللينك الموحد
 function recordAttendance() {
     let userPhone = sessionStorage.getItem('userPhone') || "طالب مسجل";
     const date = new Date().toLocaleString('ar-EG');
@@ -533,13 +458,11 @@ function recordAttendance() {
 window.onload = function() {
     if (sessionStorage.getItem('access') === 'done') render();
 }
-// دالة الرئيسية هترجع الطالب لصفحة تسجيل الدخول
 function goToLogin() {
     sessionStorage.removeItem('userPhone');
     document.getElementById("content").style.display = "none";
     document.getElementById("gate").style.display = "block";
 }
-// كود تشغيل وإخفاء الشاشة الترحيبية تلقائياً
 window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         const splash = document.getElementById("splash-screen");
@@ -548,29 +471,22 @@ window.addEventListener("DOMContentLoaded", () => {
             splash.style.transform = "scale(1.05)";
             setTimeout(() => {
                 splash.style.display = "none";
-            }, 500); // وقت الأنيميشن أثناء الاختفاء
+            }, 500); 
         }
-    }, 2500); // 2500 مللي ثانية يعني ثانيتين ونص (تقدر تغيرها براحتك)
+    }, 2500);
 });
-// دالة تبديل المظهر بين الفاتح والغامق
 function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById("theme-icon");
-    
-    // بنقلب الكلاس جوة الـ body
     body.classList.toggle("light-mode");
-    
-    // بنغير شكل الأيقونة (شمس أو قمر) بناءً على الوضع
     if (body.classList.contains("light-mode")) {
-        icon.className = "fas fa-moon"; // يظهر قمر عشان لو عايز يرجع للغامق
-        localStorage.setItem("theme", "light"); // بنحفظ اختيار الطالب في الجهاز
+        icon.className = "fas fa-moon";
+        localStorage.setItem("theme", "light");
     } else {
-        icon.className = "fas fa-sun"; // يظهر شمس عشان لو عايز يقلب فاتح
+        icon.className = "fas fa-sun";
         localStorage.setItem("theme", "dark");
     }
 }
-
-// كود إضافي عشان لو الطالب قفل الموقع وفتحه يفتكر هو كان مختار أنهي وضع
 window.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "light") {
@@ -578,12 +494,11 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("theme-icon").className = "fas fa-moon";
     }
 });
-// فخ تصفير الـ Console أول بأول عشان ما يشوفش أي بيانات
 setInterval(() => {
     console.clear();
     console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
     console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
-}, 1000); // كل ثانية بيمسح الشاشة ويطبع التهديد!
+}, 1000);
 </script>
 
 <a href="https://wa.me/201016054679" class="whatsapp-btn" target="_blank">
