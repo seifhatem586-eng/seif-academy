@@ -179,7 +179,7 @@ body.light-mode h2, body.light-mode h1 {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#" onclick="goToLogin()"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
- <a href="#" onclick="openSurvey()"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
+<a href="#" onclick="openSurvey(); return false;"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
   <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
   <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
   <a href="https://wa.me/201037387830"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
@@ -513,11 +513,8 @@ function openSurvey() {
     closeNav();
     
     // 4. بنفتح اللينك بأمان على الموبايل والكمبيوتر بدون حظر وبدون شاشة سوداء
-    let link = document.createElement('a');
-    link.href = surveyURL;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.click();
+  
+window.open(surveyURL, '_blank');
 }
 </script>
 
