@@ -179,6 +179,7 @@ body.light-mode h2, body.light-mode h1 {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#" onclick="goToLogin()"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
+  <a href="#" onclick="openSurvey()"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
   <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
   <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
   <a href="https://wa.me/201037387830"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
@@ -499,6 +500,19 @@ setInterval(() => {
     console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
     console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
 }, 1000);
+function openSurvey() {
+    // اللينك بتاع الجوجل فورم اللي أنت عملته
+    let surveyURL = "https://forms.gle/sZjUVHseYNSWhgq87"; 
+    
+    // بنفتح الاستبيان في نافذة جديدة
+    window.open(surveyURL, "_blank");
+    
+    // بنقفل القائمة الجانبية بعد ما يضغط
+    closeNav();
+    
+    // بنجبر الطالب إنه مايعرفش يتصفح الموقع غير لما يخلص (نفس فكرة الحظر المؤقت)
+    alert("برجاء ملء الاستبيان المفتوح في التبويب الجديد أولاً لدعم تطوير المنصة! 🙏");
+}
 </script>
 
 <a href="https://wa.me/201037387830" class="whatsapp-btn" target="_blank">
