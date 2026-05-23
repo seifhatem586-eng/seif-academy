@@ -450,7 +450,7 @@ function recordAttendance() {
             sessionStorage.setItem('attended', 'true');
             alert("✅ تم تسجيل حضورك بنجاح");
             closeNav();
-            openSurvey();
+            openSurvey(true);
         }).catch(() => {
             sessionStorage.setItem('attended', 'true');
             closeNav();
@@ -501,16 +501,18 @@ setInterval(() => {
     console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
     console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
 }, 1000);
-function openSurvey() {
+function openSurvey(fromAttendance = false) {
     let surveyURL = "https://forms.gle/sZjUVHseYNSWhgq87"; 
     
-    // 1. بنقفل القائمة الجانبية
+    // بنقفل القائمة الجانبية
     closeNav();
     
-    // 2. بنطلع الرسالة اللي أنت عايزها عادي جداً
-    alert("برجاء ملء الاستبيان المفتوح أولاً لدعم تطوير المنصة! 🙏");
+    // الرسالة هتظهر "فقط" لو جاي من دالة الحضور تلقائياً
+    if (fromAttendance) {
+        alert("برجاء ملء الاستبيان المفتوح أولاً لدعم تطوير المنصة! 🙏");
+    }
     
-    // 3. الحركة الذكية اللي بتفتح اللينك على الموبايل والكمبيوتر من غير حظر ولا شاشة سوداء
+    // فتح اللينك بأمان ومن غير حظر
     let link = document.createElement('a');
     link.href = surveyURL;
     link.target = '_blank';
