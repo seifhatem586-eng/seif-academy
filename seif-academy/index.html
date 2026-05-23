@@ -179,7 +179,7 @@ body.light-mode h2, body.light-mode h1 {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="#" onclick="goToLogin()"><i class="fas fa-home"></i> الرئيسية</a>
   <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
-  <a href="#" onclick="openSurvey()"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
+  <a href="https://forms.gle/9JDYiL2eC2WhgjAF6" onclick="openSurvey()"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
   <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
   <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
   <a href="https://wa.me/201037387830"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
@@ -450,7 +450,7 @@ function recordAttendance() {
             sessionStorage.setItem('attended', 'true');
             alert("✅ تم تسجيل حضورك بنجاح");
             closeNav();
-            openSurvey(true);
+            openSurvey();
         }).catch(() => {
             sessionStorage.setItem('attended', 'true');
             closeNav();
@@ -501,24 +501,6 @@ setInterval(() => {
     console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
     console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
 }, 1000);
-function openSurvey(fromAttendance = false) {
-    let surveyURL = "https://forms.gle/sZjUVHseYNSWhgq87"; 
-    
-    // بنقفل القائمة الجانبية
-    closeNav();
-    
-    // الرسالة هتظهر "فقط" لو جاي من دالة الحضور تلقائياً
-    if (fromAttendance) {
-        alert("برجاء ملء الاستبيان المفتوح أولاً لدعم تطوير المنصة! 🙏");
-    }
-    
-    // فتح اللينك بأمان ومن غير حظر
-    let link = document.createElement('a');
-    link.href = surveyURL;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.click();
-}
 </script>
 
 <a href="https://wa.me/201037387830" class="whatsapp-btn" target="_blank">
