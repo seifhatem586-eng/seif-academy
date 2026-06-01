@@ -236,16 +236,20 @@ const users = [,"01096519733", "01024145579", "01557158858", "01090607988", "012
 if (localStorage.getItem("is_banned") === "true") {
     triggerBlockScreen();
 }
-
+const bannedUsers = ["0103137272"];
 function login() {
     let inputPhoneNumber = document.getElementById("u").value.trim();
     let confirmPhoneNumber = document.getElementById("p").value.trim();
-
+// 🛑 
+   if (bannedUsers.includes(inputPhoneNumber)) {
+        triggerBlockScreen(); 
+        return;
+    }
     if (!inputPhoneNumber || !confirmPhoneNumber) {
         alert("برجاء إدخال رقم الهاتف وتأكيده!");
         return;
     }
-    if (inputPhoneNumber !== confirmPhoneNumber) {
+    if (inputPhoneNumber !== confirmPhoneNumber) { 
         alert("رقم الهاتف غير متطابق!");
         return;
     }
@@ -259,7 +263,6 @@ function login() {
         localStorage.setItem("registered_student_phone", inputPhoneNumber);
         console.log("تم ربط جهازك برقمك بنجاح.");
         sessionStorage.setItem('userPhone', inputPhoneNumber);
-        
         enterPlatform(); 
     } 
         else if (savedNumber !== inputPhoneNumber) {
