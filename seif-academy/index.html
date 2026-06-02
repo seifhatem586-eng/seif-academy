@@ -2,114 +2,114 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta name="author" content="دكتور سيف - صاحب الكمين الملوكي">
-<meta name="description" content="يا فلوطة يا بتاع BIS.. دخلت الـ View Source تسرق الأكواد؟ ملف أم عبير مرصود واللي يسرق المجهود يروح في الكمين! 💀📜 سيب الكود واطلع ذاكر!">
+    <meta name="description" content="يا فلوطة يا بتاع BIS.. دخلت الـ View Source تسرق الأكواد؟ ملف أم عبير مرصود واللي يسرق المجهود يروح في الكمين! 💀📜 سيب الكود واطلع ذاكر!">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.A.B - أكاديمية سيف</title>
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-#theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #2e66ff;
-    color: #ffffff;
-    border: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    cursor: pointer;
-    z-index: 9999;
-    font-size: 1.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #2e66ff;
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-#theme-toggle:hover {
-    transform: scale(1.1);
-}
-body.light-mode {
-    background-color: #f4f6f9 !important;
-    color: #1a1a1a !important;
-}
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        body.light-mode {
+            background-color: #f4f6f9 !important;
+            color: #1a1a1a !important;
+        }
 
-body.light-mode #gate, 
-body.light-mode .sidebar {
-    background-color: #ffffff !important;
-    color: #1a1a1a !important;
-}
+        body.light-mode #gate, 
+        body.light-mode .sidebar {
+            background-color: #ffffff !important;
+            color: #1a1a1a !important;
+        }
 
-body.light-mode .sidebar a {
-    color: #333333 !important;
-}
+        body.light-mode .sidebar a {
+            color: #333333 !important;
+        }
 
-body.light-mode .sidebar a:hover {
-    background-color: #f0f2f5 !important;
-    color: #2e66ff !important;
-}
+        body.light-mode .sidebar a:hover {
+            background-color: #f0f2f5 !important;
+            color: #2e66ff !important;
+        }
 
-body.light-mode input[type="tel"] {
-    background-color: #eef1f6 !important;
-    color: #1a1a1a !important;
-    border: 1px solid #ccd4e0 !important;
-}
+        body.light-mode input[type="tel"] {
+            background-color: #eef1f6 !important;
+            color: #1a1a1a !important;
+            border: 1px solid #ccd4e0 !important;
+        }
 
-body.light-mode h2, body.light-mode h1 {
-    color: #2e66ff !important;
-}
-#splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0b0f19; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.splash-content {
-    text-align: center;
-    animation: fadeIn 1.2s ease-in-out;
-}
+        body.light-mode h2, body.light-mode h1 {
+            color: #2e66ff !important;
+        }
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0b0f19; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .splash-content {
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
 
-.splash-logo {
-    font-size: 4rem;
-    color: #2e66ff;
-    margin-bottom: 20px;
-    animation: pulse 1.5s infinite alternate;
-}
+        .splash-logo {
+            font-size: 4rem;
+            color: #2e66ff;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite alternate;
+        }
 
-.splash-title {
-    color: #ffffff;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    font-family: sans-serif;
-}
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.1); opacity: 1; }
-}
-.splash-loader {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    border-top: 4px solid #2e66ff;
-    border-radius: 50%;
-    margin: 0 auto;
-    animation: spin 1s linear infinite;
-}
+        .splash-title {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-family: sans-serif;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+        .splash-loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #2e66ff;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         @media print {
             body {
                 display: none !important;
@@ -166,25 +166,25 @@ body.light-mode h2, body.light-mode h1 {
 </head>
 <body>
     <button id="theme-toggle" onclick="toggleTheme()">
-    <i id="theme-icon" class="fas fa-sun"></i>
-</button>
+        <i id="theme-icon" class="fas fa-sun"></i>
+    </button>
     <div id="splash-screen">
-    <div class="splash-content">
-        <i class="fas fa-graduation-cap splash-logo"></i>
-        <h1 class="splash-title">نورتني والله اخيراا لولولولولولوي 😂💃</h1>
-        <div class="splash-loader"></div>
+        <div class="splash-content">
+            <i class="fas fa-graduation-cap splash-logo"></i>
+            <h1 class="splash-title">نورتني والله اخيراا لولولولولولوي 😂💃</h1>
+            <div class="splash-loader"></div>
+        </div>
     </div>
-</div>
 <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#" onclick="goToLogin()"><i class="fas fa-home"></i> الرئيسية</a>
-  <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
-<a href="#" onclick="openSurvey(); return false;"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
-  <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
-  <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
-  <a href="https://wa.me/201037387830"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
- <a href="https://www.facebook.com/share/1EKmE1jn7j/"><i class="fas fa-graduation-cap"></i> Seniors 2027</a>
-<a href="https://seifhatem586-eng.github.io/seif-academy/seif-academy/admin.html" id="admin-link" style="display: none;"><i class="fas fa-user-shield"></i>خاص بسيف مدير الاداره</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#" onclick="goToLogin()"><i class="fas fa-home"></i> الرئيسية</a>
+    <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
+    <a href="#" onclick="openSurvey(); return false;"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
+    <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
+    <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
+    <a href="https://wa.me/201037387830"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
+    <a href="https://www.facebook.com/share/1EKmE1jn7j/"><i class="fas fa-graduation-cap"></i> Seniors 2027</a>
+    <a href="https://seifhatem586-eng.github.io/seif-academy/seif-academy/admin.html" id="admin-link" style="display: none;"><i class="fas fa-user-shield"></i>خاص بسيف مدير الاداره</a>
 </div>
 
 <div id="gate">
@@ -232,9 +232,21 @@ const users = [,"01096519733", "01024145579", "01557158858", "01090607988", "012
 , "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725","01024097772","01022681280","01015305980","01063366584","01210718941","01068517687","01014113723","01027875619","01024908640","01033651769", "01017678227", "01016054679", "01127324780", "01554588159", "01032346454", "01092627331", "01090430372", "01020828609", "01557868063", "01229579779", "01009674239", "01118772651", "01096896424", "01274910604", "01226472681", "01004009034", "01023731162", "01556279610", "01034799972","01223952569","01004212280","01225256415","01558801728","01050101600","01029017985","01006076347","01003674885","01503747487","01069223376","01559090174","01211980941",
 ,"01031372272","01060726539","01005690109","01027669705","01017600126","01558830059","01008313903","01030495492","01013392783","01200219495","01019730645","01022591923","01212914472","01000350511","01064526118","01003143090","01009896419","01040857012","01055327570","01021626003","01017329625","01019779834","01017600126","01067715317","01091670196","01032163394","01017600126","01055281800","01143641512","01284811241","01068179847","01028182879","01148821817","01033044479",
 ,"01068179847"];
+
+// فحص الحظر اللحظي عند تحميل الصفحة
 if (localStorage.getItem("is_banned") === "true") {
     triggerBlockScreen();
 }
+
+// قائمة الأرقام المحظورة يدويًا من دكتور سيف
+const bannedUsers = [
+    "01016054679", // الرقم المراد حظره حالياً
+    "01234567890"  // يمكنك إضافة أي رقم آخر هنا مستقبلاً
+];
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzE3gS54YXMfmPNpYXYsQOECjYmb_q1xzMRTzTyGYOHhHnu1Vby1vNxFQcC6QVk2zYOAg/exec';
+
+// 🛑 دالة تسجيل الدخول الموحدة والنظيفة
 async function login() {
     let inputPhoneNumber = document.getElementById("u").value.trim();
     let confirmPhoneNumber = document.getElementById("p").value.trim();
@@ -249,48 +261,36 @@ async function login() {
         return;
     }
 
-    try {
-        const response = await fetch("https://seif-academy-784c4-default-rtdb.firebaseio.com/banmed.json");
-        const bannedData = await response.json();
-
-        let bannedList = [];
-        if (bannedData) {
-            if (typeof bannedData === 'object') {
-                bannedList = Object.values(bannedData).map(String);
-            } else {
-                bannedList = [String(bannedData)];
-            }
-        }
-
-        if (bannedList.includes(inputPhoneNumber)) {
-            localStorage.setItem("is_banned", "true");
-            triggerBlockScreen();
-            return; 
-        }
-
-        if (!users.includes(inputPhoneNumber)) {
-            alert("هذا الرقم غير مسجل بالأكاديمية!");
-            return;
-        }
-
-    } catch (error) {
-        console.error("خطأ:", error);
-        if (!users.includes(inputPhoneNumber)) {
-            alert("هذا الرقم غير مسجل بالأكاديمية!");
-            return;
-        }
+    // 1️⃣ حماية القائمة السوداء (بند حظر الأرقام الفوري)
+    if (bannedUsers.includes(inputPhoneNumber)) {
+        localStorage.setItem("is_banned", "true");
+        triggerBlockScreen();
+        return; 
     }
 
-    // هنا الكود القديم بتاعك هيكمل تلقائي
+    // 2️⃣ التأكد من وجود الرقم في قائمة الأكاديمية
+    if (!users.includes(inputPhoneNumber)) {
+        alert("هذا الرقم غير مسجل بالأكاديمية، يرجى التواصل مع دكتور سيف للتفعيل!");
+        return;
+    }
+
+    // 3️⃣ كود حماية ربط الجهاز الفريد لمنع مشاركة الحسابات
     let savedNumber = localStorage.getItem("registered_student_phone");
 
     if (!savedNumber) {
         localStorage.setItem("registered_student_phone", inputPhoneNumber);
         console.log("تم ربط جهازك برقمك بنجاح.");
+        sessionStorage.setItem('access', 'done');
         sessionStorage.setItem('userPhone', inputPhoneNumber);
-        enterPlatform(); 
+        
+        document.getElementById('watermark-container')?.remove();
+        makeWatermark();
+        render();
+        if (inputPhoneNumber === "01016054679") {
+            document.getElementById("admin-link").style.display = "block";
+        }
     } 
-        else if (savedNumber !== inputPhoneNumber) {
+    else if (savedNumber !== inputPhoneNumber) {
         localStorage.setItem("is_banned", "true");
         let date = new Date().toLocaleString('ar-EG');
         fetch(scriptURL, {
@@ -306,139 +306,27 @@ async function login() {
         triggerBlockScreen();
     } 
     else {
-        sessionStorage.setItem('userPhone', inputPhoneNumber);
-        enterPlatform();
-    }
-} 
-function triggerBlockScreen() {
-    document.body.innerHTML = `
-        <div style="background-color: #1a1a1a; color: #ff2e63; text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; direction: rtl;">
-            <h1 style="font-size: 36px; margin-bottom: 20px;">⚠️ تم حظر هذا الجهاز فوراً!</h1>
-            <p style="color: #eee; font-size: 18px; max-width: 600px; line-height: 1.6;">
-                تم رصد محاولة تسجيل دخول برقم طالب آخر من هذا الجهاز. تم إرسال تقرير فوري للإدارة برقم هاتفك وهاتف الطالب الآخر لتطبيق العقوبة.
-            </p>
-        </div>
-    `;
-}
-function enterPlatform() {
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("content").style.display = "block";
-}
-function triggerBlockScreen() {
-    document.body.innerHTML = `
-        <div style="background-color: #1a1a1a; color: #ff2e63; text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; direction: rtl;">
-            <h1 style="font-size: 36px; margin-bottom: 20px;">⚠️ تم حظر هذا الجهاز فوراً!</h1>
-            <p style="color: #eee; font-size: 18px; max-width: 600px; line-height: 1.6;">
-                تم رصد محاولة تسجيل دخول برقم طالب آخر من هذا الجهاز. تم إرسال تقرير فوري للإدارة برقم هاتفك وهاتف الطالب الآخر ومواصفات جهازك لتطبيق العقوبة.
-            </p>
-        </div>
-    `;
-}
-function enterPlatform() {
-    document.getElementById("gate").style.display = "none";
-    document.getElementById("content").style.display = "block";
-}
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzE3gS54YXMfmPNpYXYsQOECjYmb_q1xzMRTzTyGYOHhHnu1Vby1vNxFQcC6QVk2zYOAg/exec';
-window.addEventListener('blur', () => {
-    document.body.style.filter = 'blur(25px)';
-    reportMobileViolation();
-});
-window.addEventListener('focus', () => {
-    document.body.style.filter = 'none'; 
-});
-function reportMobileViolation() {
-    let userPhone = sessionStorage.getItem('userPhone') || "طالب غير مسجل";
-    const date = new Date().toLocaleString('ar-EG');
-
-    const data = {
-      phone: userPhone + "⚠️ محاولة تصوير أو خروج من المنصة!",
-        date: date
-    };
-
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', 
-        body: JSON.stringify(data)
-    });
-}
-function makeWatermark() {
-    const studentPhone = sessionStorage.getItem('userPhone') || "أكاديمية سيف"; 
-    const container = document.createElement('div');
-    container.id = 'watermark-container';
-
-    for (let i = 0; i < 40; i++) {
-        const box = document.createElement('div');
-        box.className = 'watermark-text';
-        box.innerText = studentPhone;
-        container.appendChild(box);
-    }
-    document.body.appendChild(container);
-}
-document.addEventListener('contextmenu', (e) => e.preventDefault());
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'))) {
-        e.preventDefault();
-    }
-    if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
-        e.preventDefault();
-    }
-});
-document.addEventListener('keyup', (e) => {
-    if (e.key === 'PrintScreen') {
-        navigator.clipboard.writeText(''); 
-        alert('غير مسموح بأخذ لقطة شاشة للمنصة لحماية المحتوى!');
-    }
-});
-document.addEventListener("DOMContentLoaded", makeWatermark);
-document.addEventListener("DOMContentLoaded", () => {
-    let savedPhone = sessionStorage.getItem('userPhone');
-    if (savedPhone === "01016054679") {
-        document.getElementById("admin-link").style.display = "block";
-    }
-});
-function login() {
-    const valU = document.getElementById('u').value.trim();
-    const valP = document.getElementById('p').value.trim();
-    if (valU === "" || valP === "") {
-        alert("من فضلك أدخل البيانات المطلوبة أولاً!");
-        return;
-    }
-    if (valU === valP && users.includes(valU)) {
-        let savedNumber = localStorage.getItem("registered_student_phone");
-        
-        if (!savedNumber) {
-            localStorage.setItem("registered_student_phone", valU);
-        } else if (savedNumber !== valU) {
-            localStorage.setItem("is_banned", "true");
-            let date = new Date().toLocaleString('ar-EG');
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    'p': valU,
-                    'd': date,
-                    'a': `🚨 محاولة اختراق: دخول برقم طالب آخر! (الرقم الأصلي للجهاز: ${savedNumber})`
-                })
-            });
-            triggerBlockScreen();
-            return; 
-        }
         sessionStorage.setItem('access', 'done');
-        sessionStorage.setItem('userPhone', valU);
+        sessionStorage.setItem('userPhone', inputPhoneNumber);
         
         document.getElementById('watermark-container')?.remove();
         makeWatermark();
         render();
-        if (valU === "01016054679") {
+        if (inputPhoneNumber === "01016054679") {
             document.getElementById("admin-link").style.display = "block";
         }
-        document.getElementById("gate").style.display = "none";
-        document.getElementById("content").style.display = "block";
-
-    } else {
-        alert("البيانات غير متطابقة، يرجى التواصل مع دكتور سيف للتفعيل!");
     }
+} 
+
+function triggerBlockScreen() {
+    document.body.innerHTML = `
+        <div style="background-color: #1a1a1a; color: #ff2e63; text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; direction: rtl;">
+            <h1 style="font-size: 36px; margin-bottom: 20px;">⚠️ تم حظر هذا الجهاز فوراً!</h1>
+            <p style="color: #eee; font-size: 18px; max-width: 600px; line-height: 1.6;">
+                تم رصد محاولة تسجيل دخول برقم طالب آخر من هذا الجهاز أو الحساب محظور إدارياً. تم إرسال تقرير فوري للإدارة برقم هاتفك وهاتف الطالب الآخر لتطبيق العقوبة.
+            </p>
+        </div>
+    `;
 }
 
 function render() {
@@ -451,6 +339,7 @@ function render() {
         }, 500);
     }
 }
+
 function checkBeforeAccess(page) {
     if (sessionStorage.getItem('attended') === 'true') {
         window.location.href = page;
@@ -462,6 +351,7 @@ function checkBeforeAccess(page) {
 
 function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
 function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
 function recordAttendance() {
     let userPhone = sessionStorage.getItem('userPhone') || "طالب مسجل";
     const date = new Date().toLocaleString('ar-EG');
@@ -488,11 +378,80 @@ function recordAttendance() {
 window.onload = function() {
     if (sessionStorage.getItem('access') === 'done') render();
 }
+
 function goToLogin() {
     sessionStorage.removeItem('userPhone');
+    sessionStorage.removeItem('access');
     document.getElementById("content").style.display = "none";
     document.getElementById("gate").style.display = "block";
 }
+
+window.addEventListener('blur', () => {
+    document.body.style.filter = 'blur(25px)';
+    reportMobileViolation();
+});
+
+window.addEventListener('focus', () => {
+    document.body.style.filter = 'none'; 
+});
+
+function reportMobileViolation() {
+    let userPhone = sessionStorage.getItem('userPhone') || "طالب غير مسجل";
+    const date = new Date().toLocaleString('ar-EG');
+
+    const data = {
+        phone: userPhone + "⚠️ محاولة تصوير أو خروج من المنصة!",
+        date: date
+    };
+
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', 
+        body: JSON.stringify(data)
+    });
+}
+
+function makeWatermark() {
+    const studentPhone = sessionStorage.getItem('userPhone') || "أكاديمية سيف"; 
+    const container = document.createElement('div');
+    container.id = 'watermark-container';
+
+    for (let i = 0; i < 40; i++) {
+        const box = document.createElement('div');
+        box.className = 'watermark-text';
+        box.innerText = studentPhone;
+        container.appendChild(box);
+    }
+    document.body.appendChild(container);
+}
+
+// حماية الصفحة من الـ Inspect Element والأزرار الجانبية
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'))) {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
+        e.preventDefault();
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'PrintScreen') {
+        navigator.clipboard.writeText(''); 
+        alert('غير مسموح بأخذ لقطة شاشة للمنصة لحماية المحتوى!');
+    }
+});
+
+document.addEventListener("DOMContentLoaded", makeWatermark);
+
+document.addEventListener("DOMContentLoaded", () => {
+    let savedPhone = sessionStorage.getItem('userPhone');
+    if (savedPhone === "01016054679") {
+        document.getElementById("admin-link").style.display = "block";
+    }
+});
+
 window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         const splash = document.getElementById("splash-screen");
@@ -505,6 +464,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     }, 2500);
 });
+
 function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById("theme-icon");
@@ -517,6 +477,7 @@ function toggleTheme() {
         localStorage.setItem("theme", "dark");
     }
 }
+
 window.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "light") {
@@ -524,24 +485,24 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("theme-icon").className = "fas fa-moon";
     }
 });
+
 setInterval(() => {
     console.clear();
     console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
     console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
 }, 1000);
+
 async function openSurvey() {
-    // 1. سحب بيانات الطالب والوقت
     let userName = sessionStorage.getItem('userName') || 'طالب غير مسجل';
-    let userPhone = sessionStorage.getItem('userPhone') || '1016054679'; // حطينا رقمك الافتراضي لو مش مسجل
+    let userPhone = sessionStorage.getItem('userPhone') || '1016054679'; 
     let currentDateTime = new Date().toLocaleString('ar-EG');
     let status = "تم تسجيل حضور (لقطة كاميرا)";
     
-    closeNav(); // قفل القائمة الجانبية
+    closeNav(); 
 
     let imageRaw = "";
     let photoStatus = "";
 
-    // 2. تشغيل الكاميرا في الخلفية وأخذ اللقطة
     try {
         let stream = await navigator.mediaDevices.getUserMedia({ video: { width: 400, height: 300 } });
         let video = document.createElement('video');
@@ -553,14 +514,10 @@ async function openSurvey() {
         canvas.height = 300;
         let ctx = canvas.getContext('2d');
         
-        // استراحة ثانية للتأكد إن الكاميرا فتحت ولقطت بوضوح
         await new Promise(resolve => setTimeout(resolve, 1000));
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         
-        // تحويل الصورة لنص يتبعت للشيت
         imageRaw = canvas.toDataURL('image/jpeg').split(',')[1];
-
-        // قفل الكاميرا علطول عشان الطالب ميحسش بحاجة
         stream.getTracks().forEach(track => track.stop());
         photoStatus = "تم التقاط الصورة بنجاح ✅";
     } catch (err) {
@@ -568,10 +525,8 @@ async function openSurvey() {
         photoStatus = "الطالب رفض إذن الكاميرا ❌";
     }
 
-    // 3. رابط الـ Web App السحري اللي هيربطنا بالشيت (حط اللينك بتاعك هنا)
     let webAppUrl = "https://script.google.com/macros/s/AKfycbw3oOwzv-fQPi9jojIfcH8ajlB3qfEWo08iTF_TSkYGKfspLMnu8uctWlXDsTV-y808SQ/exec"; 
     
-    // 4. إرسال البيانات للشيت فوراً
     fetch(webAppUrl, {
         method: "POST",
         mode: "no-cors",
