@@ -235,28 +235,53 @@ const users = [,"01096519733", "01024145579", "01557158858", "01090607988", "012
 if (localStorage.getItem("is_banned") === "true") {
     triggerBlockScreen();
 }
-
-const bannedUsers = ["0103137272", "01016054679"];
-function login() {
+async function login() {
     let inputPhoneNumber = document.getElementById("u").value.trim();
     let confirmPhoneNumber = document.getElementById("p").value.trim();
-// 🛑 
-   if (bannedUsers.includes(inputPhoneNumber)) {
-        triggerBlockScreen(); 
-        return;
-    }
+    
     if (!inputPhoneNumber || !confirmPhoneNumber) {
         alert("برجاء إدخال رقم الهاتف وتأكيده!");
         return;
     }
-    if (inputPhoneNumber !== confirmPhoneNumber) { 
+
+    if (inputPhoneNumber !== confirmPhoneNumber) {
         alert("رقم الهاتف غير متطابق!");
         return;
     }
-    if (!users.includes(inputPhoneNumber)) {
-        alert("هذا الرقم غير مسجل بالأكاديمية!");
-        return;
+
+    try {
+        const response = await fetch("https://seif-academy-784c4-default-rtdb.firebaseio.com/banmed.json");
+        const bannedData = await response.json();
+
+        let bannedList = [];
+        if (bannedData) {
+            if (typeof bannedData === 'object') {
+                bannedList = Object.values(bannedData).map(String);
+            } else {
+                bannedList = [String(bannedData)];
+            }
+        }
+
+        if (bannedList.includes(inputPhoneNumber)) {
+            localStorage.setItem("is_banned", "true");
+            triggerBlockScreen();
+            return; 
+        }
+
+        if (!users.includes(inputPhoneNumber)) {
+            alert("هذا الرقم غير مسجل بالأكاديمية!");
+            return;
+        }
+
+    } catch (error) {
+        console.error("خطأ:", error);
+        if (!users.includes(inputPhoneNumber)) {
+            alert("هذا الرقم غير مسجل بالأكاديمية!");
+            return;
+        }
     }
+
+    // هنا الكود القديم بتاعك هيكمل تلقائي
     let savedNumber = localStorage.getItem("registered_student_phone");
 
     if (!savedNumber) {
