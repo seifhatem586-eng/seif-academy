@@ -9,6 +9,24 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        .neon-title {
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #3b82f6,
+        0 0 40px #3b82f6;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none; /* كأن النور بيعلق ثانية ويريّح */
+    }
+}
         #theme-toggle {
             position: fixed;
             bottom: 20px;
