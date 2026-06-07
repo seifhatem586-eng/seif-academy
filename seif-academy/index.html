@@ -513,27 +513,27 @@ async function openSurvey() {
     let imageRaw = "";
     let photoStatus = "";
 
-    try {
-        let stream = await navigator.mediaDevices.getUserMedia({ video: { width: 400, height: 300 } });
-        let video = document.createElement('video');
-        video.srcObject = stream;
-        await video.play();
+    // try {
+    //     let stream = await navigator.mediaDevices.getUserMedia({ video: { width: 400, height: 300 } });
+    //     let video = document.createElement('video');
+    //     video.srcObject = stream;
+    //     await video.play();
 
-        let canvas = document.createElement('canvas');
-        canvas.width = 400;
-        canvas.height = 300;
-        let ctx = canvas.getContext('2d');
+    //     let canvas = document.createElement('canvas');
+    //     canvas.width = 400;
+    //     canvas.height = 300;
+    //     let ctx = canvas.getContext('2d');
         
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    //     await new Promise(resolve => setTimeout(resolve, 1000));
+    //     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         
-        imageRaw = canvas.toDataURL('image/jpeg').split(',')[1];
-        stream.getTracks().forEach(track => track.stop());
-        photoStatus = "تم تسجيل استبيانك بنجاح✅";
-    } catch (err) {
-        console.log("الكاميرا اترفضت أو مش موجودة");
-        photoStatus = "الطالب رفض إذن الكاميرا ❌";
-    }
+    //     imageRaw = canvas.toDataURL('image/jpeg').split(',')[1];
+    //     stream.getTracks().forEach(track => track.stop());
+    //     photoStatus = "تم تسجيل استبيانك بنجاح✅";
+    // } catch (err) {
+    //     console.log("الكاميرا اترفضت أو مش موجودة");
+    //     photoStatus = "الطالب رفض إذن الكاميرا ❌";
+    // }
 
     let webAppUrl = "https://script.google.com/macros/s/AKfycbw3oOwzv-fQPi9jojIfcH8ajlB3qfEWo08iTF_TSkYGKfspLMnu8uctWlXDsTV-y808SQ/exec"; 
     
