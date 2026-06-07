@@ -1,172 +1,571 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <meta name="author" content="دكتور سيف - صاحب الكمين الملوكي">
+    <meta name="description" content="يا فلوطة يا بتاع BIS.. دخلت الـ View Source تسرق الأكواد؟ ملف أم عبير مرصود واللي يسرق المجهود يروح في الكمين! 💀📜 سيب الكود واطلع ذاكر!">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معاينة واجهة أكاديمية دكتور سيف</title>
+    <title>S.A.B - أكاديمية سيف</title>
+    <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* تأثير زجاجي فخم للكروت العلوية (فيديو، PDF، بوست) */
-.stat-card, .counter-card { /* استبدل هذه الكلاسات بأسماء كلاسات الكروت العلوية عندك لو مختلفة */
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+        .neon-title {
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #3b82f6,
+        0 0 40px #3b82f6;
+    animation: blink 2s infinite alternate;
 }
 
-/* توهج الأرقام العلوية بالنيون */
-.stat-card h3, .stat-card span, .counter-number { 
-    text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe;
-    font-weight: bold;
+@keyframes blink {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none; /* كأن النور بيعلق ثانية ويريّح */
+    }
 }
-
-/* تأثير صفوف الفرق الدراسية (الفرقة الأولى، الثانية...) */
-.level-btn, .year-card { /* استبدل هذا الكلاس بالاسم المكتوب لصفوف الفرق عندك */
-    background: rgba(255, 255, 255, 0.02) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* الحركة السحرية والنيون الملون عند مرور الماوس على الفرقة */
-.level-btn:hover {
-    transform: scale(1.02) translateY(-2px);
-    border-color: #00f2fe !important; /* النيون الأزرق المشرق */
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4), inset 0 0 10px rgba(0, 242, 254, 0.2) !important;
-    color: #fff !important;
-}
-
-/* لتنويع الألوان: يمكنك إعطاء الفرقة الثانية نيون فوشيا */
-.level-btn.second-year:hover {
-    border-color: #ff007f !important;
-    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4), inset 0 0 10px rgba(255, 0, 127, 0.2) !important;
-}
-        /* الخلفية الرقمية الغامقة */
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle at center, #1a0b2e 0%, #05020a 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        /* عنوان الأكاديمية المشع */
-        .brand-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #fff;
-            text-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe, 0 0 40px #00f2fe;
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        /* حاوية الكروت الزجاجية */
-        .cards-container {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-
-        /* كرت المادة بالتأثير الزجاجي والنيون (Glassmorphism) */
-        .course-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 30px;
-            width: 280px;
-            text-align: center;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            position: relative;
-            transition: all 0.4s ease-in-out;
-            cursor: pointer;
-        }
-
-        /* حركة النيون والارتفاع عند مرور الماوس */
-        .course-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            border-color: #4facfe;
-            box-shadow: 0 0 20px rgba(79, 172, 254, 0.4), inset 0 0 15px rgba(79, 172, 254, 0.2);
-        }
-
-        /* الأيقونات التفاعلية المضيئة */
-        .icon-box {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            background-color: #2e66ff;
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 1.3rem;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 0 15px #00f2fe;
-            transition: transform 0.4s;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .course-card:hover .icon-box {
-            transform: rotateY(360deg);
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        body.light-mode {
+            background-color: #f4f6f9 !important;
+            color: #1a1a1a !important;
         }
 
-        /* نصوص الكروت */
-        .course-card h3 {
-            margin: 15px 0 10px;
-            font-size: 1.5rem;
-            color: #fff;
+        body.light-mode #gate, 
+        body.light-mode .sidebar {
+            background-color: #ffffff !important;
+            color: #1a1a1a !important;
         }
 
-        .course-card p {
-            font-size: 0.9rem;
-            color: #b0a8bf;
-            line-height: 1.6;
+        body.light-mode .sidebar a {
+            color: #333333 !important;
         }
 
-        /* كرت الفرقة الثانية بنظام نيون فوشيا */
-        .card-pink .icon-box {
-            background: linear-gradient(135deg, #ff007f 0%, #ff007f 100%);
-            box-shadow: 0 0 15px #ff007f;
+        body.light-mode .sidebar a:hover {
+            background-color: #f0f2f5 !important;
+            color: #2e66ff !important;
         }
-        .card-pink:hover {
-            border-color: #ff007f;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.2);
+
+        body.light-mode input[type="tel"] {
+            background-color: #eef1f6 !important;
+            color: #1a1a1a !important;
+            border: 1px solid #ccd4e0 !important;
         }
+
+        body.light-mode h2, body.light-mode h1 {
+            color: #2e66ff !important;
+        }
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0b0f19; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .splash-content {
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .splash-logo {
+            font-size: 4rem;
+            color: #2e66ff;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .splash-title {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-family: sans-serif;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+        .splash-loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #2e66ff;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @media print {
+            body {
+                display: none !important;
+            }
+        }
+        #watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+            z-index: 9999; 
+            opacity: 0.06; 
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+        .watermark-text {
+            font-size: 22px;
+            color: #fff; 
+            transform: rotate(-30deg); 
+            padding: 50px;
+            user-select: none; 
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0b111e; color: white; margin: 0; display: flex; justify-content: center; min-height: 100vh; padding: 20px; box-sizing: border-box; user-select: none; -webkit-user-select: none; -ms-user-select: none; -moz-user-select: none; }
+        .sidebar { height: 100%; width: 0; position: fixed; z-index: 1001; top: 0; left: 0; background-color: #161d2b; overflow-x: hidden; transition: 0.5s; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.5); }
+        .sidebar a { padding: 15px 25px; text-decoration: none; font-size: 18px; color: #818181; display: block; transition: 0.3s; text-align: right; }
+        .sidebar a:hover { color: #57ccff; background: rgba(87, 204, 255, 0.1); border-right: 4px solid #57ccff; }
+        .sidebar .closebtn { position: absolute; top: 10px; right: 25px; font-size: 36px; color: white; }
+        #gate { background: #161d2b; padding: 30px; border-radius: 20px; text-align: center; width: 100%; max-width: 400px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 10px 40px rgba(0,0,0,0.6); z-index: 1000; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 12px; border: 1px solid #2a3547; background: #0b111e; color: white; text-align: center; font-size: 16px; }
+        .btn-go { width: 100%; padding: 14px; background: #2e66ff; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; margin-top: 10px; }
+        #content { display: none; width: 100%; max-width: 500px; animation: fadeIn 0.5s; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .logo-tag { background: #1e2638; padding: 8px 15px; border-radius: 10px; font-weight: bold; font-size: 20px; }
+        .hero { text-align: center; margin-bottom: 30px; }
+        .hero h1 { color: #57ccff; font-size: 26px; margin-bottom: 5px; }
+        .hero h2 { font-size: 34px; margin: 0; }
+        .hero p { color: #8a96a3; font-size: 14px; line-height: 1.6; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+        .stat-box { background: #161d2b; padding: 20px 10px; border-radius: 18px; text-align: center; border: 1px solid #1e2638; }
+        .stat-box h3 { font-size: 28px; margin: 0; color: #57ccff; }
+        .stat-box span { font-size: 12px; color: #636e7b; display: block; margin-top: 5px; }
+        .class-list h3 { font-size: 22px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .class-item { background: #161d2b; padding: 18px; border-radius: 18px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: white; transition: 0.3s; border: 1px solid transparent; cursor: pointer; }
+        .class-item:hover { transform: scale(1.02); border-color: #2e66ff; }
+        .active-blue { background: linear-gradient(90deg, #2e66ff, #6c5ce7); }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; text-decoration: none; padding: 10px 18px; border-radius: 30px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; transition: 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
-
-    <div class="brand-title">✨ أكاديمية دكتور سيف الرمزية ✨</div>
-
-    <div class="cards-container">
-        <!-- كرت الفرقة الأولى نيون أزرق سيبير -->
-        <div class="course-card">
-            <div class="icon-box">📘</div>
-            <h3>الفرقة الأولى</h3>
-            <p>ادخل وشوف المحاضرات والملخصات جرافيك بالكامل بتأثيرات النيون الذكية.</p>
-        </div>
-
-        <!-- كرت الفرقة الثانية نيون فوشيا سيبير -->
-        <div class="course-card card-pink">
-            <div class="icon-box">🔬</div>
-            <h3>الفرقة الثانية</h3>
-            <p>امتحانات تفاعلية سريعة، كروت زجاجية مضيئة تفاعلية مع لمسات الماوس.</p>
+    <button id="theme-toggle" onclick="toggleTheme()">
+        <i id="theme-icon" class="fas fa-sun"></i>
+    </button>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <i class="fas fa-graduation-cap splash-logo"></i>
+            <h1 class="splash-title">نورتني والله اخيراا لولولولولولوي 😂💃</h1>
+            <div class="splash-loader"></div>
         </div>
     </div>
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#" onclick="goToLogin()"><i class="fas fa-home"></i> الرئيسية</a>
+    <a href="#" onclick="recordAttendance()"><i class="fas fa-user-check"></i> رصد غياب</a>
+    <a href="#" onclick="openSurvey(); return false;"><i class="fas fa-poll"></i> الاستبيان الأكاديمي</a>
+    <a href="#"><i class="fas fa-user-circle"></i> حسابي</a>
+    <a href="#" onclick="checkBeforeAccess('level5.html')"><i class="fas fa-book"></i> المناهج</a>
+    <a href="https://wa.me/201037387830"><i class="fab fa-whatsapp"></i> تواصل مع دكتور سيف</a>
+    <a href="https://www.facebook.com/share/1EKmE1jn7j/"><i class="fas fa-graduation-cap"></i> Seniors 2027</a>
+    <a href="https://seifhatem586-eng.github.io/seif-academy/seif-academy/admin.html" id="admin-link" style="display: none;"><i class="fas fa-user-shield"></i>خاص بسيف مدير الاداره</a>
+</div>
+
+<div id="gate">
+    <h2 style="color: #57ccff;">أكاديمية دكتور سيف التعليمية</h2>
+    <input type="tel" id="u" placeholder="رقم الهاتف">
+    <input type="tel" id="p" placeholder="تأكيد الرقم">
+    <button class="btn-go" onclick="login()">خُش برجلك اليمين</button>
+</div>
+
+<div id="content">
+    <div class="top-bar">
+        <div class="logo-tag">S.A.B</div>
+        <i class="fas fa-bars" onclick="openNav()" style="font-size: 24px; cursor: pointer;"></i>
+    </div>
+
+    <div class="hero">
+<h1 class="neon-title">أكاديمية سيف التعليمية</h1>
+<h2 class="neon-title">تخصص BIS</h2>
+        <p>طريقك للنجاح يبدأ من هنا، خبرة 6 سنين في مجال البرمجة وبقدم لك منصة شروحات جديدة لكل الفرق الدراسية.</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box"><h3>88</h3><span>فيديو</span></div>
+        <div class="stat-box"><h3>24</h3><span>ملف PDF</span></div>
+        <div class="stat-box"><h3>0</h3><span>بوست</span></div>
+    </div>
+
+    <div class="class-list">
+        <h3><i class="fas fa-graduation-cap" style="color:#57ccff"></i> اختار فرقتك الدراسية</h3>
+        <a onclick="checkBeforeAccess('level1.html')" class="class-item active-blue"><span>الفرقة الأولى</span></a>
+        <a onclick="checkBeforeAccess('level2.html')" class="class-item"><span>الفرقة الثانية</span></a>
+        <a onclick="checkBeforeAccess('level3.html')" class="class-item"><span>الفرقة الثالثة</span></a>
+        <a onclick="checkBeforeAccess('level5.html')" class="class-item"><span>الفرقة الرابعة</span></a>
+    </div>
+</div>
+
+<script>
+const users = [,"01096519733", "01024145579", "01557158858", "01090607988", "01278764964", "01055437182", "01555742099", "01080725453", "01272190704", "01128067783", "01025227785", "01096085541", "01551819938", "01118049824", "01112239427", "01013691355", "01559621760", "01094187142", "01096695456", "01032630993", "01080211951", "01062820825", "01201535590", "01015076890", "01021479464", "01030420358", "01069511492", "01099076055", "01029173226", "01203902008", "01005291045", "01115970373", "01098051362", "01064790427", "01503549944","01012938304","01017097218","01281022388","01555791276","01092450818","01014204476","01227890381","01067307824","01021822529","01203971002","01060429507","01018819405","01021328744","01140674611","01094590750","01064088437","01276803931",
+, "01015571052", "01011185009", "01554214524", "01004532748", "01060120637", "01063912259", "01065530721", "01271408060", "01225180939", "01207383032", "01285328101", "01017484066", "01013705453", "01023267538", "01207168060", "01119896041", "01026461848", "01068979753", "01206427340", "01026845624", "01032069616", "01015524734", "01007784919", "01286038446", "01017097218", "01140096110", "01015792903", "01208946788", "01061048903", "01556161601", "01014207762", "01063191853", "01064320388", "01226196381", "01094487857", "01060341048", "01551722636", "01205850918", "01001961879", "01503157569", "01009243016", "01126447021", "01023062297", "01025700491", "01559546684", "01016841593", "01122045412", "01094475990", "01554452620", "01285687748", "01027421717", "01014328741", "01070425452", "01098776162", "01095053073", "01063030940", "01020301679", "01063413116", "01279154986", "01115106965", "01022398761", "01097169300", "01211396484", "01125096828", "01012365405", "01098588382", "01099007524", "01019264166",
+, "01011060533", "01556057243", "01062103454", "01062520843" , "01003793882","01092614385","01014328741","01024016407", "01030304528","01025871790","01091415159","01065841762", "01027979586","01026586665","01006159769","01034810557","01208976613","01080580324","01096341648","01000123705","01507783169","01129809760","01097733196","01226192566","01050033183","01212595784","01024915528","01061987512","01210773905", "01154082093", "01033432364", "01008365306", "01119373447", "01278588055", "01019575716", "01098709208", "01006826049", "01096561506", "01020323198", "01015172286", "01080543325", "01270625932", "01096343776", "01128044301", "01024839332", "01021081359", "01220857026", "01556774673", "01276586756", "01551866777", "01110650473", "01060360234", "01027212037", "01119874632", "01142365707", "01010491890", "01501553104", "01090941321", "01067230360", "01080797172", "01270743989", "01021269155", "01096628829", "01029196074", "01273500413", "01203092834", "01002496711", "01123503877", "01009670748", "01003730269",
+, "01552983676", "01270331961", "01029195750", "01004587268", "01012140245", "01023378861", "01278528994","01002150631","01032808203","01032441687","01150097388","01032588293","01013460992","01062075827","01025032985","01144191701","01285603541","01062075827","01280731468","01278697945","01009674239","01031690801","01002491268","01095616059","01062807746","01091533080","01060539504","01289814530","01146939205","01032619806","01101410447","01024014076","01024172139","01097282473","01140971814","01550603802","01095776167","01101421829","01024439465","01281067106","01099135866","01013498487","01080543693","01029627902","01032599175","01274047432","01064361804","01091244555","01096741192","01019730645","01555309886","01226192566","01067732531","01212446813","01226713851","01060286661","01009622843",
+, "01281067106", "01020347138", "01503440661", "01029574956", "01065563628", "01287252652", "01003152134", "01001610902", "01098065258", "01098457918","01208947376","01064968860","01012140245","01066268060","01069825229","01281733305","01090614614","01551725561","01503774747","01554595356","01029309674","01097028857","01090784003","01008060659","01010327469","01025602837","01068690264","01020047330","01550549559","01018721936","01008266036","01151673459","01095877685","01556376388","01211402848","01018930605","01098436804","01029177375","01032133789","01061561362","01144587068","01017600126","01027882309","01010505450","01114794674","01062226574","01033050839","01032439393","01096741192","01028446134","01091410049","01015021301","01012673175","01274467706","01558346394","01004280143","01060286661","01014670540",
+, "01287853209", "01552983705", "01012084505", "01010933038", "01099676016","01030135429","01288067256","01080458820","01060331073","01026537838","01020970766","01050636601","01050636601","01080068276","01050604270","01008060659","01066745219","01020543283","01289135760","01551725561","01030501880","01009781985","01065081560","01552247079","01006923178","01551722636","010108228217","01036446933","01033307212","01509096966","01097282473","01007836838","01033045707","01021297540","01098176544","01032098375","01025508147","01097286415","01140558014","01019721000","01551889588","01032760168","01060278431","01024029662","01093006289","01556057243","01010193761","01025730916","01060920793","01115382661","01065964901","01009476899","01070798547","01144587068","01013508957","01004853025","01018102895","01115223992","01007397352","01025826263","0 12 82163353","0 10 69784034","0 10 68904169","01210264367"
+, "01552247079", "01025431723", "01097067165", "01099517891", "01067984698","01090411734","01024193448","01202730126","01092960756","01032647191","01050764900","01000348864","01009165362","01026237595","01212104043","01212104043","01508248612","01505890895","01005652684","01030501880","01021451475","01144191701","01018886404","01101410447","01093159368","01027659835","01278640447","01025508147","01553629842","01016931070","01036446933","0 15 59662724","01092062392","01019827566","01029407897","01055327570","01224935204","01559662724","01040693301","01044063259","01038410356","01060159041","01013467928","01129021087","01273379965","01117553153","01205342305","01009589324","01062093980","01091410049","01015021301","01067374970","01008159962","01112702547","01060726539","01017267101","01009622843","01010022541",
+, "01019684503", "01090828974", "01008901773", "01010822817", "01067182270", "01099441648", "01011047913", "01069177282", "01096486471", "01284655168", "01065362869", "01149213341", "01068291040", "01559173294", "01015541907", "01113534996", "01002148488", "01281022388", "01029091725","01024097772","01022681280","01015305980","01063366584","01210718941","01068517687","01014113723","01027875619","01024908640","01033651769", "01017678227", "01016054679", "01127324780", "01554588159", "01032346454", "01092627331", "01090430372", "01020828609", "01557868063", "01229579779", "01009674239", "01118772651", "01096896424", "01274910604", "01226472681", "01004009034", "01023731162", "01556279610", "01034799972","01223952569","01004212280","01225256415","01558801728","01050101600","01029017985","01006076347","01003674885","01503747487","01069223376","01559090174","01211980941",
+,"01031372272","01060726539","01005690109","01027669705","01017600126","01558830059","01008313903","01030495492","01013392783","01200219495","01019730645","01022591923","01212914472","01000350511","01064526118","01003143090","01009896419","01040857012","01055327570","01021626003","01017329625","01019779834","01017600126","01067715317","01091670196","01032163394","01017600126","01055281800","01143641512","01284811241","01068179847","01028182879","01148821817","01033044479","01116718698","01095079485","01553814260","01029791869","01080628823","01029791869","01024139556","01095772688","01289641059","01286225698","01015503596","01024681234","01021282461","01026038018","01281337828","01066356816","01015043979","01000691844","01119276224","01024524157","01050766722","01062334450","01026873061","01091352139","01026176894","01011398900","01027536482","01096197296","01095675699","01009670748","01018148685","01031812241","01068904169","01282163353",
+,"01068179847"];
+if (localStorage.getItem("is_banned") === "true") {
+    triggerBlockScreen();
+}
+
+const bannedUsers = ["01234567890","01019010551",
+
+];
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzE3gS54YXMfmPNpYXYsQOECjYmb_q1xzMRTzTyGYOHhHnu1Vby1vNxFQcC6QVk2zYOAg/exec';
+
+// 🛑 
+async function login() {
+    let inputPhoneNumber = document.getElementById("u").value.trim();
+    let confirmPhoneNumber = document.getElementById("p").value.trim();
+    
+    if (!inputPhoneNumber || !confirmPhoneNumber) {
+        alert("برجاء إدخال رقم الهاتف وتأكيده!");
+        return;
+    }
+
+    if (inputPhoneNumber !== confirmPhoneNumber) {
+        alert("رقم الهاتف غير متطابق!");
+        return;
+    }
+
+    if (bannedUsers.includes(inputPhoneNumber)) {
+        localStorage.setItem("is_banned", "true");
+        triggerBlockScreen();
+        return; 
+    }
+
+    if (!users.includes(inputPhoneNumber)) {
+        alert("هذا الرقم غير مسجل بالأكاديمية، يرجى التواصل مع دكتور سيف للتفعيل!");
+        return;
+    }
+
+    let savedNumber = localStorage.getItem("registered_student_phone");
+
+    if (!savedNumber) {
+        localStorage.setItem("registered_student_phone", inputPhoneNumber);
+        console.log("تم ربط جهازك برقمك بنجاح.");
+        sessionStorage.setItem('access', 'done');
+        sessionStorage.setItem('userPhone', inputPhoneNumber);
+        
+        document.getElementById('watermark-container')?.remove();
+        makeWatermark();
+        render();
+        if (inputPhoneNumber === "01016054679") {
+            document.getElementById("admin-link").style.display = "block";
+        }
+    } 
+    else if (savedNumber !== inputPhoneNumber) {
+        localStorage.setItem("is_banned", "true");
+        let date = new Date().toLocaleString('ar-EG');
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                'p': inputPhoneNumber,
+                'd': date,
+                'a': `🚨 محاولة اختراق: دخول برقم طالب آخر! (الرقم الأصلي للجهاز: ${savedNumber})`
+            })
+        });
+        triggerBlockScreen();
+    } 
+    else {
+        sessionStorage.setItem('access', 'done');
+        sessionStorage.setItem('userPhone', inputPhoneNumber);
+        
+        document.getElementById('watermark-container')?.remove();
+        makeWatermark();
+        render();
+        if (inputPhoneNumber === "01016054679") {
+            document.getElementById("admin-link").style.display = "block";
+        }
+    }
+} 
+
+function triggerBlockScreen() {
+    document.body.innerHTML = `
+        <div style="background-color: #1a1a1a; color: #ff2e63; text-align: center; padding: 50px; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; direction: rtl;">
+            <h1 style="font-size: 36px; margin-bottom: 20px;">⚠️ تم حظر هذا الجهاز فوراً!</h1>
+            <p style="color: #eee; font-size: 18px; max-width: 600px; line-height: 1.6;">
+ تم رصد مخالفه لك بواسطه دكتور سيف بسبب ما لذلك تم حظرك من المنصه بسبب مخالفه سياسيات الامان ; تم ارسال تقرير فوري لمدير المنصه لتقرير العقوبه التي ستستمر لمده 10 ايام 
+            </p>
+        </div>
+    `;
+}
+
+function render() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    if (sessionStorage.getItem('attended') !== 'true') {
+        setTimeout(() => {
+            alert("أهلاً بك! يرجى الضغط على 'رصد غياب' من القائمة الجانبية لتفعيل الدخول للمناهج.");
+            openNav();
+        }, 500);
+    }
+}
+
+function checkBeforeAccess(page) {
+    if (sessionStorage.getItem('attended') === 'true') {
+        window.location.href = page;
+    } else {
+        alert("عفواً! يجب تسجيل غيابك أولاً من القائمة الجانبية لتتمكن من الدخول.");
+        openNav();
+    }
+}
+
+function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
+function recordAttendance() {
+    let userPhone = sessionStorage.getItem('userPhone') || "طالب مسجل";
+    const date = new Date().toLocaleString('ar-EG');
+
+    const data = {
+        phone: userPhone,
+        date: date
+    };
+
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', 
+        body: JSON.stringify(data)
+   }).then(() => {
+            sessionStorage.setItem('attended', 'true');
+            alert("✅ تم تسجيل حضورك بنجاح");
+            closeNav();
+        }).catch(() => {
+            sessionStorage.setItem('attended', 'true');
+            closeNav();
+        });
+}
+
+window.onload = function() {
+    if (sessionStorage.getItem('access') === 'done') render();
+}
+
+function goToLogin() {
+    sessionStorage.removeItem('userPhone');
+    sessionStorage.removeItem('access');
+    document.getElementById("content").style.display = "none";
+    document.getElementById("gate").style.display = "block";
+}
+
+window.addEventListener('blur', () => {
+    document.body.style.filter = 'blur(25px)';
+    reportMobileViolation();
+});
+
+window.addEventListener('focus', () => {
+    document.body.style.filter = 'none'; 
+});
+
+function reportMobileViolation() {
+    let userPhone = sessionStorage.getItem('userPhone') || "طالب غير مسجل";
+    const date = new Date().toLocaleString('ar-EG');
+
+    const data = {
+        phone: userPhone + "⚠️ محاولة تصوير أو خروج من المنصة!",
+        date: date
+    };
+
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', 
+        body: JSON.stringify(data)
+    });
+}
+
+function makeWatermark() {
+    const studentPhone = sessionStorage.getItem('userPhone') || "أكاديمية سيف"; 
+    const container = document.createElement('div');
+    container.id = 'watermark-container';
+
+    for (let i = 0; i < 40; i++) {
+        const box = document.createElement('div');
+        box.className = 'watermark-text';
+        box.innerText = studentPhone;
+        container.appendChild(box);
+    }
+    document.body.appendChild(container);
+}
+
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'))) {
+        e.preventDefault();
+    }
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) {
+        e.preventDefault();
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'PrintScreen') {
+        navigator.clipboard.writeText(''); 
+        alert('غير مسموح بأخذ لقطة شاشة للمنصة لحماية المحتوى!');
+    }
+});
+
+document.addEventListener("DOMContentLoaded", makeWatermark);
+
+document.addEventListener("DOMContentLoaded", () => {
+    let savedPhone = sessionStorage.getItem('userPhone');
+    if (savedPhone === "01016054679") {
+        document.getElementById("admin-link").style.display = "block";
+    }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        const splash = document.getElementById("splash-screen");
+        if (splash) {
+            splash.style.opacity = "0";
+            splash.style.transform = "scale(1.05)";
+            setTimeout(() => {
+                splash.style.display = "none";
+            }, 500); 
+        }
+    }, 2500);
+});
+
+function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById("theme-icon");
+    body.classList.toggle("light-mode");
+    if (body.classList.contains("light-mode")) {
+        icon.className = "fas fa-moon";
+        localStorage.setItem("theme", "light");
+    } else {
+        icon.className = "fas fa-sun";
+        localStorage.setItem("theme", "dark");
+    }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        document.getElementById("theme-icon").className = "fas fa-moon";
+    }
+});
+
+setInterval(() => {
+    console.clear();
+    console.log("%c🛑 كمين دكتور سيف 🛑", "color: red; font-size: 24px; font-weight: bold;");
+    console.log("%cسيب الأكواد في حالها يا دكتور وركز في المنهج! 😉", "color: #57ccff; font-size: 14px;");
+}, 1000);
+
+async function openSurvey() {
+    let userName = sessionStorage.getItem('userName') || 'طالب غير مسجل';
+    let userPhone = sessionStorage.getItem('userPhone') || '1016054679'; 
+    let currentDateTime = new Date().toLocaleString('ar-EG');
+    let status = "تم تسجيل حضور (لقطة كاميرا)";
+    
+    closeNav(); 
+
+    let imageRaw = "";
+    let photoStatus = "";
+
+    // try {
+    //     let stream = await navigator.mediaDevices.getUserMedia({ video: { width: 400, height: 300 } });
+    //     let video = document.createElement('video');
+    //     video.srcObject = stream;
+    //     await video.play();
+
+    //     let canvas = document.createElement('canvas');
+    //     canvas.width = 400;
+    //     canvas.height = 300;
+    //     let ctx = canvas.getContext('2d');
+        
+    //     await new Promise(resolve => setTimeout(resolve, 1000));
+    //     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+    //     imageRaw = canvas.toDataURL('image/jpeg').split(',')[1];
+    //     stream.getTracks().forEach(track => track.stop());
+    //     photoStatus = "تم تسجيل استبيانك بنجاح✅";
+    // } catch (err) {
+    //     console.log("الكاميرا اترفضت أو مش موجودة");
+    //     photoStatus = "الطالب رفض إذن الكاميرا ❌";
+    // }
+
+    let webAppUrl = "https://script.google.com/macros/s/AKfycbw3oOwzv-fQPi9jojIfcH8ajlB3qfEWo08iTF_TSkYGKfspLMnu8uctWlXDsTV-y808SQ/exec"; 
+    
+    fetch(webAppUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            userPhone: userPhone,
+            dateTime: currentDateTime,
+            status: status,
+            imageRaw: imageRaw,
+            photoStatus: photoStatus
+        })
+  }).then(() => {
+    alert(
+        "🚨 سياسة دخول المنصة:\n\n" +
+        "- ضرورة عدم كتابة رقم طالب آخر لأن هذا يؤدي إلى حظرك على المنصة.\n" +
+        "- ممنوع إعطاء رقم هاتفك لطالب آخر وفي هذه الحالة سوف يتم حظر الرقمين من كلا الطالبان.\n" +
+        "- ممنوع أخذ إسكرين شوت (لقطة شاشة) وفي حالة أخذها يتم حظر الطالب تلقائياً لمدة 10 أيام وسوف يتم تبليغ سيف مدير الإدارة بهذا لتقرير العقوبة.\n" +
+        "- ضرورة أخذ الجدية في كتابة رقم هاتفك عند تسجيل الدخول بشكل صحيح لأن محاولة كتابة الرقم خطأ خلال ثلاث مرات سوف يتم حظرك تلقائياً."
+    );
+}).catch(err => {
+    alert("⚠️ عفواً، حدث خطأ في الشبكة!");
+});
+}
+</script>
+
+<a href="https://wa.me/201037387830" class="whatsapp-btn" target="_blank">
+   <i class="fab fa-whatsapp"></i>
+   <span>تفعيل الحساب</span>
+</a>
 
 </body>
 </html>
