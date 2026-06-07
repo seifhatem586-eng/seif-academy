@@ -560,6 +560,31 @@ async function openSurvey() {
     alert("⚠️ عفواً، حدث خطأ في الشبكة!");
 });
 }
+// دالة لتحديث أرقام العدادات في الصفحة الرئيسية بناءً على الحاجات المضافة
+function updateHomeStats() {
+    // جلب البيانات من الـ LocalStorage
+    let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
+    let files = JSON.parse(localStorage.getItem('myFiles')) || [];
+    let posts = JSON.parse(localStorage.getItem('myPosts')) || [];
+
+    // هندور على الكروت بروابطها ونحدث الرقم اللي جواها
+    // كارت الفيديوهات
+    const videoCard = document.querySelector('a[href="videos.html"] h3');
+    if (videoCard) videoCard.innerText = videos.length;
+
+    // كارت الملفات
+    const fileCard = document.querySelector('a[href="bdf.html"] h3');
+    if (fileCard) fileCard.innerText = files.length;
+
+    // كارت البوستات
+    const postCard = document.querySelector('a[href="post.html"] h3');
+    if (postCard) postCard.innerText = posts.length;
+}
+
+// تشغيل الدالة تلقائياً أول ما الصفحة الرئيسية تفتح
+window.onload = function() {
+    updateHomeStats();
+};
 </script>
 
 <a href="https://wa.me/201037387830" class="whatsapp-btn" target="_blank">
