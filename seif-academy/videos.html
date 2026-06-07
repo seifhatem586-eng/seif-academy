@@ -3,173 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدارة الفيديوهات - أكاديمية سيف</title>
+    <title>إدارة ومشاهدة الشروحات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #0b0f19;
-            color: white;
-            font-family: sans-serif;
-            text-align: center;
-            padding: 30px;
-        }
-        h1 {
-            color: #2e66ff;
-        }
-        /* لوحة التحكم بالإضافات */
-        .control-panel {
-            background-color: #141b2d;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 50px;
-            max-width: 500px;
-            margin: 20px auto;
-            border: 1px solid #1f293d;
-        }
-        input {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccd4e0;
-            background-color: #1a233a;
-            color: white;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #2e66ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button:hover {
-            background-color: #1a4fd4;
-        }
-        /* قائمة الفيديوهات */
-        .video-list {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        .video-item {
-            background-color: #1c2438;
-            padding: 15px;
-            border-radius: 6px;
-            width: 80%;
-            max-width: 600px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 5px solid #57ccff;
-        }
-        .delete-btn {
-            background-color: #ff4d4d;
-        }
-        .delete-btn:hover {
-            background-color: #cc2424;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #57ccff;
-            color: #0b0f19;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0b111e; color: white; margin: 0; padding: 20px; box-sizing: border-box; text-align: center; }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { color: #57ccff; margin-bottom: 30px; }
+        #admin-panel { background: #161d2b; padding: 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); margin-bottom: 30px; display: none; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 12px; border: 1px solid #2a3547; background: #0b111e; color: white; text-align: center; font-size: 16px; box-sizing: border-box; }
+        .btn-add { width: 100%; padding: 14px; background: #2e66ff; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 18px; margin-top: 10px; }
+        .btn-back { display: inline-block; padding: 12px 30px; background: #00adb5; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 20px; }
+        .video-list { margin-top: 30px; text-align: right; }
+        .video-card { background: #161d2b; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #2a3547; }
+        .video-card h3 { margin: 0 0 10px 0; color: #fff; font-size: 18px; }
+        .video-btn { display: inline-block; padding: 8px 15px; background: #ff2e63; color: white; text-decoration: none; border-radius: 8px; font-size: 14px; font-weight: bold; }
+        .loader { border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #57ccff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <h1>إدارة شروحات الفيديوهات 🎥</h1>
-    
-    <!-- خانة إضافة فيديو جديد -->
-    <div class="control-panel">
+<div class="container">
+    <h1>🎬 إدارة شروحات الفيديوهات</h1>
+
+    <div id="admin-panel">
         <h3>إضافة فيديو جديد</h3>
-        <input type="text" id="videoTitle" placeholder="اكتب عنوان الفيديو هنا...">
-        <input type="text" id="videoLink" placeholder="ضع رابط الفيديو (يوتيوب مثلاً)...">
-        <br>
-        <button onclick="addVideo()">إضافة الفيديو</button>
+        <input type="text" id="video-title" placeholder="اكتب عنوان الفيديو هنا...">
+        <input type="url" id="video-url" placeholder="ضع رابط الفيديو (يوتيوب مثلاً)...">
+        <button class="btn-add" onclick="addNewVideo()">إضافة الفيديو للكل</button>
     </div>
 
-    <!-- المكان اللي ه تظهر فيه الفيديوهات المضافة -->
-    <div class="video-list" id="videoContainer"></div>
+    <h2>📺 الفيديوهات المتاحة</h2>
+    <div id="loader" class="loader"></div>
+    <div id="video-container" class="video-list"></div>
 
-    <br>
-   <a href="index.html" class="back-btn">العودة للرئيسية</a>
+    <a href="index.html" class="btn-back">العودة للرئيسية</a>
+</div>
 
-    <!-- كود الجافا سكريبت المسؤول عن الحفظ والحذف -->
-    <script>
-        // دالة لعرض الفيديوهات المحفوظة أول ما الصفحة تفتح
-        function displayVideos() {
-            const container = document.getElementById('videoContainer');
-            container.innerHTML = ''; // مسح القائمة الحالية لإعادة بنائها
-            
-            // جلب البيانات من ذاكرة المتصفح
-            let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
-            
-            videos.forEach((video, index) => {
-                container.innerHTML += `
-                    <div class="video-item">
-                        <div>
-                            <strong>${video.title}</strong> <br>
-                            <a href="${video.link}" target="_blank" style="color: #57ccff; text-decoration: none; font-size: 14px;">اضغط هنا لمشاهدة الفيديو</a>
-                        </div>
-                        <button class="delete-btn" onclick="deleteVideo(${index})">حذف</button>
-                    </div>
-                `;
-            });
+<script>
+// ⬇️⬇️ حط الرابط اللي نسخته من الـ Deployment بين العلامتين دول هنا ⬇️⬇️
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwi6fSegWXyv6ADz9ZJ8zLaED7AjxlOhiWKFExhe6uITZpCThNbEc9qvjgWaSpvdaLaeQ/exec';
+
+window.onload = function() {
+    // التأكد من تسجيل الدخول
+    if (localStorage.getItem('access') !== 'done') {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    // إظهار لوحة الإضافة لرقمك كأدمن فقط
+    let userPhone = localStorage.getItem('userPhone');
+    if (userPhone === "01016054679") {
+        document.getElementById("admin-panel").style.display = "block";
+    }
+
+    loadVideos();
+}
+
+// جلب الفيديوهات من السيرفر
+function loadVideos() {
+    document.getElementById("loader").style.display = "block";
+    
+    fetch(scriptURL)
+    .then(res => res.json())
+    .then(videos => {
+        document.getElementById("loader").style.display = "none";
+        const container = document.getElementById("video-container");
+        container.innerHTML = "";
+
+        if(videos.length === 0) {
+            container.innerHTML = "<p style='text-align:center; color:#8a96a3;'>لا توجد فيديوهات مرفوعة حالياً.</p>";
+            return;
         }
 
-        // دالة إضافة فيديو جديد
-        function addVideo() {
-            const titleInput = document.getElementById('videoTitle');
-            const linkInput = document.getElementById('videoLink');
-            
-            if(titleInput.value.trim() === '' || linkInput.value.trim() === '') {
-                alert('من فضلك املأ خانة العنوان والرابط!');
-                return;
-            }
+        localStorage.setItem('myVideos', JSON.stringify(videos));
 
-            let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
-            
-            // إضافة الفيديو الجديد للمصفوفة
-            videos.push({
-                title: titleInput.value,
-                link: linkInput.value
-            });
-            
-            // حفظ المصفوفة الجديدة في المتصفح
-            localStorage.setItem('myVideos', JSON.stringify(videos));
-            
-            // تصفير الخانات بعد الإضافة
-            titleInput.value = '';
-            linkInput.value = '';
-            
-            // تحديث العرض في الصفحة
-            displayVideos();
-        }
+        videos.forEach(vid => {
+            const card = document.createElement("div");
+            card.className = "video-card";
+            card.innerHTML = `
+                <h3>${vid.title}</h3>
+                <a href="${vid.url}" target="_blank" class="video-btn"><i class="fas fa-play"></i> مشاهدة الشرح</a>
+            `;
+            container.appendChild(card);
+        });
+    })
+    .catch(err => {
+        document.getElementById("loader").style.display = "none";
+        console.error("خطأ في تحميل الفيديوهات:", err);
+    });
+}
 
-        // دالة حذف فيديو
-        function deleteVideo(index) {
-            let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
-            
-            // حذف العنصر بناءً على رقمه (index)
-            videos.splice(index, 1);
-            
-            // حفظ التعديل في المتصفح
-            localStorage.setItem('myVideos', JSON.stringify(videos));
-            
-            // تحديث العرض في الصفحة
-            displayVideos();
-        }
+// إضافة فيديو جديد للـ Google Sheet
+function addNewVideo() {
+    const title = document.getElementById("video-title").value.trim();
+    const url = document.getElementById("video-url").value.trim();
 
-        // تشغيل الدالة لعرض الفيديوهات تلقائياً عند فتح الصفحة
-        displayVideos();
-    </script>
+    if (!title || !url) {
+        alert("برجاء ملء العنوان والرابط أولاً!");
+        return;
+    }
+
+    const data = {
+        action: "addVideo",
+        title: title,
+        url: url
+    };
+
+    alert("جاري رفع الفيديو، انتظر ثواني...");
+
+    fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        alert("✅ تم رفع الفيديو بنجاح وهيظهر عند كل الطلاب فوراً!");
+        document.getElementById("video-title").value = "";
+        document.getElementById("video-url").value = "";
+        loadVideos();
+    })
+    .catch(err => {
+        alert("❌ حدث خطأ أثناء الرفع، جرب تاني.");
+        console.error(err);
+    });
+}
+</script>
+
 </body>
 </html>
