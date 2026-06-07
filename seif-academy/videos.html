@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الفيديوهات - أكاديمية سيف</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            color: #2e66ff;
+        }
+        /* لوحة التحكم بالإضافات */
+        .control-panel {
+            background-color: #141b2d;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 50px;
+            max-width: 500px;
+            margin: 20px auto;
+            border: 1px solid #1f293d;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccd4e0;
+            background-color: #1a233a;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2e66ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #1a4fd4;
+        }
+        /* قائمة الفيديوهات */
+        .video-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .video-item {
+            background-color: #1c2438;
+            padding: 15px;
+            border-radius: 6px;
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #57ccff;
+        }
+        .delete-btn {
+            background-color: #ff4d4d;
+        }
+        .delete-btn:hover {
+            background-color: #cc2424;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #57ccff;
+            color: #0b0f19;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>إدارة شروحات الفيديوهات 🎥</h1>
+    
+    <!-- خانة إضافة فيديو جديد -->
+    <div class="control-panel">
+        <h3>إضافة فيديو جديد</h3>
+        <input type="text" id="videoTitle" placeholder="اكتب عنوان الفيديو هنا...">
+        <input type="text" id="videoLink" placeholder="ضع رابط الفيديو (يوتيوب مثلاً)...">
+        <br>
+        <button onclick="addVideo()">إضافة الفيديو</button>
+    </div>
+
+    <!-- المكان اللي ه تظهر فيه الفيديوهات المضافة -->
+    <div class="video-list" id="videoContainer"></div>
+
+    <br>
+    <a href="index.html" class="back-btn">العودة للرئيسية</a>
+
+    <!-- كود الجافا سكريبت المسؤول عن الحفظ والحذف -->
+    <script>
+        // دالة لعرض الفيديوهات المحفوظة أول ما الصفحة تفتح
+        function displayVideos() {
+            const container = document.getElementById('videoContainer');
+            container.innerHTML = ''; // مسح القائمة الحالية لإعادة بنائها
+            
+            // جلب البيانات من ذاكرة المتصفح
+            let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
+            
+            videos.forEach((video, index) => {
+                container.innerHTML += `
+                    <div class="video-item">
+                        <div>
+                            <strong>${video.title}</strong> <br>
+                            <a href="${video.link}" target="_blank" style="color: #57ccff; text-decoration: none; font-size: 14px;">اضغط هنا لمشاهدة الفيديو</a>
+                        </div>
+                        <button class="delete-btn" onclick="deleteVideo(${index})">حذف</button>
+                    </div>
+                `;
+            });
+        }
+
+        // دالة إضافة فيديو جديد
+        function addVideo() {
+            const titleInput = document.getElementById('videoTitle');
+            const linkInput = document.getElementById('videoLink');
+            
+            if(titleInput.value.trim() === '' || linkInput.value.trim() === '') {
+                alert('من فضلك املأ خانة العنوان والرابط!');
+                return;
+            }
+
+            let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
+            
+            // إضافة الفيديو الجديد للمصفوفة
+            videos.push({
+                title: titleInput.value,
+                link: linkInput.value
+            });
+            
+            // حفظ المصفوفة الجديدة في المتصفح
+            localStorage.setItem('myVideos', JSON.stringify(videos));
+            
+            // تصفير الخانات بعد الإضافة
+            titleInput.value = '';
+            linkInput.value = '';
+            
+            // تحديث العرض في الصفحة
+            displayVideos();
+        }
+
+        // دالة حذف فيديو
+        function deleteVideo(index) {
+            let videos = JSON.parse(localStorage.getItem('myVideos')) || [];
+            
+            // حذف العنصر بناءً على رقمه (index)
+            videos.splice(index, 1);
+            
+            // حفظ التعديل في المتصفح
+            localStorage.setItem('myVideos', JSON.stringify(videos));
+            
+            // تحديث العرض في الصفحة
+            displayVideos();
+        }
+
+        // تشغيل الدالة لعرض الفيديوهات تلقائياً عند فتح الصفحة
+        displayVideos();
+    </script>
+</body>
+</html>

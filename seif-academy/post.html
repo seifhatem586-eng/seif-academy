@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المنشورات - أكاديمية سيف</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            color: #2e66ff;
+        }
+        .control-panel {
+            background-color: #141b2d;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 20px auto;
+            border: 1px solid #1f293d;
+        }
+        textarea {
+            width: 80%;
+            height: 80px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccd4e0;
+            background-color: #1a233a;
+            color: white;
+            font-family: sans-serif;
+            resize: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2e66ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #1a4fd4;
+        }
+        .post-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .post-item {
+            background-color: #1c2438;
+            padding: 15px;
+            border-radius: 6px;
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #57ccff;
+            text-align: right;
+        }
+        .delete-btn {
+            background-color: #ff4d4d;
+            margin-right: 15px;
+        }
+        .delete-btn:hover {
+            background-color: #cc2424;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #57ccff;
+            color: #0b0f19;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>إدارة بوستات ومنشورات الأكاديمية 📝</h1>
+    
+    <div class="control-panel">
+        <h3>كتابة بوست جديد</h3>
+        <textarea id="postContent" placeholder="اكتب نص الإعلان أو المنشور هنا..."></textarea>
+        <br>
+        <button onclick="addPost()">نشر البوست</button>
+    </div>
+
+    <div class="post-list" id="postContainer"></div>
+
+    <br>
+    <a href="index.html" class="back-btn">العودة للرئيسية</a>
+
+    <script>
+        function displayPosts() {
+            const container = document.getElementById('postContainer');
+            container.innerHTML = '';
+            let posts = JSON.parse(localStorage.getItem('myPosts')) || [];
+            
+            posts.forEach((post, index) => {
+                container.innerHTML += `
+                    <div class="post-item">
+                        <div style="flex: 1; white-space: pre-wrap;">${post}</div>
+                        <button class="delete-btn" onclick="deletePost(${index})">حذف</button>
+                    </div>
+                `;
+            });
+        }
+
+        function addPost() {
+            const postInput = document.getElementById('postContent');
+            
+            if(postInput.value.trim() === '') {
+                alert('من فضلك اكتب محتوى البوست أولاً!');
+                return;
+            }
+
+            let posts = JSON.parse(localStorage.getItem('myPosts')) || [];
+            posts.push(postInput.value);
+            localStorage.setItem('myPosts', JSON.stringify(posts));
+            
+            postInput.value = '';
+            displayPosts();
+        }
+
+        function deletePost(index) {
+            let posts = JSON.parse(localStorage.getItem('myPosts')) || [];
+            posts.splice(index, 1);
+            localStorage.setItem('myPosts', JSON.stringify(posts));
+            displayPosts();
+        }
+
+        displayPosts();
+    </script>
+</body>
+</html>
