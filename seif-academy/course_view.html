@@ -6,96 +6,32 @@
     <title>عرض فيديوهات الكورس - أكاديمية سيف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #0b111e;
-            color: white;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            width: 100%;
-            max-width: 800px;
-            margin-top: 10px;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #8a96a3;
-            text-decoration: none;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        .course-header h1 {
-            color: #57ccff;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 18px;
-            background: #000;
-            border: 1px solid #1e2638;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-        .playlist {
-            background: #161d2b;
-            border-radius: 18px;
-            padding: 15px;
-            border: 1px solid #1e2638;
-        }
-        .playlist h3 {
-            margin-top: 0;
-            color: #6c5ce7;
-            font-size: 18px;
-            border-bottom: 1px solid #1e2638;
-            padding-bottom: 10px;
-        }
-        .playlist-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-bottom: 5px;
-        }
-        .playlist-item:hover {
-            background: rgba(87, 204, 255, 0.1);
-        }
-        .playlist-item.active {
-            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
-            color: white;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0b111e; color: white; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 800px; margin-top: 10px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: #8a96a3; text-decoration: none; font-size: 16px; margin-bottom: 20px; }
+        .course-header h1 { color: #57ccff; margin-bottom: 20px; font-size: 24px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 18px; background: #000; border: 1px solid #1e2638; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 20px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .playlist { background: #161d2b; border-radius: 18px; padding: 20px; border: 1px solid #1e2638; display: flex; flex-direction: column; gap: 10px; }
+        .playlist h3 { margin: 0; color: #57ccff; font-size: 18px; border-bottom: 1px solid #1e2638; padding-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        #playlist-items { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+        .playlist-item { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 12px; cursor: pointer; transition: 0.3s; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .playlist-item:hover { background: rgba(87, 204, 255, 0.1); border-color: rgba(87, 204, 255, 0.2); }
+        .playlist-item.active { background: linear-gradient(90deg, #6c5ce7, #a29bfe); color: white; border-color: transparent; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3); }
     </style>
 </head>
 <body>
 
     <div class="container">
         <a href="corses.html" class="back-btn"><i class="fas fa-arrow-right"></i> الرجوع لقائمة الكورسات</a>
+        <div class="course-header"><h1 id="course-title">تحميل الكورس...</h1></div>
         
-        <div class="course-header">
-            <h1 id="course-title">تحميل الكورس...</h1>
-        </div>
-
+        <!-- مشغل الفيديو الرئيسي -->
         <div class="video-wrapper">
             <iframe id="main-video" src="" allowfullscreen></iframe>
         </div>
 
+        <!-- قائمة تشغيل الدروس على قد الحجم بالظبط -->
         <div class="playlist">
             <h3><i class="fas fa-list"></i> دروس المسار الدراسي</h3>
             <div id="playlist-items"></div>
@@ -103,62 +39,63 @@
     </div>
 
     <script>
-        // 📝 هنا بقى الروابط بتاعتك يا لورد! تقدر تشيل الروابط دي وتحط روابط فيديوهاتك براحتك
-        // ملحوظة: لازم تستخدم رابط الـ embed بتاع يوتيوب (اللى بيبقى فيه كلمة embed مش watch)
+        // داتا الكورسات الفاضية - حط لينكات الـ Embed بتاعتك هنا علطول يا لورد
         const coursesData = {
             html: {
-                title: "كورس HTML من الصفر للاحتراف",
+                title: "كورس HTML من الصفر للأحتراف",
                 videos: [
-                    { title: "الفيديو الأول: مقدمة وتجهيز البيئة", url: "https://www.youtube.com/embed/tgbNymZ7vqY" },
-                    { title: "الفيديو الثاني: شرح العناوين والفقرات", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-                    { title: "الفيديو الثالث: إضافة الصور والروابط", url: "https://www.youtube.com/embed/3JZ_D3K2XpQ" }
+                    { title: "الدرس الأول: اكتب عنوان درسك هنا", url: "" },
+                    { title: "الدرس الثاني: اكتب عنوان درسك هنا", url: "" }
                 ]
             },
             css: {
                 title: "كورس CSS للتصميم والتنسيق",
                 videos: [
-                    { title: "الفيديو الأول: إدخال الـ CSS في الصفحة", url: "https://www.youtube.com/embed/tgbNymZ7vqY" },
-                    { title: "الفيديو الثاني: الألوان والخلفيات", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-                    { title: "الفيديو الثالث: الأبعاد والهوامش Margins", url: "https://www.youtube.com/embed/3JZ_D3K2XpQ" }
+                    { title: "الدرس الأول: اكتب عنوان درسك هنا", url: "" }
                 ]
             },
-            python: {
-                title: "أساسيات البرمجة بلغة Python",
-                videos: [
-                    { title: "الفيديو الأول: تثبيت بايثون وأول كود", url: "https://www.youtube.com/embed/tgbNymZ7vqY" },
-                    { title: "الفيديو الثاني: المتغيرات والعمليات الحسابية", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
-                ]
-            }
-            // هعلمك بعدين إزاي تضيف باقي الـ 14 كورس هنا بكلمتين بالظبط!
+            js: { title: "كورس JavaScript", videos: [{ title: "قريباً", url: "" }] },
+            python: { title: "كورس Python", videos: [{ title: "قريباً", url: "" }] },
+            csharp: { title: "كورس C#", videos: [{ title: "قريباً", url: "" }] },
+            cpp: { title: "كورس C++", videos: [{ title: "قريباً", url: "" }] },
+            database: { title: "كورس قواعد البيانات", videos: [{ title: "قريباً", url: "" }] },
+            data_analysis: { title: "كورس تحليل البيانات", videos: [{ title: "قريباً", url: "" }] },
+            sql_server: { title: "كورس SQL Server", videos: [{ title: "قريباً", url: "" }] },
+            php: { title: "كورس PHP", videos: [{ title: "قريباً", url: "" }] },
+            frontend: { title: "مسار Front-End", videos: [{ title: "قريباً", url: "" }] },
+            backend: { title: "مسار Back-End", videos: [{ title: "قريباً", url: "" }] },
+            flutter: { title: "كورس Flutter", videos: [{ title: "قريباً", url: "" }] },
+            ui_ux: { title: "كورس UI - UX", videos: [{ title: "قريباً", url: "" }] }
         };
 
-        // الكود الذكي اللي بيعرف الطالب ضغط على كورس إيه
         const urlParams = new URLSearchParams(window.location.search);
         const courseKey = urlParams.get('course') || 'html';
         const currentCourse = coursesData[courseKey] || coursesData['html'];
 
-        // كتابة اسم الكورس فوق
         document.getElementById('course-title').innerText = currentCourse.title;
-
-        // تشغيل الفيديو الأول تلقائياً أول ما الصفحة تفتح
         const mainVideo = document.getElementById('main-video');
-        mainVideo.src = currentCourse.videos[0].url;
+        
+        if(currentCourse.videos[0] && currentCourse.videos[0].url) {
+            mainVideo.src = currentCourse.videos[0].url;
+        }
 
-        // توليد لستة الفيديوهات (الدرس الأول، الثاني..) تحت الفيديو
         const playlistContainer = document.getElementById('playlist-items');
+        
         currentCourse.videos.forEach((video, index) => {
-            const item = document.createElement('div');
-            item.className = `playlist-item ${index === 0 ? 'active' : ''}`;
-            item.innerHTML = `<i class="fas fa-play-circle"></i> <span>${video.title}</span>`;
-            
-            // لما الطالب يضغط على الفيديو الثاني أو الثالث يشتغل فوق على طول
-            item.onclick = function() {
-                document.querySelectorAll('.playlist-item').forEach(el => el.classList.remove('active'));
-                item.classList.add('active');
-                mainVideo.src = video.url;
-            };
-
-            playlistContainer.appendChild(item);
+            if(video.title !== "قريباً" && video.url !== "") {
+                const item = document.createElement('div');
+                item.className = `playlist-item ${index === 0 ? 'active' : ''}`;
+                item.innerHTML = `<i class="fas fa-play-circle"></i> <span>${video.title}</span>`;
+                
+                item.onclick = function() {
+                    document.querySelectorAll('.playlist-item').forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+                    mainVideo.src = video.url;
+                };
+                playlistContainer.appendChild(item);
+            } else if (video.title === "قريباً" || video.url === "") {
+                playlistContainer.innerHTML = `<div style="color: #8a96a3; padding: 10px; text-align: center;">سيتم إضافة الدروس قريباً جداً يا لورد.. خليك مستعد! 🔥</div>`;
+            }
         });
     </script>
 </body>
