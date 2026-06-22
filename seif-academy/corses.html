@@ -15,21 +15,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
         .container {
             width: 100%;
             max-width: 600px;
-            margin-top: 20px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .header h1 {
-            color: #57ccff;
-            font-size: 28px;
-            text-shadow: 0 0 10px rgba(87, 204, 255, 0.3);
         }
         .course-card {
             background: #161d2b;
@@ -47,7 +36,6 @@
         .course-card:hover {
             transform: scale(1.02);
             border-color: #6c5ce7;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
         }
         .course-info {
             display: flex;
@@ -57,43 +45,19 @@
         .course-icon {
             font-size: 22px;
             color: #6c5ce7;
-            background: rgba(108, 92, 231, 0.1);
-            padding: 10px;
-            border-radius: 12px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .course-title {
             font-size: 17px;
             font-weight: bold;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #8a96a3;
-            text-decoration: none;
-            font-size: 16px;
-            align-self: flex-start;
-            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> الرجوع للرئيسية</a>
-        
-        <div class="header">
-            <h1><i class="fas fa-laptop-code"></i> مسارات كورس البرمجة</h1>
-            <p style="color: #8a96a3;">ابدأ رحلتك من الصفر للاحتراف مع دكتور سيف</p>
-        </div>
+        <h1 style="color: #57ccff; text-align: center; margin-bottom: 30px;"><i class="fas fa-laptop-code"></i> مسارات كورس البرمجة</h1>
 
-        <!-- 1. HTML -->
-        <a href="html_course.html" class="course-card">
+        <a href="course_view.html?course=html" class="course-card">
             <div class="course-info">
                 <div class="course-icon"><i class="fab fa-html5"></i></div>
                 <div class="course-title">كورس HTML من الصفر</div>
@@ -101,131 +65,14 @@
             <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
         </a>
 
-        <!-- 2. CSS -->
-        <a href="css_course.html" class="course-card">
+        <a href="course_view.html?course=css" class="course-card">
             <div class="course-info">
                 <div class="course-icon"><i class="fab fa-css3-alt"></i></div>
                 <div class="course-title">كورس CSS للتصميم والتنسيق</div>
             </div>
             <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
         </a>
-
-        <!-- 3. JavaScript -->
-        <a href="javascript_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fab fa-js"></i></div>
-                <div class="course-title">كورس JavaScript لتطوير واجهات تفاعلية</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 4. Python -->
-        <a href="python_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fab fa-python"></i></div>
-                <div class="course-title">أساسيات البرمجة بلغة Python</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 5. C# -->
-        <a href="csharp_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-hashtag"></i></div>
-                <div class="course-title">كورس البرمجة بلغة C#</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 6. C++ -->
-        <a href="cpp_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="code-branch">C++</i></div>
-                <div class="course-title">كورس البرمجة وحل المشكلات بلغة C++</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 7. Data base -->
-        <a href="database_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-database"></i></div>
-                <div class="course-title">مفاهيم وقواعد البيانات (Database)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 8. Data Analysis -->
-        <a href="data_analysis_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-chart-pie"></i></div>
-                <div class="course-title">كورس تحليل البيانات (Data Analysis)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 9. Sql server -->
-        <a href="sql_server_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-table"></i></div>
-                <div class="course-title">إدارة قواعد البيانات باستخدام SQL Server</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 10. PHP -->
-        <a href="php_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fab fa-php"></i></div>
-                <div class="course-title">كورس البرمجة الخلفية بلغة PHP</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 11. Front End -->
-        <a href="frontend_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-code"></i></div>
-                <div class="course-title">مسار كامل مصمم مواقع (Front-End)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 12. Back End -->
-        <a href="backend_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-server"></i></div>
-                <div class="course-title">مسار كامل مطور مواقع (Back-End)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 13. Flutter -->
-        <a href="flutter_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-mobile-alt"></i></div>
-                <div class="course-title">كورس تطوير تطبيقات الموبايل بـ Flutter</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
-        <!-- 14. Ui - Ux -->
-        <a href="ui_ux_course.html" class="course-card">
-            <div class="course-info">
-                <div class="course-icon"><i class="fas fa-palette"></i></div>
-                <div class="course-title">كورس تصميم واجهات المستخدم (UI - UX)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
-        </a>
-
     </div>
 
-    <script>
-        // حماية الصفحة للتأكد من تسجيل الحضور والأمان
-        if (localStorage.getItem('access') !== 'done' || localStorage.getItem('attended') !== 'true') {
-            alert("عفواً! غير مسموح بالدخول مباشرة.");
-            window.location.href = 'index.html';
-        }
-    </script>
 </body>
 </html>
