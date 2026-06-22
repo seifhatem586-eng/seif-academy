@@ -236,8 +236,9 @@
         <a onclick="checkBeforeAccess('level3.html')" class="class-item"><span>الفرقة الثالثة</span></a>
         <a onclick="checkBeforeAccess('level5.html')" class="class-item"><span>الفرقة الرابعة</span></a>
         <a onclick="checkBeforeAccess('corses.html')" class="class-item" style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); border-color: #6c5ce7;">
-  <a onclick="checkProgrammingAccess()" class="class-item" style="background: linear-gradient(to left, var(--main-color), #0b111e); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+ <a onclick="forceSecureAccess()" class="class-item" style="background: linear-gradient(to left, var(--main-color), #0b111e); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
     <i class="fas fa-code"></i> كورسات البرمجة (S.A.B Tech)
+</a>
 </a>
 </a>
         </a>
@@ -564,47 +565,44 @@ function updateHomeStats() {
     const postCard = document.querySelector('a[href="post.html"] h3');
     if (postCard) postCard.innerText = posts.length;
 }
-// لستة أرقام تليفونات الطلبة المشتركين في كورس البرمجة فقط (زود الأرقام هنا براحتك)
+// لستة الأرقام المصرح لها بدخول كورس البرمجة
 const programmingUsers = [
     "01096519733", 
     "01024145579", 
     "01557158858"
 ]; 
 
-// كلمة السر الموحدة اللي هتدّيها للطلبة دي بتوع البرمجة
-const programmingPassword = "h223"; 
+// كلمة السر الموحدة لكورس البرمجة
+const programmingPassword = "SAB_PROG_2026"; 
 
-function checkProgrammingAccess() {
-    // 1. لو المتصفح ده اتفعل قبل كده، يدخله علطول بدون أسئلة
-    if (localStorage.getItem("programming_device_locked") === "true") {
+function forceSecureAccess() {
+    // 1. لو الجهاز متفعل قبل كده، يدخله علطول
+    if (localStorage.getItem("sab_lock_2026") === "true") {
         window.location.href = "corses.html";
         return;
     }
 
-    // 2. نجيب رقم التليفون اللي الطالب كاتبُه بره في المنصة حالياً
+    // 2. نجيب رقم التليفون اللي الطالب مسجل بيه بره
     let loggedInUser = localStorage.getItem("attended"); 
 
-    // لو الطالب مش مسجل دخول في المنصة أصلاً من بره
     if (!loggedInUser) {
         alert("عفواً، يجب تسجيل الدخول في المنصة أولاً بالرقم الخاص بك! ❌");
         return;
     }
 
-    // 3. نطلب من الطالب باسوورد كورس البرمجة
+    // 3. نطلب الباسوورد
     let userPass = prompt("يا لورد، أدخل كلمة سر كورس البرمجة لتفعيل جهازك: 🔑");
     
     if (userPass === null || userPass.trim() === "") return;
 
-    // 4. التشيك الذكي: هل رقم تليفونه الحالي مشترك؟ وهل الباسوورد صح؟
+    // 4. التشيك الذكي
     if (programmingUsers.includes(loggedInUser.trim()) && userPass.trim() === programmingPassword) {
-        
-        // نقفل المتصفح والجهاز ده على الرقم ده
-        localStorage.setItem("programming_device_locked", "true");
-        
+        // قفل الجهاز
+        localStorage.setItem("sab_lock_2026", "true");
         alert("تم تفعيل كورس البرمجة بنجاح على جهازك يا لورد! 🎉");
         window.location.href = "corses.html";
     } else {
-        alert("عفواً! حسابك غير مشترك في كورس البرمجة، أو كلمة السر التي أدخلتها خاطئة. ❌");
+        alert("عفواً! حسابك غير مشترك في كورس البرمجة، أو كلمة السر خاطئة. ❌");
     }
 }
 </script>
