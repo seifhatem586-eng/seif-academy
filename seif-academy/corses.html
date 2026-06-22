@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كورسات البرمجة - أكاديمية سيف</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0b111e;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #57ccff;
+            font-size: 28px;
+        }
+        .course-card {
+            background: #161d2b;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            border: 1px solid #1e2638;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+        .course-card:hover {
+            transform: scale(1.02);
+            border-color: #6c5ce7;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+        }
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .course-icon {
+            font-size: 24px;
+            color: #6c5ce7;
+            background: rgba(108, 92, 231, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+        }
+        .course-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #8a96a3;
+            text-decoration: none;
+            font-size: 16px;
+            align-self: flex-start;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> الرجوع للرئيسية</a>
+        
+        <div class="header">
+            <h1><i class="fas fa-laptop-code"></i> مسارات كورس البرمجة</h1>
+            <p style="color: #8a96a3;">ابدأ رحلتك من الصفر للاحتراف مع دكتور سيف</p>
+        </div>
+
+        <!-- كروت الكورسات، تقدر تغير اللينكات دي لأي صفحات تانية زي ما تحب -->
+        <a href="frontend.html" class="course-card">
+            <div class="course-info">
+                <div class="course-icon"><i class="fas fa-code"></i></div>
+                <div class="course-title">كورس تصميم المواقع (Front-End)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
+        </a>
+
+        <a href="backend.html" class="course-card">
+            <div class="course-info">
+                <div class="course-icon"><i class="fas fa-server"></i></div>
+                <div class="course-title">كورس تطوير المواقع (Back-End)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
+        </a>
+
+        <a href="python.html" class="course-card">
+            <div class="course-info">
+                <div class="course-icon"><i class="fab fa-python"></i></div>
+                <div class="course-title">أساسيات البرمجة بلغة Python</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #6c5ce7;"></i>
+        </a>
+    </div>
+
+    <script>
+        // حماية الصفحة للتأكد من تسجيل الحضور والأمان
+        if (localStorage.getItem('access') !== 'done' || localStorage.getItem('attended') !== 'true') {
+            alert("عفواً! غير مسموح بالدخول مباشرة.");
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
