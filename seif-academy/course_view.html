@@ -29,20 +29,21 @@
     </div>
 
     <script>
-        // داتا الكورسات: لو الـ url فاضية "" هيقول للطالب عفواً لا يوجد فيديوهات. لو حطيت اللينك هيفتح علطول!
+        // داتا الكورسات كلها جاهزة وفاضية وبتطلع الرسالة أوتوماتيك
         const coursesData = {
             html: {
                 title: "دروس كورس HTML",
                 videos: [
-                    { title: "الفيديو الأول: مقدمة وتجهيز البيئة", url: "" }, // ده فاضي وهيطلع الرسالة
-                    { title: "الفيديو الثاني: شرح العناوين والفقرات", url: "https://youtube.com/..." }, // ده شغال وهيفتح يوتيوب
-                    { title: "الفيديو الثالث: إضافة الروابط والصور", url: "" } 
+                    { title: "الفيديو الأول: مقدمة وتجهيز البيئة", url: "" },
+                    { title: "الفيديو الثاني: شرح العناوين والفقرات", url: "" },
+                    { title: "الفيديو الثالث: إضافة الروابط والصور", url: "" }
                 ]
             },
             css: {
                 title: "دروس كورس CSS",
                 videos: [
-                    { title: "الفيديو الأول: مقدمة في التنسيق", url: "" }
+                    { title: "الفيديو الأول: مقدمة في التنسيق", url: "" },
+                    { title: "الفيديو الثاني: الألوان والخلفيات", url: "" }
                 ]
             },
             js: { title: "دروس كورس JavaScript", videos: [{ title: "الفيديو الأول", url: "" }] },
@@ -60,7 +61,8 @@
         };
 
         const urlParams = new URLSearchParams(window.location.search);
-        const courseKey = urlParams.get('course') || 'html';
+        // هنا الذكاء: (.toLowerCase) بتخلي الكود يقرأ الكلمة سواء كابتل أو سمول بدون مشاكل
+        const courseKey = (urlParams.get('course') || 'html').toLowerCase();
         const currentCourse = coursesData[courseKey] || coursesData['html'];
 
         document.getElementById('course-title').innerHTML = `<i class="fas fa-list"></i> ${currentCourse.title}`;
@@ -77,13 +79,10 @@
                 <i class="fas fa-external-link-alt" style="font-size: 14px; color: #8a96a3;"></i>
             `;
             
-            // هنا الذكاء: لما الطالب يضغط على الفيديو
             item.onclick = function() {
                 if (video.url === "") {
-                    // لو الخانة فاضية طلع الرسالة دي
-                    alert("عفواً، لا توجد فيديوهات حالياً لهذا الدرس يا لورد! ✋");
+                    alert("عفواً، لا توجد فيديوهات حالياً لهذا الكورس! ✋");
                 } else {
-                    // لو فيها لينك افتحه في صفحة جديدة
                     window.open(video.url, '_blank');
                 }
             };
