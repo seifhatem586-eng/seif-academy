@@ -560,42 +560,39 @@ function updateHomeStats() {
     const postCard = document.querySelector('a[href="post.html"] h3');
     if (postCard) postCard.innerText = posts.length;
 }
-// لستة الأرقام المصرح لها بدخول كورس البرمجة
+// لستة أرقام تليفونات الطلبة المشتركين في كورس البرمجة فقط
 const programmingUsers = [
-   "01016054679","01037387830",
+    "01016054679",
+    "01037387830",
 ]; 
 
 // كلمة السر الموحدة لكورس البرمجة
 const programmingPassword = "h775"; 
 
 function forceSecureAccess() {
-    // 1. لو الجهاز متفعل قبل كده، يدخله علطول
+    // 1. لو الجهاز متفعل قبل كده، يدخله علطول في ثانية
     if (localStorage.getItem("sab_lock_2026") === "true") {
         window.location.href = "corses.html";
         return;
     }
 
-    // 2. نجيب رقم التليفون اللي الطالب مسجل بيه بره
-    let loggedInUser = localStorage.getItem("attended"); 
+    // 2. نطلب من الطالب يكتب رقم تليفونه بنفسه للتأكيد
+    let userPhone = prompt("يا لورد، أدخل رقم تليفونك المسجل في المنصة: 📱");
+    if (userPhone === null || userPhone.trim() === "") return;
 
-    if (!loggedInUser) {
-        alert("عفواً، يجب تسجيل الدخول في المنصة أولاً بالرقم الخاص بك! ❌");
-        return;
-    }
-
-    // 3. نطلب الباسوورد
-    let userPass = prompt("يا لورد، أدخل كلمة سر كورس البرمجة لتفعيل جهازك: 🔑");
-    
+    // 3. نطلب منه باسوورد كورس البرمجة
+    let userPass = prompt("أدخل كلمة سر كورس البرمجة لتفعيل جهازك: 🔑");
     if (userPass === null || userPass.trim() === "") return;
 
-    // 4. التشيك الذكي
-    if (programmingUsers.includes(loggedInUser.trim()) && userPass.trim() === programmingPassword) {
-        // قفل الجهاز
+    // 4. التشيك الذكي والمضمون 100%
+    if (programmingUsers.includes(userPhone.trim()) && userPass.trim() === programmingPassword) {
+        // نقفل المتصفح والجهاز ده على الرقم ده
         localStorage.setItem("sab_lock_2026", "true");
+        
         alert("تم تفعيل كورس البرمجة بنجاح على جهازك يا لورد! 🎉");
         window.location.href = "corses.html";
     } else {
-        alert("عفواً! حسابك غير مشترك في كورس البرمجة، أو كلمة السر خاطئة. ❌");
+        alert("عفواً! رقم التليفون غير مشترك، أو كلمة السر خاطئة. ❌");
     }
 }
 </script>
