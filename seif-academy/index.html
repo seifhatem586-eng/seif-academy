@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+v<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta name="author" content="دكتور سيف - صاحب الكمين الملوكي">
@@ -9,6 +9,35 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        .class-item {
+    display: flex;
+    align-items: center; /* عشان الكلام والأيقونة يبقوا في النص عمودياً */
+    gap: 15px; /* مسافة بين الأيقونة والكلام */
+    padding: 18px 25px;
+    margin-bottom: 12px;
+    background: #161d2b;
+    border: 1px solid #2d3446;
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* تاثير التنوير (Hover) */
+.class-item:hover {
+    background: #2575fc;
+    border-color: #2575fc;
+    transform: translateX(10px); /* الزرار يتحرك حتة صغيرة يمين */
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
+/* تنسيق الأيقونات */
+.class-item i {
+    font-size: 20px;
+    color: #00d2ff;
+}
         /* التصميم الأساسي لكل الأزرار */
 .class-item {
     transition: all 0.3s ease; /* عشان الحركة تكون ناعمة */
@@ -249,13 +278,21 @@
     </div>
 <div class="class-list">
         <h3><i class="fas fa-graduation-cap" style="color:#57ccff"></i> اختار فرقتك الدراسية</h3>
-       <a onclick="checkBeforeAccess('level1.html')" class="class-item btn-hover-1"><span>الفرقة الأولى</span></a>
-<a onclick="checkBeforeAccess('level2.html')" class="class-item btn-hover-2"><span>الفرقة الثانية</span></a>
-<a onclick="checkBeforeAccess('level3.html')" class="class-item btn-hover-3"><span>الفرقة الثالثة</span></a>
-<a onclick="checkBeforeAccess('level5.html')" class="class-item btn-hover-4"><span>الفرقة الرابعة</span></a>
-<a onclick="forceSecureAccess()" class="class-item btn-hover-5" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; text-decoration: none; padding: 15px; border-radius: 10px; border: 1px solid #1e2638;">
-    <i class="fas fa-code"></i>
-    <span>كورسات البرمجة (S.A.B Tech)</span>
+      <!-- الأزرار الموحدة -->
+<a onclick="checkBeforeAccess('level1.html')" class="class-item">
+    <i class="fas fa-graduation-cap"></i> <span>الفرقة الأولى</span>
+</a>
+<a onclick="checkBeforeAccess('level2.html')" class="class-item">
+    <i class="fas fa-graduation-cap"></i> <span>الفرقة الثانية</span>
+</a>
+<a onclick="checkBeforeAccess('level3.html')" class="class-item">
+    <i class="fas fa-graduation-cap"></i> <span>الفرقة الثالثة</span>
+</a>
+<a onclick="checkBeforeAccess('level5.html')" class="class-item">
+    <i class="fas fa-graduation-cap"></i> <span>الفرقة الرابعة</span>
+</a>
+<a onclick="forceSecureAccess()" class="class-item">
+    <i class="fas fa-code"></i> <span>كورسات البرمجة (S.A.B Tech)</span>
 </a>
 <script>
 // تم إزالة مسح السيرفر الخاطئ هنا لمنع تكرار تسجيل الدخول
