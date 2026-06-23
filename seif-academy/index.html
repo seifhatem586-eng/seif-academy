@@ -234,13 +234,12 @@
         <a onclick="checkBeforeAccess('level1.html')" class="class-item"><span>الفرقة الأولى</span></a>
         <a onclick="checkBeforeAccess('level2.html')" class="class-item"><span>الفرقة الثانية</span></a>
         <a onclick="checkBeforeAccess('level3.html')" class="class-item"><span>الفرقة الثالثة</span></a>
-       <a onclick="checkBeforeAccess('level5')" class="class-item" style="background: linear-gradient(90deg, #6c5ce7, #a29bfe); border-color: #6c5ce7;">
-            <span>الفرقة الرابعة</span>
+       <a onclick="checkBeforeAccess('level5.html')" class="class-item"><span>الفرقة الرابعة</span></a>
         </a>
-        <a onclick="forceSecureAccess()" class="class-item" style="background: linear-gradient(90deg, #6a11cb, #2575fc); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; text-decoration: none;">
-            <i class="fas fa-code"></i>
-            <span>كورسات البرمجة (S.A.B Tech)</span>
-        </a>
+       <a onclick="forceSecureAccess()" class="class-item" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; color: white; text-decoration: none; padding: 15px; border-radius: 10px; border: 1px solid #1e2638;">
+    <i class="fas fa-code"></i>
+    <span>كورسات البرمجة (S.A.B Tech)</span>
+</a>
 <script>
 // تم إزالة مسح السيرفر الخاطئ هنا لمنع تكرار تسجيل الدخول
 localStorage.removeItem('attended');
@@ -579,7 +578,7 @@ function forceSecureAccess() {
     }
 
     // 2. نطلب من الطالب يكتب رقم تليفونه بنفسه للتأكيد
-    let userPhone = prompt("يا لورد، أدخل رقم تليفونك المسجل في المنصة: 📱");
+    let userPhone = prompt(" من فضلك. أدخل رقم تليفونك المسجل في المنصة: 📱");
     if (userPhone === null || userPhone.trim() === "") return;
 
     // 3. نطلب منه باسوورد كورس البرمجة
@@ -591,7 +590,7 @@ function forceSecureAccess() {
         // نقفل المتصفح والجهاز ده على الرقم ده
         localStorage.setItem("sab_lock_2026", "true");
         
-        alert("تم تفعيل كورس البرمجة بنجاح على جهازك يا لورد! 🎉");
+        alert("تم تفعيل كورس البرمجة بنجاح على جهازك  🎉");
         window.location.href = "corses.html";
     } else {
         alert("عفواً! رقم التليفون غير مشترك، أو كلمة السر خاطئة. ❌");
