@@ -477,11 +477,6 @@ window.onload = function() {
         render(); 
     }
 }
-window.addEventListener('beforeunload', function (e) {
-    localStorage.removeItem('access');
-    localStorage.removeItem('userPhone');
-});
-
 function goToLogin() {
     localStorage.removeItem('userPhone'); 
     localStorage.removeItem('access'); 
