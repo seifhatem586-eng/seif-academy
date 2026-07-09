@@ -375,8 +375,9 @@ async function login() {
     if (!savedNumber) {
         localStorage.setItem("registered_student_phone", inputPhoneNumber);
         console.log("تم ربط جهازك برقمك بنجاح.");
-        sessionStorage.setItem('access', 'done');
-       sessionStorage.setItem('userPhone', inputPhoneNumber);
+       localStorage.setItem('access', 'done');
+localStorage.setItem('userPhone', inputPhoneNumber);
+localStorage.setItem('loginTime', new Date().getTime()); // <--- ضيف السطر ده هنا
         
         document.getElementById('watermark-container')?.remove();
         makeWatermark();
@@ -470,12 +471,20 @@ function recordAttendance() {
         });
 }
 
-// تعديل الدالة لتقرأ الحالة وتمنع طلب الدخول مراراً وتكراراً عند الرجوع بالـ Back
-window.onload = function() {
-    updateHomeStats(); 
-    if (localStorage.getItem('access') === 'done') {
-        render(); 
-    }
+// هنشيل السطر القديم ونحط ده مكانه:
+let loginTime = localStorage.getItem('loginTime');
+let currentTime = new Date().getTime();
+let twoHours = 2 * 60 * 60 * 1000; // ده وقت الساعتين بالملي ثانية
+
+if (localStorage.getItem('access') === 'done' && loginTime && (currentTime - loginTime < twoHours)) {
+    render();
+} else {
+    // لو الوقت عدى، هننظف البيانات ونرجع للبوابة
+    localStorage.removeItem('access');
+    localStorage.removeItem('userPhone');
+    localStorage.removeItem('loginTime');
+    document.getElementById("content").style.display = "none";
+    document.getElementById("gate").style.display = "block";
 }
 function goToLogin() {
     localStorage.removeItem('userPhone'); 
