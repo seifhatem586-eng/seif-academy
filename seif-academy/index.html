@@ -473,14 +473,18 @@ function recordAttendance() {
 // تعديل الدالة لتقرأ الحالة وتمنع طلب الدخول مراراً وتكراراً عند الرجوع بالـ Back
 window.onload = function() {
     updateHomeStats(); 
-    if (sessionStorage.getItem('access') === 'done') {
+    if (localStorage.getItem('access') === 'done') {
         render(); 
     }
 }
+window.addEventListener('beforeunload', function (e) {
+    localStorage.removeItem('access');
+    localStorage.removeItem('userPhone');
+});
 
 function goToLogin() {
-    sessionstorage.removeItem('userPhone'); 
-    sessionstorage.removeItem('access'); 
+    localStorage.removeItem('userPhone'); 
+    localStorage.removeItem('access'); 
     localStorage.removeItem('attended'); 
     document.getElementById("content").style.display = "none";
     document.getElementById("gate").style.display = "block";
