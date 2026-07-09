@@ -17,6 +17,7 @@
     <div class="max-w-6xl mx-auto px-4 pb-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             
+            <!-- الترم الأول -->
             <div class="space-y-6">
                 <h2 class="text-xl font-bold text-blue-400 mb-4 text-center flex items-center justify-center gap-2 italic">
                     <i class="fas fa-snowflake"></i> الترم الأول
@@ -30,7 +31,7 @@
                         </summary>
                         <div class="flex flex-col gap-2 mt-2 pr-4 pb-2">
                             <a href="https://youtube.com/watch?v=I_nML9mTUY4&si=VKTP90o_sY30IbCi" class="p-3 bg-gray-800/40 rounded-lg hover:bg-orange-600/40 transition text-sm text-white no-underline border border-white/5">تمهيد وفكرة المشروع</a>
-                            <!-- تم ربط الزرار هنا فقط -->
+                            <!-- هنا التعديل الوحيد: ربط الجروب بالدالة -->
                             <a href="#" onclick="checkAccess()" class="p-3 bg-gray-800/40 rounded-lg hover:bg-orange-600/40 transition text-sm text-white no-underline border border-white/5">جروب تيمات مشاريع التخرج</a>
                         </div>
                     </details>
@@ -92,6 +93,7 @@
                 </div>
             </div>
 
+            <!-- الترم الثاني -->
             <div class="space-y-6">
                 <h2 class="text-xl font-bold text-orange-400 mb-4 text-center flex items-center justify-center gap-2 italic">
                     <i class="fas fa-sun"></i> الترم الثاني
@@ -171,7 +173,7 @@
             if (localStorage.getItem('watched_intro') === 'true') {
                 window.location.href = "https://chat.whatsapp.com/Kl8mFgbhxIM1tjpmkfv2LE?mode=gi_t";
             } else {
-                alert("يجب عليك مشاهدة فيديو 'تمهيد وفكرة المشروع' أولاً لفتح الجروب.");
+                alert("يجب عليك مشاهدة فيديو 'تمهيد وفكرة المشروع' بالكامل أولاً لفتح الجروب.");
             }
         }
     </script>
