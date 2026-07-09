@@ -375,8 +375,8 @@ async function login() {
     if (!savedNumber) {
         localStorage.setItem("registered_student_phone", inputPhoneNumber);
         console.log("تم ربط جهازك برقمك بنجاح.");
-        localStorage.setItem('access', 'done'); 
-        localStorage.setItem('userPhone', inputPhoneNumber); 
+        sessionStorage.setItem('access', 'done');
+       sessionStorage.setItem('userPhone', inputPhoneNumber);
         
         document.getElementById('watermark-container')?.remove();
         makeWatermark();
@@ -473,14 +473,14 @@ function recordAttendance() {
 // تعديل الدالة لتقرأ الحالة وتمنع طلب الدخول مراراً وتكراراً عند الرجوع بالـ Back
 window.onload = function() {
     updateHomeStats(); 
-    if (localStorage.getItem('access') === 'done') {
+    if (sessionStorage.getItem('access') === 'done') {
         render(); 
     }
 }
 
 function goToLogin() {
-    localStorage.removeItem('userPhone'); 
-    localStorage.removeItem('access'); 
+    sessionstorage.removeItem('userPhone'); 
+    sessionstorage.removeItem('access'); 
     localStorage.removeItem('attended'); 
     document.getElementById("content").style.display = "none";
     document.getElementById("gate").style.display = "block";
