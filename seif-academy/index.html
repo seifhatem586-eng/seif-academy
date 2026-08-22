@@ -9,24 +9,17 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* الشريط العلوي اللي جامعهم كلهم */
-.top-header-bar {
-    display: flex;
-    justify-content: space-between; /* بيفصل بينهم بمسافات متساوية ومتناسقة */
-    align-items: center;
-    padding: 15px 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* تنسيق صورة الأباتار الدائرية */
-.profile-avatar {
-    width: 45px;  /* حجم الصورة دائري وشيك */
+        .my-avatar {
+    position: fixed; /* بيخليها ثابتة فوق الشاشة مهما स्क्रول حصل */
+    top: 15px;       /* مسافة من فوق */
+    right: 20px;     /* مسافة من اليمين تماماً زي ما طلبت */
+    width: 45px;     /* حجم الصورة */
     height: 45px;
-    border-radius: 50%; /* بتخليها دائرية تماماً */
+    border-radius: 50%; /* دائرية تماماً */
     object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.2); /* إطار خفيف يناسب تصميم المنصة الغامق */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border: 2px solid #3b82f6; /* إطار فخم */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;   /* عشان تفضل ظاهرة فوق أي عنصر تاني وما تختفيش ورا حاجة */
 }
         .class-item {
     display: flex;
@@ -279,6 +272,7 @@
     </style>
 </head>
 <body>
+    <img src="WhatsApp Image 2026-08-22 at 6.50.38 PM.jpeg" alt="صورة المدير" class="my-avatar">
     <button id="theme-toggle" onclick="toggleTheme()">
         <i id="theme-icon" class="fas fa-sun"></i>
     </button>
