@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <div class="top-header-bar">
+    <!-- زر القائمة -->
+    <div class="menu-btn">☰</div>
+    
+    <!-- زر أو لوجو S.A.B -->
+    <div class="logo-box">S.A.B</div>
+    
+    <!-- صورتك الـ Avatar الجديدة -->
+    <div class="profile-avatar-container">
+        <img src="WhatsApp Image 2026-08-22 at 6.50.38 PM.jpeg" alt="صورة المدير" class="profile-avatar">
+    </div>
+</div>
     <meta name="author" content="دكتور سيف - صاحب الكمين الملوكي">
     <meta name="description" content="يا فلوطة يا بتاع BIS.. دخلت الـ View Source تسرق الأكواد? ملف أم عبير مرصود واللي يسرق المجهود يروح في الكمين! 💀📜 سيب الكود واطلع ذاكر!">
     <meta charset="UTF-8">
@@ -9,6 +21,25 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* الشريط العلوي اللي جامعهم كلهم */
+.top-header-bar {
+    display: flex;
+    justify-content: space-between; /* بيفصل بينهم بمسافات متساوية ومتناسقة */
+    align-items: center;
+    padding: 15px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* تنسيق صورة الأباتار الدائرية */
+.profile-avatar {
+    width: 45px;  /* حجم الصورة دائري وشيك */
+    height: 45px;
+    border-radius: 50%; /* بتخليها دائرية تماماً */
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2); /* إطار خفيف يناسب تصميم المنصة الغامق */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
         .class-item {
     display: flex;
     align-items: center;
