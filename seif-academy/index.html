@@ -9,6 +9,26 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        .share-button {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.share-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
+}
         .my-avatar {
     position: absolute; /* بيخليها ثابتة فوق الشاشة مهما स्क्रول حصل */
     top: 115px;       /* مسافة من فوق */
@@ -272,7 +292,10 @@
     </style>
 </head>
 <body>
-<img src="https://lh3.googleusercontent.com/d/1FHhowH8YLQjGn7oxVv6dYBy7K11cMX8E" alt="سيف حاتم" class="my-avatar">
+    <button id="share-btn" class="share-button">
+    <span>📢 شارك المنصة</span>
+</button>
+ <img src="https://lh3.googleusercontent.com/d/1FHhowH8YLQjGn7oxVv6dYBy7K11cMX8E" alt="سيف حاتم" class="my-avatar">
     <button id="theme-toggle" onclick="toggleTheme()">
         <i id="theme-icon" class="fas fa-sun"></i>
     </button>
@@ -691,6 +714,24 @@ function forceSecureAccess() {
         alert("عفواً! رقم التليفون غير مشترك، أو كلمة السر خاطئة. ❌");
     }
 }
+document.getElementById('share-btn').addEventListener('click', async () => {
+    // التأكد إن المتصفح بيعمَد خاصية المشاركة (خصوصاً في الموبايل)
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: 'أكاديمية سيف التعليمية - BIS',
+                text: 'انضم دلوقتي لأكاديمية سيف واعرف طريقك للنجاح في البرمجة والـ BIS!',
+                url: window.location.href // بياخد اللينك الحالي للموقع تلقائياً
+            });
+        } catch (error) {
+            console.log('تم إلغاء المشاركة');
+        }
+    } else {
+        // لو المتصفح مش بيدعم المشاركة (زي بعض متصفحات الكمبيوتر)، بننسخ اللينك للحافظة تلقائياً
+        navigator.clipboard.writeText(window.location.href);
+        alert('تم نسخ رابط المنصة الحافظة بنجاح! 📋');
+    }
+});
 </script>
 
 <a href="https://wa.me/201037387830" class="whatsapp-btn" target="_blank">
