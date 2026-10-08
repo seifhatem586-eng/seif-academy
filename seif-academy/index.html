@@ -391,9 +391,8 @@ async function login() {
        // localStorage.setItem("registered_student_phone", inputPhoneNumber);
        sessionStorage.setItem("registered_student_phone", inputPhoneNumber);
         console.log("تم ربط جهازك برقمك بنجاح.");
-        localStorage.setItem('access', 'done'); 
-        localStorage.setItem('userPhone', inputPhoneNumber); 
-        
+        sessionStorage.setItem('access', 'done'); 
+        sessionStorage.setItem('userPhone', inputPhoneNumber); 
         document.getElementById('watermark-container')?.remove();
         makeWatermark();
         render();
