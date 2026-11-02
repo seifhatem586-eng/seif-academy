@@ -10,37 +10,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
 /* ==========================================
-   S.A.B Academy - Modern Minimalist Light Theme 2026
+   S.A.B Academy - Modern Futuristic Theme 2026
    ========================================== */
 
 :root {
-    --bg-main: #f0f4f8;
-    --card-bg: #ffffff;
-    --card-hover: rgba(241, 245, 249, 0.95);
-    --border-color: #e2e8f0;
-    --primary: #2563eb;
-    --primary-glow: rgba(37, 99, 235, 0.15);
-    --accent: #00a8cc;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
+    --bg-main: #07090e;
+    --card-bg: rgba(18, 24, 38, 0.7);
+    --card-hover: rgba(26, 35, 53, 0.85);
+    --border-color: rgba(59, 130, 246, 0.2);
+    --primary: #3b82f6;
+    --primary-glow: rgba(59, 130, 246, 0.4);
+    --accent: #00f2fe;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
     --danger: #ef4444;
 }
 
-body.dark-mode {
-    --bg-main: #07090e !important;
-    --card-bg: rgba(18, 24, 38, 0.85) !important;
-    --card-hover: rgba(26, 35, 53, 0.95) !important;
+body.light-mode {
+    --bg-main: #f1f5f9 !important;
+    --card-bg: rgba(255, 255, 255, 0.85) !important;
+    --card-hover: rgba(248, 250, 252, 0.95) !important;
     --border-color: rgba(59, 130, 246, 0.3) !important;
-    --primary: #3b82f6 !important;
-    --primary-glow: rgba(59, 130, 246, 0.3) !important;
-    --accent: #00f2fe !important;
-    --text-main: #f8fafc !important;
-    --text-muted: #94a3b8 !important;
+    --primary: #2563eb !important;
+    --primary-glow: rgba(37, 99, 235, 0.25) !important;
+    --accent: #0284c7 !important;
+    --text-main: #0f172a !important;
+    --text-muted: #64748b !important;
 }
 
 * {
     box-sizing: border-box;
-    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 body {
@@ -49,40 +49,15 @@ body {
     color: var(--text-main);
     margin: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     padding: 20px;
     user-select: none;
     -webkit-user-select: none;
     overflow-x: hidden;
-    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-    background-size: 24px 24px;
-}
-
-/* ==========================================
-   هيدر الأكاديمية العلوي الموحد (مطابق للصورة)
-   ========================================== */
-.app-header {
-    text-align: center;
-    padding: 20px 10px;
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 1100px;
-}
-
-.app-header h1 {
-    font-size: 26px;
-    color: var(--text-main);
-    margin: 0 0 5px 0;
-    font-weight: 800;
-}
-
-.app-header h2 {
-    font-size: 20px;
-    color: var(--text-muted);
-    margin: 0;
-    font-weight: 600;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.05) 0%, transparent 40%);
 }
 
 /* ==========================================
@@ -90,89 +65,74 @@ body {
    ========================================== */
 #gate {
     background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 40px 30px;
     border-radius: 24px;
     text-align: center;
     width: 100%;
     max-width: 420px;
     position: fixed;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--border-color);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-color);
     z-index: 1000;
 }
 
-#gate h3, #gate h2 {
-    margin-top: 0;
+#gate h2 {
     margin-bottom: 20px;
     font-weight: 800;
-    color: var(--text-main);
-}
-
-.input-group {
-    position: relative;
-    margin-bottom: 16px;
-}
-
-.input-group i {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 16px;
+    letter-spacing: 0.5px;
 }
 
 input {
     width: 100%;
-    padding: 14px 45px 14px 15px;
+    padding: 14px 18px;
+    margin: 12px 0;
     border-radius: 14px;
     border: 1px solid var(--border-color);
-    background: #f8fafc;
-    color: var(--text-main);
-    text-align: right;
-    font-size: 15px;
-    outline: none;
-}
-
-body.dark-mode input {
     background: rgba(11, 17, 30, 0.6);
+    color: var(--text-main);
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
 input:focus {
-    border-color: var(--accent);
-    background: var(--card-bg);
-    box-shadow: 0 0 0 3px var(--primary-glow);
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--primary-glow), inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .btn-go {
     width: 100%;
-    padding: 14px;
-    background: var(--accent);
+    padding: 15px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     border: none;
     border-radius: 14px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 16px;
-    margin-top: 10px;
-    box-shadow: 0 6px 18px rgba(0, 168, 204, 0.25);
+    font-size: 18px;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px var(--primary-glow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-go:hover {
     transform: translateY(-2px);
-    background: #008dae;
+    box-shadow: 0 12px 25px var(--primary-glow);
 }
 
 /* ==========================================
-   المحتوى الرئيسي للمنصة و صفحة BIS (#content)
+   المحتوى الرئيسي للمنصة (#content)
    ========================================== */
 #content {
     display: none;
     width: 100%;
-    max-width: 1100px;
-    animation: fadeIn 0.4s ease-out;
+    max-width: 520px;
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     padding-bottom: 40px;
 }
 
@@ -180,7 +140,7 @@ input:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .logo-tag {
@@ -189,132 +149,136 @@ input:focus {
     padding: 10px 20px;
     border-radius: 14px;
     font-weight: 800;
-    font-size: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    color: var(--accent);
-}
-
-/* التخطيط الشبكي للرئيسية والـ BIS */
-.main-grid {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 20px;
-}
-
-@media (max-width: 768px) {
-    .main-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* القائمة الجانبية (Sidebar Menu داخل الداشبورد) */
-.side-menu {
-    background: var(--card-bg);
-    border-radius: 18px;
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: fit-content;
-}
-
-.side-menu-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    color: var(--text-main);
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 14px;
-}
-
-.side-menu-item:hover, .side-menu-item.active {
-    background: #e6f7fa;
-    color: var(--accent);
-}
-
-body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
-    background: rgba(0, 168, 204, 0.15);
-}
-
-/* جسم الداشبورد والبطاقات */
-.dashboard-body {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.progress-card, .stat-box, .content-card, .class-item {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-}
-
-.progress-card {
-    padding: 25px;
-    text-align: center;
-}
-
-.progress-circle {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background: conic-gradient(var(--accent) 75%, #e2e8f0 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 15px auto;
-}
-
-.progress-circle-inner {
-    width: 85px;
-    height: 85px;
-    background: var(--card-bg);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
     font-size: 20px;
-    color: var(--text-main);
-}
-
-.class-list-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-}
-
-.class-item {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 120px;
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 700;
-}
-
-.class-item:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    box-shadow: 0 12px 24px rgba(0, 168, 204, 0.12);
-}
-
-.class-item i {
-    font-size: 24px;
-    color: var(--accent);
-    align-self: flex-end;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* ==========================================
-   القائمة الجانبية الشفافة المنسدلة (Sidebar Drawer)
+   قسم الترحيب والإحصائيات (Hero & Stats)
+   ========================================== */
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px 20px;
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+    color: var(--accent);
+    font-size: 24px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    font-weight: 900;
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 35px;
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 22px 10px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.stat-box h3 {
+    font-size: 26px;
+    margin: 0;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.stat-box span {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   قائمة الفصول والأزرار (.class-item)
+   ========================================== */
+.class-list h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.class-item {
+    background: var(--card-bg);
+    padding: 18px 24px;
+    border-radius: 18px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.class-item:hover {
+    transform: translateX(-6px) scale(1.01);
+    background: var(--card-hover);
+    border-color: var(--primary);
+    box-shadow: 0 10px 25px var(--primary-glow);
+}
+
+.class-item i {
+    font-size: 20px;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.class-item:hover i {
+    transform: scale(1.2);
+}
+
+.active-blue {
+    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 8px 25px var(--primary-glow) !important;
+}
+
+.active-blue i {
+    color: white !important;
+}
+
+/* ==========================================
+   لوحة التحكم الجانبية (Sidebar)
    ========================================== */
 .sidebar {
     height: 100%;
@@ -323,19 +287,19 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
     z-index: 1001;
     top: 0;
     left: 0;
-    background-color: var(--card-bg);
+    background-color: var(--bg-main);
     backdrop-filter: blur(25px);
     overflow-x: hidden;
     transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     padding-top: 60px;
-    box-shadow: 5px 0 30px rgba(0,0,0,0.1);
+    box-shadow: 5px 0 30px rgba(0,0,0,0.5);
     border-right: 1px solid var(--border-color);
 }
 
 .sidebar a {
     padding: 16px 30px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 17px;
     color: var(--text-muted);
     display: block;
     transition: 0.2s;
@@ -345,7 +309,7 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
 
 .sidebar a:hover {
     color: var(--accent);
-    background: rgba(0, 168, 204, 0.08);
+    background: rgba(59, 130, 246, 0.08);
     border-right: 4px solid var(--accent);
     padding-right: 35px;
 }
@@ -365,43 +329,49 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--accent);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 20px var(--primary-glow);
     z-index: 9999;
+    transition: transform 0.3s ease;
+}
+
+.my-avatar:hover {
+    transform: scale(1.1);
 }
 
 #theme-toggle {
     position: fixed;
     bottom: 25px;
     left: 25px;
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: var(--card-bg);
-    color: var(--accent);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 6px 20px var(--primary-glow);
     cursor: pointer;
     z-index: 9999;
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #theme-toggle:hover {
-    transform: scale(1.1) rotate(15deg);
+    transform: scale(1.15) rotate(15deg);
 }
 
 .whatsapp-btn {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background: #25d366;
+    background: linear-gradient(135deg, #25d366, #128c7e);
     color: white;
     text-decoration: none;
     padding: 12px 20px;
@@ -411,8 +381,9 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
     gap: 8px;
     font-size: 14px;
     font-weight: bold;
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
     z-index: 9999;
+    transition: transform 0.3s ease;
 }
 
 .whatsapp-btn:hover {
@@ -420,7 +391,7 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
 }
 
 /* ==========================================
-   شاشة التحميل (Splash Screen)
+   شاشة التحميل (Splash Screen) والعنوان النيون
    ========================================== */
 #splash-screen {
     position: fixed;
@@ -433,17 +404,54 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
     justify-content: center;
     align-items: center;
     z-index: 99999;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.splash-logo {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px var(--primary-glow));
+    animation: pulse 1.5s infinite alternate;
+}
+
+.splash-title {
+    color: var(--text-main);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
 .splash-loader {
-    width: 40px;
-    height: 40px;
-    border: 3px solid #e2e8f0;
-    border-top: 3px solid var(--accent);
+    width: 45px;
+    height: 45px;
+    border: 4px solid rgba(59, 130, 246, 0.1);
+    border-top: 4px solid var(--primary);
     border-radius: 50%;
     margin: 0 auto;
     animation: spin 0.8s linear infinite;
+}
+
+.neon-title {
+    color: var(--text-main);
+    text-shadow: 
+        0 0 10px rgba(59, 130, 246, 0.6),
+        0 0 20px rgba(0, 242, 254, 0.3);
+    animation: neonGlow 2.5s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(0, 242, 254, 0.3); }
+    50% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.2), 0 0 10px rgba(0, 242, 254, 0.1); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.08); opacity: 1; }
 }
 
 @keyframes spin {
@@ -461,9 +469,18 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
    ========================================== */
 #watermark-container {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 9999; opacity: 0.03;
-    display: flex; flex-wrap: wrap; justify-content: space-around;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
 }
 
 .watermark-text {
@@ -472,6 +489,7 @@ body.dark-mode .side-menu-item:hover, body.dark-mode .side-menu-item.active {
     color: var(--text-main);
     transform: rotate(-30deg);
     padding: 50px;
+    user-select: none;
 }
 
 @media print {
