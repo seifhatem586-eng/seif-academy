@@ -55,10 +55,6 @@ body {
         radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.05) 0%, transparent 40%);
 }
-
-/* ==========================================
-   البوابة / شاشة تسجيل الدخول (#gate)
-   ========================================== */
 #gate {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
@@ -120,10 +116,6 @@ input:focus {
     transform: translateY(-2px);
     box-shadow: 0 12px 25px var(--primary-glow);
 }
-
-/* ==========================================
-   المحتوى الرئيسي للمنصة (#content)
-   ========================================== */
 #content {
     display: none;
     width: 100%;
@@ -149,10 +141,6 @@ input:focus {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-
-/* ==========================================
-   قسم الترحيب والإحصائيات (Hero & Stats)
-   ========================================== */
 .hero {
     text-align: center;
     margin-bottom: 30px;
@@ -214,10 +202,6 @@ input:focus {
     margin-top: 6px;
     font-weight: 600;
 }
-
-/* ==========================================
-   قائمة الفصول والأزرار (.class-item)
-   ========================================== */
 .class-list h3 {
     font-size: 20px;
     margin-bottom: 20px;
@@ -272,10 +256,6 @@ input:focus {
 .active-blue i {
     color: white !important;
 }
-
-/* ==========================================
-   لوحة التحكم الجانبية (Sidebar)
-   ========================================== */
 .sidebar {
     height: 100%;
     width: 0;
@@ -317,10 +297,6 @@ input:focus {
     font-size: 36px;
     color: var(--text-main);
 }
-
-/* ==========================================
-   العناصر العائمة (الأفاتار، زر الثيم، الواتساب)
-   ========================================== */
 .my-avatar {
     position: fixed;
     top: 20px;
@@ -385,10 +361,6 @@ input:focus {
 .whatsapp-btn:hover {
     transform: translateY(-3px);
 }
-
-/* ==========================================
-   شاشة التحميل (Splash Screen) والعنوان النيون
-   ========================================== */
 #splash-screen {
     position: fixed;
     top: 0;
@@ -459,10 +431,6 @@ input:focus {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* ==========================================
-   العلامة المائية
-   ========================================== */
 #watermark-container {
     position: fixed;
     top: 0;
@@ -491,11 +459,6 @@ input:focus {
 @media print {
     body { display: none !important; }
 }
-
-
-
-
-
 #custom-alert-box {
     display: none;
     position: fixed;
@@ -570,11 +533,11 @@ input:focus {
 
 <div id="gate">
     <h2 style="color: #57ccff;">أكاديمية دكتور سيف التعليمية</h2>
+     <h4 style="color: #155fc6b8;">Dr. Saif Educational Academy</h4>
     <input type="tel" id="u" placeholder="رقم الهاتف">
     <input type="tel" id="p" placeholder="تأكيد الرقم">
     <button class="btn-go" onclick="login()">دخول</button>
 </div>
-
 <div id="content">
     <div class="top-bar">
         <div class="logo-tag">S.A.B</div>
