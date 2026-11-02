@@ -495,6 +495,57 @@ input:focus {
 @media print {
     body { display: none !important; }
 }
+
+
+
+
+
+#custom-alert-box {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 999999;
+    justify-content: center;
+    align-items: center;
+}
+.custom-alert-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border: 1px solid #e2e8f0;
+    animation: alertScale 0.3s ease-out;
+}
+.custom-alert-content p {
+    margin: 0 0 22px 0;
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.custom-alert-btn {
+    background: #00a8cc;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 168, 204, 0.3);
+}
+.custom-alert-btn:hover {
+    background: #008dae;
+}
+@keyframes alertScale {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
     </style>
 </head>
 <body>
@@ -563,6 +614,13 @@ input:focus {
     <span>كورسات البرمجة (S.A.B Tech)</span> <i class="fas fa-code"></i>
 </a>
 <script>
+     function showMsg(message) {
+        document.getElementById('custom-alert-message').innerText = message;
+        document.getElementById('custom-alert-box').style.display = 'flex';
+    }
+    function closeCustomAlert() {
+        document.getElementById('custom-alert-box').style.display = 'none';
+    }
  // تم تعديل الاعتماد بالكامل ليكون على sessionStorage لفرض إعادة تسجيل الدخول عند غلق المتصفح
 
 const users = [,"01096519733", "01024145579", "01557158858", "01090607988", "01278764964", "01055437182", "01555742099", "01080725453", "01272190704", "01128067783", "01025227785", "01096085541", "01551819938", "01118049824", "01112239427", "01013691355", "01559621760", "01094187142", "01096695456", "01032630993", "01080211951", "01062820825", "01201535590", "01015076890", "01021479464", "01030420358", "01069511492", "01099076055", "01029173226", "01203902008", "01005291045", "01115970373", "01098051362", "01064790427", "015503549944","01012938304","01017097218","01281022388","01555791276","01092450818","01014204476","01227890381","01067307824","01021822529","01203971002","01060429507","01018819405","01021328744","01140674611","01094590750","01064088437","01276803931","01090941321","01020965966","01029529073","01098176544","01020508417","01091739543","01050766722","01226784308","01156021347",
@@ -915,6 +973,12 @@ function forceSecureAccess() {
    <i class="fab fa-whatsapp"></i>
    <span>تفعيل الحساب</span>
 </a>
-
+<!-- نافذة التنبيه الخالية من أي عناوين -->
+<div id="custom-alert-box">
+    <div class="custom-alert-content">
+        <p id="custom-alert-message">نص الرسالة هنا</p>
+        <button class="custom-alert-btn" onclick="closeCustomAlert()">حسناً</button>
+    </div>
+</div>
 </body>
 </html>
