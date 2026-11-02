@@ -9,43 +9,37 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ==========================================
-   S.A.B Academy - Modern Futuristic Theme 2026
-   ========================================== */
-
-:root {
-    --bg-main: #07090e;
-    --card-bg: rgba(18, 24, 38, 0.7);
-    --card-hover: rgba(26, 35, 53, 0.85);
-    --border-color: rgba(59, 130, 246, 0.2);
-    --primary: #3b82f6;
-    --primary-glow: rgba(59, 130, 246, 0.4);
-    --accent: #00f2fe;
+  :root {
+    --bg-primary: #050811;
+    --bg-surface: rgba(15, 23, 42, 0.75);
+    --bg-surface-hover: rgba(30, 41, 59, 0.9);
+    --border-glow: rgba(59, 130, 246, 0.3);
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --danger: #ef4444;
+    --danger: #f43f5e;
 }
 
 body.light-mode {
-    --bg-main: #f1f5f9 !important;
-    --card-bg: rgba(255, 255, 255, 0.85) !important;
-    --card-hover: rgba(248, 250, 252, 0.95) !important;
-    --border-color: rgba(59, 130, 246, 0.3) !important;
-    --primary: #2563eb !important;
-    --primary-glow: rgba(37, 99, 235, 0.25) !important;
-    --accent: #0284c7 !important;
+    --bg-primary: #f0f4f8 !important;
+    --bg-surface: rgba(255, 255, 255, 0.85) !important;
+    --bg-surface-hover: rgba(241, 245, 249, 0.95) !important;
+    --border-glow: rgba(59, 130, 246, 0.4) !important;
+    --accent-blue: #2563eb !important;
+    --accent-cyan: #0891b2 !important;
     --text-main: #0f172a !important;
     --text-muted: #64748b !important;
 }
 
 * {
     box-sizing: border-box;
-    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-main);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
     color: var(--text-main);
     margin: 0;
     display: flex;
@@ -56,19 +50,16 @@ body {
     -webkit-user-select: none;
     overflow-x: hidden;
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 45%);
 }
 
-/* ==========================================
-   البوابة / شاشة تسجيل الدخول (#gate)
-   ========================================== */
 #gate {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 40px 30px;
-    border-radius: 24px;
+    background: var(--bg-surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 45px 35px;
+    border-radius: 28px;
     text-align: center;
     width: 100%;
     max-width: 420px;
@@ -76,64 +67,62 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-color);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-glow);
     z-index: 1000;
 }
 
 #gate h2 {
-    margin-bottom: 20px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+    font-weight: 900;
+    font-size: 26px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 input {
     width: 100%;
-    padding: 14px 18px;
+    padding: 15px 20px;
     margin: 12px 0;
-    border-radius: 14px;
-    border: 1px solid var(--border-color);
-    background: rgba(11, 17, 30, 0.6);
+    border-radius: 16px;
+    border: 1px solid var(--border-glow);
+    background: rgba(11, 17, 30, 0.5);
     color: var(--text-main);
     text-align: center;
     font-size: 16px;
     outline: none;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
 input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 15px var(--primary-glow), inset 0 2px 4px rgba(0,0,0,0.2);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .btn-go {
     width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    padding: 16px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     color: white;
     border: none;
-    border-radius: 14px;
+    border-radius: 16px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 800;
     font-size: 18px;
     margin-top: 15px;
-    box-shadow: 0 8px 20px var(--primary-glow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
 }
 
 .btn-go:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px var(--primary-glow);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(6, 182, 212, 0.5);
 }
 
-/* ==========================================
-   المحتوى الرئيسي للمنصة (#content)
-   ========================================== */
 #content {
     display: none;
     width: 100%;
     max-width: 520px;
-    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    padding-bottom: 40px;
+    animation: fadeInView 0.5s ease-out;
+    padding-bottom: 50px;
 }
 
 .top-bar {
@@ -144,39 +133,37 @@ input:focus {
 }
 
 .logo-tag {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 10px 20px;
-    border-radius: 14px;
-    font-weight: 800;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glow);
+    padding: 12px 22px;
+    border-radius: 16px;
+    font-weight: 900;
     font-size: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* ==========================================
-   قسم الترحيب والإحصائيات (Hero & Stats)
-   ========================================== */
 .hero {
     text-align: center;
     margin-bottom: 30px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 30px 20px;
-    border-radius: 24px;
-    backdrop-filter: blur(10px);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glow);
+    padding: 35px 25px;
+    border-radius: 28px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 .hero h1 {
-    color: var(--accent);
-    font-size: 24px;
+    color: var(--accent-cyan);
+    font-size: 22px;
     margin-bottom: 8px;
     font-weight: 700;
 }
 
 .hero h2 {
     font-size: 32px;
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
     font-weight: 900;
 }
 
@@ -190,25 +177,25 @@ input:focus {
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 15px;
     margin-bottom: 35px;
 }
 
 .stat-box {
-    background: var(--card-bg);
-    padding: 22px 10px;
-    border-radius: 20px;
+    background: var(--bg-surface);
+    padding: 24px 10px;
+    border-radius: 22px;
     text-align: center;
-    border: 1px solid var(--border-color);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border: 1px solid var(--border-glow);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .stat-box h3 {
-    font-size: 26px;
+    font-size: 28px;
     margin: 0;
-    color: var(--accent);
-    font-weight: 800;
+    color: var(--accent-cyan);
+    font-weight: 900;
 }
 
 .stat-box span {
@@ -216,70 +203,58 @@ input:focus {
     color: var(--text-muted);
     display: block;
     margin-top: 6px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* ==========================================
-   قائمة الفصول والأزرار (.class-item)
-   ========================================== */
 .class-list h3 {
     font-size: 20px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .class-item {
-    background: var(--card-bg);
-    padding: 18px 24px;
-    border-radius: 18px;
+    background: var(--bg-surface);
+    padding: 20px 25px;
+    border-radius: 20px;
     margin-bottom: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
     color: var(--text-main);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-glow);
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px);
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .class-item:hover {
-    transform: translateX(-6px) scale(1.01);
-    background: var(--card-hover);
-    border-color: var(--primary);
-    box-shadow: 0 10px 25px var(--primary-glow);
+    transform: translateX(-8px) scale(1.01);
+    background: var(--bg-surface-hover);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 12px 30px rgba(6, 182, 212, 0.25);
 }
 
 .class-item i {
-    font-size: 20px;
-    color: var(--accent);
-    transition: transform 0.3s ease;
-}
-
-.class-item:hover i {
-    transform: scale(1.2);
+    font-size: 22px;
+    color: var(--accent-cyan);
 }
 
 .active-blue {
-    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)) !important;
     color: white !important;
     border: none !important;
-    box-shadow: 0 8px 25px var(--primary-glow) !important;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4) !important;
 }
 
 .active-blue i {
     color: white !important;
 }
 
-/* ==========================================
-   لوحة التحكم الجانبية (Sidebar)
-   ========================================== */
 .sidebar {
     height: 100%;
     width: 0;
@@ -287,84 +262,79 @@ input:focus {
     z-index: 1001;
     top: 0;
     left: 0;
-    background-color: var(--bg-main);
-    backdrop-filter: blur(25px);
+    background-color: var(--bg-primary);
+    backdrop-filter: blur(30px);
     overflow-x: hidden;
     transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    padding-top: 60px;
-    box-shadow: 5px 0 30px rgba(0,0,0,0.5);
-    border-right: 1px solid var(--border-color);
+    padding-top: 70px;
+    box-shadow: 10px 0 40px rgba(0,0,0,0.6);
+    border-right: 1px solid var(--border-glow);
 }
 
 .sidebar a {
-    padding: 16px 30px;
+    padding: 18px 30px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
     color: var(--text-muted);
     display: block;
     transition: 0.2s;
     text-align: right;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .sidebar a:hover {
-    color: var(--accent);
-    background: rgba(59, 130, 246, 0.08);
-    border-right: 4px solid var(--accent);
-    padding-right: 35px;
+    color: var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.1);
+    border-right: 5px solid var(--accent-cyan);
+    padding-right: 38px;
 }
 
 .sidebar .closebtn {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 25px;
-    font-size: 36px;
+    font-size: 38px;
     color: var(--text-main);
 }
 
-/* ==========================================
-   العناصر العائمة (الأفاتار، زر الثيم، الواتساب)
-   ========================================== */
 .my-avatar {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--primary);
-    box-shadow: 0 0 20px var(--primary-glow);
+    border: 3px solid var(--accent-blue);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
     z-index: 9999;
-    transition: transform 0.3s ease;
 }
 
 .my-avatar:hover {
-    transform: scale(1.1);
+    transform: scale(1.12);
 }
 
 #theme-toggle {
     position: fixed;
     bottom: 25px;
     left: 25px;
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     color: #ffffff;
     border: none;
-    box-shadow: 0 6px 20px var(--primary-glow);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
     cursor: pointer;
     z-index: 9999;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #theme-toggle:hover {
-    transform: scale(1.15) rotate(15deg);
+    transform: scale(1.18) rotate(15deg);
 }
 
 .whatsapp-btn {
@@ -374,37 +344,33 @@ input:focus {
     background: linear-gradient(135deg, #25d366, #128c7e);
     color: white;
     text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 30px;
+    padding: 14px 22px;
+    border-radius: 35px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
     z-index: 9999;
-    transition: transform 0.3s ease;
 }
 
 .whatsapp-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
-/* ==========================================
-   شاشة التحميل (Splash Screen) والعنوان النيون
-   ========================================== */
 #splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--bg-main);
+    background-color: var(--bg-primary);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 99999;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .splash-content {
@@ -412,61 +378,58 @@ input:focus {
 }
 
 .splash-logo {
-    font-size: 4rem;
-    color: var(--primary);
+    font-size: 4.5rem;
+    color: var(--accent-cyan);
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 15px var(--primary-glow));
-    animation: pulse 1.5s infinite alternate;
+    filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5));
+    animation: splashPulse 1.5s infinite alternate;
 }
 
 .splash-title {
     color: var(--text-main);
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     margin-bottom: 25px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .splash-loader {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     border: 4px solid rgba(59, 130, 246, 0.1);
-    border-top: 4px solid var(--primary);
+    border-top: 4px solid var(--accent-cyan);
     border-radius: 50%;
     margin: 0 auto;
-    animation: spin 0.8s linear infinite;
+    animation: spinLoader 0.8s linear infinite;
 }
 
 .neon-title {
     color: var(--text-main);
     text-shadow: 
-        0 0 10px rgba(59, 130, 246, 0.6),
-        0 0 20px rgba(0, 242, 254, 0.3);
-    animation: neonGlow 2.5s infinite alternate;
+        0 0 12px rgba(59, 130, 246, 0.6),
+        0 0 25px rgba(6, 182, 212, 0.4);
+    animation: neonGlowAnim 2.5s infinite alternate;
 }
 
-@keyframes neonGlow {
-    0%, 100% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(0, 242, 254, 0.3); }
-    50% { text-shadow: 0 0 5px rgba(59, 130, 246, 0.2), 0 0 10px rgba(0, 242, 254, 0.1); }
+@keyframes neonGlowAnim {
+    0%, 100% { text-shadow: 0 0 12px rgba(59, 130, 246, 0.6), 0 0 25px rgba(6, 182, 212, 0.4); }
+    50% { text-shadow: 0 0 6px rgba(59, 130, 246, 0.3), 0 0 12px rgba(6, 182, 212, 0.2); }
 }
 
-@keyframes pulse {
+@keyframes splashPulse {
     0% { transform: scale(1); opacity: 0.8; }
     100% { transform: scale(1.08); opacity: 1; }
 }
 
-@keyframes spin {
+@keyframes spinLoader {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes fadeInView {
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==========================================
-   العلامة المائية
-   ========================================== */
 #watermark-container {
     position: fixed;
     top: 0;
@@ -484,16 +447,12 @@ input:focus {
 }
 
 .watermark-text {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 900;
     color: var(--text-main);
     transform: rotate(-30deg);
-    padding: 50px;
+    padding: 60px;
     user-select: none;
-}
-
-@media print {
-    body { display: none !important; }
 }
     </style>
 </head>
