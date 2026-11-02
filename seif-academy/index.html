@@ -9,6 +9,19 @@
     <meta name="google-site-verification" content="_VVrhkHVd-mOTaiBu42MlCbjK3AFw-4b7QyR3xyfvKU" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* كود تأثير الهزاز */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-it {
+    animation: shake 0.4s ease-in-out;
+}
 :root {
     --bg-main: #07090e;
     --card-bg: rgba(18, 24, 38, 0.7);
@@ -573,6 +586,15 @@ input:focus {
     <span>كورسات البرمجة (S.A.B Tech)</span> <i class="fas fa-code"></i>
 </a>
 <script>
+// مثال: لو حبيت تعمل هزة لخانة تسجيل الدخول عند الخطأ
+let inputField = document.querySelector('input'); // أو العنصر اللي عاوز تهزه
+
+inputField.classList.add('shake-it');
+
+// بنشيل الكلاس بعد ما الهزة تخلص عشان تشتغل تاني لو حصل خطأ تاني
+setTimeout(function() {
+    inputField.classList.remove('shake-it');
+}, 400);
      function showMsg(message) {
         document.getElementById('custom-alert-message').innerText = message;
         document.getElementById('custom-alert-box').style.display = 'flex';
